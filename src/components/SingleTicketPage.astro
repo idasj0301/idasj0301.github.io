@@ -130,10 +130,10 @@ const otherTicketProducts = activeProducts
   .sort(sortCards);
 
 const officialFilterGroups = [
-  { key: "company", label: "船司", options: uniqueValues(silverseaProducts.map((item) => item.company)) },
-  { key: "ship", label: "船名", options: uniqueValues(silverseaProducts.map((item) => item.product.shipName.replace("银海", "").trim())) },
   { key: "month", label: "出发月份", options: uniqueValues(silverseaProducts.map((item) => item.month)) },
   { key: "days", label: "天数", options: uniqueValues(silverseaProducts.map((item) => item.days)) },
+  { key: "company", label: "船司", options: uniqueValues(silverseaProducts.map((item) => item.company)) },
+  { key: "ship", label: "船名", options: uniqueValues(silverseaProducts.map((item) => item.product.shipName.replace("银海", "").trim())) },
 ];
 ---
 
@@ -149,19 +149,14 @@ const officialFilterGroups = [
         <a href="#official-tickets" class="btn btn-primary">筛选银海航次</a>
         <a href="/inquiry/?from=tickets" class="btn btn-outline">提交条件让顾问查</a>
       </div>
-      <p class="trust-note">最终价格、舱位、库存和优惠政策，以顾问向船司实时确认为准。</p>
     </div>
   </section>
 
-  <section class="ticket-section live-section" id="official-tickets" aria-label="银海单船票筛选">
+  <section class="ticket-section live-section" id="official-tickets" aria-label="单船票筛选">
     {
       silverseaProducts.length > 0 ? (
         <div data-product-filters>
           <div class="ticket-filter-panel product-filter-panel">
-            <div class="filter-head">
-              <p>银海单船票</p>
-              <span data-product-filter-count>已显示 {silverseaProducts.length} 条</span>
-            </div>
             <div class="filter-grid product-filter-grid">
               {
                 officialFilterGroups.map((group) => (
@@ -430,13 +425,6 @@ const officialFilterGroups = [
     gap: 12px;
     margin-top: 20px;
   }
-  .trust-note {
-    max-width: 700px;
-    margin: 12px 0 0;
-    color: var(--sub);
-    font-size: 15px;
-    line-height: 1.6;
-  }
   .ticket-section {
     padding: 38px 0;
   }
@@ -488,25 +476,6 @@ const officialFilterGroups = [
     background: rgba(255, 255, 255, 0.82);
     box-shadow: 0 18px 60px rgba(0, 28, 58, 0.08);
     backdrop-filter: blur(18px);
-  }
-  .filter-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 12px;
-  }
-  .filter-head p {
-    margin: 0;
-    color: var(--ink);
-    font-size: 20px;
-    line-height: 1.2;
-    font-weight: 650;
-  }
-  .filter-head span {
-    color: var(--sub);
-    font-size: 13px;
-    line-height: 1.4;
   }
   .filter-grid {
     display: grid;
@@ -900,11 +869,6 @@ const officialFilterGroups = [
     .hero-actions {
       gap: 10px;
       margin-top: 16px;
-    }
-    .trust-note {
-      margin-top: 10px;
-      font-size: 14px;
-      line-height: 1.55;
     }
     .ticket-section {
       padding: 24px 0;
