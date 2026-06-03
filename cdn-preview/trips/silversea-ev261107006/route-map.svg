@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+  <title id="title">银海奋进号 · 南极半岛飞航 6天 航线图</title>
+  <desc id="desc">King George Island to King George Island，航次 EV261107006，2026.11.07 — 2026.11.13</desc>
+  <defs>
+    <linearGradient id="sea" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#d9edf7"/>
+      <stop offset="1" stop-color="#eef7fb"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="620" rx="28" fill="url(#sea)"/>
+  <path d="M0 462 C120 418 210 472 312 430 C430 380 520 505 635 470 C770 428 832 520 960 476 L960 620 L0 620 Z" fill="#d6e2e5"/>
+  <path d="M 630 122 L 546 242 L 462 380 L 608 260 L 630 122" fill="none" stroke="#003066" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 15"/>
+  <path d="M 630 122 L 546 242 L 462 380 L 608 260 L 630 122" fill="none" stroke="#c8a45d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+        <g>
+          <circle cx="630" cy="122" r="9" fill="#003066" stroke="#ffffff" stroke-width="4"/>
+          <text x="646" y="110" class="label">乔治王岛</text>
+        </g>
+        <g>
+          <circle cx="546" cy="242" r="9" fill="#003066" stroke="#ffffff" stroke-width="4"/>
+          <text x="562" y="230" class="label">南极海峡</text>
+        </g>
+        <g>
+          <circle cx="462" cy="380" r="9" fill="#003066" stroke="#ffffff" stroke-width="4"/>
+          <text x="478" y="368" class="label">南极半岛</text>
+        </g>
+        <g>
+          <circle cx="608" cy="260" r="9" fill="#003066" stroke="#ffffff" stroke-width="4"/>
+          <text x="624" y="248" class="label">南设得兰群岛</text>
+        </g>
+        <g>
+          <circle cx="652" cy="426" r="9" fill="#003066" stroke="#ffffff" stroke-width="4"/>
+          <text x="668" y="414" class="label">德雷克海峡</text>
+        </g>
+        <g>
+          <circle cx="735" cy="515" r="9" fill="#003066" stroke="#ffffff" stroke-width="4"/>
+          <text x="751" y="503" class="label">威廉斯港</text>
+        </g>
+  <g transform="translate(54 58)">
+    <rect width="510" height="106" rx="18" fill="#ffffff" opacity=".92"/>
+    <text x="24" y="36" class="kicker">SILVERSEA EXPEDITION</text>
+    <text x="24" y="65" class="title">King George Island to King George Island</text>
+    <text x="24" y="90" class="small">Voyage EV261107006 · 2026.11.07 — 2026.11.13</text>
+  </g>
+  <text x="54" y="572" class="small">航线示意为港口顺序参考；具体登陆点与活动以船长、探险队长及天气海况安排为准。</text>
+  <style>
+    .title { font: 600 22px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #102233; }
+    .kicker { font: 700 13px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; letter-spacing: .12em; fill: #8b6a28; }
+    .label { font: 600 17px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #0f2638; paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
+    .small { font: 15px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #415668; }
+  </style>
+</svg>
