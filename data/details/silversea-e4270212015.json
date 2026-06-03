@@ -1,5 +1,5 @@
 {
-  "titleEn": "PUERTO WILLIAMS TO PUERTO WILLIAMS",
+  "titleEn": "Puerto Williams to Puerto Williams",
   "subtitle": "南乔治亚15天",
   "tags": [
     "银海",
@@ -18,18 +18,18 @@
   "gallery": [
     {
       "src": "/trips/silversea-e4270212015/gallery-01.jpg",
-      "alt": "银海迎云号 · 南乔治亚与南极半岛 15天 航程图片 1",
-      "caption": "南极半岛冰山与探险船"
+      "alt": "Silver Cloud",
+      "caption": "Silver Cloud"
     },
     {
       "src": "/trips/silversea-e4270212015/gallery-02.jpg",
-      "alt": "银海迎云号 · 南乔治亚与南极半岛 15天 航程图片 2",
-      "caption": "极地登陆与巡游体验"
+      "alt": "Silver Endeavour",
+      "caption": "Silver Endeavour"
     },
     {
       "src": "/trips/silversea-e4270212015/gallery-03.jpg",
-      "alt": "银海迎云号 · 南乔治亚与南极半岛 15天 航程图片 3",
-      "caption": "南极海域野生动物与冰川景观"
+      "alt": "Silver Wind",
+      "caption": "Silver Wind"
     }
   ],
   "metaTable": [
@@ -77,50 +77,124 @@
   "highlightSections": [
     {
       "title": "银海官网航线摘要",
-      "content": "从威廉斯港往返，深入南乔治亚与南极半岛，兼顾海上巡游、野生动物观察和 Zodiac 探险活动。"
+      "content": "This extraordinary expedition to the extreme south begins with luxurious sea days. The anticipation builds until you’re immersed in the wild beauty of South Georgia, kayaking icy channels, cruising wildlife-rich frozen shores, and hiking rocky beaches. Reach Antarctica to discover bustling penguin colonies and whale pods, as you navigate iceberg-strewn waters. Soak it in as enchanting landscapes of creeping glaciers and snow-covered mountain peaks swallow you up."
     },
     {
-      "title": "单船票优势",
+      "title": "银海官网全包项目",
       "bullets": [
-        "适合已自行安排国际段、签证和前后住宿，只需要预订邮轮航段的客人。",
-        "银海全包式船上服务包含管家服务、餐饮、精选饮品、Wi-Fi 和船上小费等项目（以船司条款为准）。",
-        "所有登陆点、活动和时间均由船长及探险队长依据安全、天气、冰况和环保规范最终安排。"
+        "Butler service for every suite",
+        "Personalized service — nearly one crew member for every guest",
+        "24-hour in-suite dining",
+        "Complementary city center transportation when required by the destination",
+        "Port taxes and fees",
+        "Choice of restaurants, diverse cuisine, open-seating dining",
+        "Unlimited pour of champagne, spirits and up to 50 wines from the Silversea Cellar",
+        "Coffee, specialty coffees, and fine teas"
       ]
     }
   ],
   "itinerary": [
     {
       "day": "1",
-      "date": "2月12日",
-      "title": "威廉斯港登船",
-      "content": "从智利威廉斯港登船，开启南乔治亚与南极半岛航程。"
+      "date": "Fri · February 12",
+      "title": "Puerto Williams",
+      "content": "银海官网日程：Puerto Williams，00:00 - 21:00。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "2",
+      "date": "Sat · February 13",
+      "title": "International Waters",
+      "content": "银海官网日程：International Waters，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "3",
+      "date": "Sun · February 14",
+      "title": "International Waters",
+      "content": "银海官网日程：International Waters，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
     },
     {
       "day": "4",
-      "title": "海上航行",
-      "content": "海上航行日，参加船上讲座和探险准备。"
+      "date": "Mon · February 15",
+      "title": "International Waters",
+      "content": "银海官网日程：International Waters，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "5",
+      "date": "Tue · February 16",
+      "title": "Visa Included",
+      "content": "银海官网日程：Visa Included，06:30 - 06:30。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "6",
+      "date": "Wed · February 17",
+      "title": "Visa Included",
+      "content": "银海官网日程：Visa Included，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "7",
+      "date": "Thu · February 18",
+      "title": "Visa Included",
+      "content": "银海官网日程：Visa Included，18:30 - 18:30。具体登陆、巡游与活动以船司当日安排为准。"
     },
     {
       "day": "8",
-      "title": "南乔治亚",
-      "content": "探索南乔治亚，观察王企鹅、海豹和冰川山地景观。"
+      "date": "Fri · February 19",
+      "title": "International Waters",
+      "content": "银海官网日程：International Waters，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "9",
+      "date": "Sat · February 20",
+      "title": "International Waters",
+      "content": "银海官网日程：International Waters，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "10",
+      "date": "Sun · February 21",
+      "title": "Elephant Island",
+      "content": "银海官网日程：Elephant Island，06:30 - 06:30。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "11",
+      "date": "Mon · February 22",
+      "title": "Antarctic Peninsula",
+      "content": "银海官网日程：Antarctic Peninsula，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
     },
     {
       "day": "12",
-      "title": "象岛与南极半岛",
-      "content": "进入南极海域，探索象岛、南极海峡、南极半岛与南设得兰群岛。"
+      "date": "Tue · February 23",
+      "title": "Antarctic Peninsula",
+      "content": "银海官网日程：Antarctic Peninsula，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "13",
+      "date": "Wed · February 24",
+      "title": "South Shetland Islands",
+      "content": "银海官网日程：South Shetland Islands，18:30 - 18:30。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "14",
+      "date": "Thu · February 25",
+      "title": "International Waters",
+      "content": "银海官网日程：International Waters，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
     },
     {
       "day": "15",
-      "date": "2月27日",
-      "title": "威廉斯港离船",
-      "content": "返回威廉斯港并离船，结束邮轮航段。"
+      "date": "Fri · February 26",
+      "title": "Puerto Williams",
+      "content": "银海官网日程：Puerto Williams，22:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+    },
+    {
+      "day": "16",
+      "date": "Sat · February 27",
+      "title": "Puerto Williams",
+      "content": "银海官网日程：Puerto Williams，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
     }
   ],
-  "itineraryNote": "行程按银海官网航次页面整理为单船票咨询版；港口、时间、探险活动和飞航衔接可能因天气、冰况、机场与船司调度调整。",
+  "itineraryNote": "以上日程按银海官网 https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-puerto-williams-e4270212015.html 抓取整理；实际港口、时间、登陆和探险活动以船司最终确认为准。",
   "shipDetail": {
     "name": "Silver Cloud 银海迎云号",
-    "intro": "Silver Cloud 是银海邮轮旗下极地探险船，适合南乔治亚、南极半岛和德雷克海峡航线。船上保留银海全包奢华服务，并配备探险队与 Zodiac 冲锋艇。",
+    "intro": "Silver Cloud is the first crossover ship in our fleet, bringing the remote and remarkable to you in ultra-luxurious comfort. Her large suites, destination itineraries and unparalleled service make her truly special. Four dining options will tantalise your taste buds, and as 80% of her suites include a veranda, watching a breaching whale from the comfort of your balcony never been so personal. With her 20 zodiacs, 10 kayaks, possibilities are almost limitless with ship-wide simultaneous explorations. Ship Details :",
     "specs": [
       [
         "船司",
@@ -144,11 +218,14 @@
       ]
     ],
     "facilities": [
-      "Butler service for every suite 管家服务",
-      "开放式用餐、精选酒水与船上娱乐",
-      "探险队讲座与 Zodiac 冲锋艇活动",
-      "观景甲板、餐厅、酒吧、健身与休闲空间",
-      "极地登陆、巡游和海上航行服务以船司安排为准"
+      "Butler service for every suite",
+      "Personalized service — nearly one crew member for every guest",
+      "24-hour in-suite dining",
+      "Complementary city center transportation when required by the destination",
+      "Port taxes and fees",
+      "Choice of restaurants, diverse cuisine, open-seating dining",
+      "Unlimited pour of champagne, spirits and up to 50 wines from the Silversea Cellar",
+      "Coffee, specialty coffees, and fine teas"
     ],
     "cabins": [
       {

@@ -215,7 +215,7 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
 
           <div class="official-ticket-grid">
             {
-              officialProducts.map(({ product, company, title, subtitle, dateLine, displayTags, coverSrc, destination, month, days, voyageCode, inquiryHref, keywords }, index) => (
+              officialProducts.map(({ product, company, title, subtitle, dateLine, displayTags, coverSrc, destination, month, days, voyageCode, keywords }, index) => (
                 <article
                   class="official-ticket-card"
                   data-company={company}
@@ -263,7 +263,7 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
                     }
                     <div class="official-ticket-footer">
                       <strong data-has-price={product.priceFrom > 0 ? "1" : "0"}>{product.priceLabel}</strong>
-                      <a href={inquiryHref}>查本航次余舱</a>
+                      <a href={`/trips/${product.slug}/`}>查看详情</a>
                     </div>
                   </div>
                 </article>
