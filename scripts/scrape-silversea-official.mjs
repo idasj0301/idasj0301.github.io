@@ -75,7 +75,7 @@ function extractOfficial(html, product) {
       day: String(itinerary.length + 1),
       date: lines[i].replace(",", " ·"),
       title: port || "航行 / 探索",
-      content: `银海官网日程：${port || product.title}${time ? `，${time}` : ""}。具体登陆、巡游与活动以船司当日安排为准。`,
+      content: `银海日程：${port || product.title}${time ? `，${time}` : ""}。具体登陆、巡游与活动以船司当日安排为准。`,
     });
     if (excursionIndex > -1 && i > excursionIndex) break;
   }
@@ -176,10 +176,10 @@ async function main() {
     }
 
     product.summary = official.overview || official.description || product.summary;
-    product.overview = `${product.title}，${product.departureDate} — ${product.endDate}，${product.durationDays}天。资料按银海官网航次 ${product.tags?.find((tag) => /^[A-Z0-9]{10,}$/.test(tag)) ?? ""} 整理。`;
+    product.overview = `${product.title}，${product.departureDate} — ${product.endDate}，${product.durationDays}天。资料按银海航次 ${product.tags?.find((tag) => /^[A-Z0-9]{10,}$/.test(tag)) ?? ""} 整理。`;
     product.highlights = [
       official.description || product.highlights[0],
-      "行程、港口、活动和飞航/接驳安排按银海官网航次页面整理，最终以船司实时确认为准。",
+      "行程、港口、活动和飞航/接驳安排为航次计划说明，最终以船司实时确认为准。",
       product.priceFrom > 0 ? `蘑菇表格参考起价：${product.priceLabel}` : "该航次价格需顾问向银海实时确认。",
     ];
 
@@ -187,16 +187,16 @@ async function main() {
     detail.heroImage = `/trips/${product.slug}/hero.jpg`;
     detail.gallery = allImages.slice(1).map((image, imageIndex) => ({
       src: `/trips/${product.slug}/gallery-${String(imageIndex + 1).padStart(2, "0")}.jpg`,
-      alt: image.alt || `${product.title} 官网图片 ${imageIndex + 1}`,
-      caption: image.alt || "Silversea 官网航次图片",
+      alt: image.alt || `${product.title} 航次图片 ${imageIndex + 1}`,
+      caption: image.alt || "航次图片",
     }));
     detail.highlightSections = [
       {
-        title: "银海官网航线摘要",
+        title: "航线亮点",
         content: official.overview || official.description || detail.highlightSections?.[0]?.content || product.summary,
       },
       {
-        title: "银海官网全包项目",
+        title: "船上服务与包含",
         bullets: official.benefits.slice(0, 8),
       },
     ];
@@ -206,7 +206,7 @@ async function main() {
       intro: official.shipIntro || detail.shipDetail?.intro,
       facilities: official.benefits.slice(0, 8),
     };
-    detail.itineraryNote = `以上日程按银海官网 ${sourceUrl} 抓取整理；实际港口、时间、登陆和探险活动以船司最终确认为准。`;
+    detail.itineraryNote = `以上日程为航次计划说明；实际港口、时间、登陆和探险活动以船司最终确认为准。`;
     detail.metaTable = [
       ...(detail.metaTable ?? []).filter(([label]) => label !== "航线来源"),
       ["航线来源", sourceUrl],

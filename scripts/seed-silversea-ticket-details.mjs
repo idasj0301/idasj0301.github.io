@@ -377,7 +377,7 @@ function buildMap(voyage) {
     <text x="24" y="65" class="title">${voyage.title}</text>
     <text x="24" y="88" class="small">Voyage ${voyage.code} · ${voyage.dateRange}</text>
   </g>
-  <text x="54" y="572" class="small">航线示意按银海官网港口顺序整理；具体登陆点与活动以船长、探险队长及天气海况安排为准。</text>
+  <text x="54" y="572" class="small">航线示意为港口顺序参考；具体登陆点与活动以船长、探险队长及天气海况安排为准。</text>
   <style>
     .title { font: 600 22px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #102233; }
     .kicker { font: 700 13px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; letter-spacing: .12em; fill: #8b6a28; }
@@ -423,7 +423,7 @@ function detailFor(voyage) {
     ],
     highlightSections: [
       {
-        title: "银海官网航线摘要",
+        title: "航线亮点",
         content: voyage.intro,
       },
       {
@@ -445,7 +445,7 @@ function detailFor(voyage) {
     ],
     itinerary: voyage.itinerary.map(([day, date, title, meta, content]) => ({ day, date, title, meta, content })),
     itineraryNote:
-      "行程按银海官网航次页面整理；港口、时间、探险活动和飞航衔接可能因天气、冰况、机场与船司调度调整。",
+      "行程为航次计划说明；港口、时间、探险活动和飞航衔接可能因天气、冰况、机场与船司调度调整。",
     shipDetail: {
       ...ship,
       cabins: [

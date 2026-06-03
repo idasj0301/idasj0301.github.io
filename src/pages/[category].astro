@@ -30,7 +30,7 @@ const isShips = segment === "ships";
 const isTickets = segment === "tickets";
 const title = isTickets ? `单船票 · ${SITE.name}` : `${meta.label} · ${SITE.name}`;
 const description = isTickets
-  ? "船客单船票服务，按船司、航线、档期和舱位政策匹配南极、北极及高端邮轮单船票，最终价格、舱位和库存以顾问实时确认为准。"
+  ? "单船票服务，按船司、航线、档期和舱位政策匹配南极、北极及高端邮轮单船票，最终价格、舱位和库存以顾问实时确认为准。"
   : meta.description;
 const breadcrumbLd = breadcrumbJsonLd([
   { name: "首页", url: SITE.url },

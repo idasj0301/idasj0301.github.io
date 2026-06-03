@@ -299,7 +299,7 @@ function detailFor(voyage) {
       { name: "Veranda / Silver / Medallion / Owner 等套房", spec: "不同航次和舱型价格差异较大，请顾问实时确认", price: "实时确认" },
     ],
     highlightSections: [
-      { title: "银海官网航线摘要", content: routeIntro(voyage) },
+      { title: "航线亮点", content: routeIntro(voyage) },
       {
         title: "单船票优势",
         bullets: [
@@ -315,7 +315,7 @@ function detailFor(voyage) {
       title: item.title,
       content: item.content,
     })),
-    itineraryNote: "行程按银海官网航次页面整理为单船票咨询版；港口、时间、探险活动和飞航衔接可能因天气、冰况、机场与船司调度调整。",
+    itineraryNote: "行程为单船票咨询版计划；港口、时间、探险活动和飞航衔接可能因天气、冰况、机场与船司调度调整。",
     shipDetail: {
       name: ship.name,
       intro: ship.intro,
@@ -402,7 +402,7 @@ function buildMap(voyage) {
     <text x="24" y="65" class="title">${routeTitleFor(voyage.routeKind)}</text>
     <text x="24" y="90" class="small">Voyage ${voyage.code} · ${dateRange(voyage)}</text>
   </g>
-  <text x="54" y="572" class="small">航线示意按银海官网港口顺序整理；具体登陆点与活动以船长、探险队长及天气海况安排为准。</text>
+  <text x="54" y="572" class="small">航线示意为港口顺序参考；具体登陆点与活动以船长、探险队长及天气海况安排为准。</text>
   <style>
     .title { font: 600 22px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #102233; }
     .kicker { font: 700 13px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; letter-spacing: .12em; fill: #8b6a28; }

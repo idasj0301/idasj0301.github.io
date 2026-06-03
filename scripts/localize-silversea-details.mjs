@@ -104,7 +104,7 @@ function itineraryLine(item, product) {
     ...item,
     date: cnDate(item.date ?? ""),
     title,
-    content: `按银海官网日程，本日停靠或探索 ${title}${time ? `，时间 ${time}` : ""}。具体登陆、巡游和探险活动以船司当日安排为准。`,
+    content: `本日计划本日停靠或探索 ${title}${time ? `，时间 ${time}` : ""}。具体登陆、巡游和探险活动以船司当日安排为准。`,
   };
 }
 
@@ -124,16 +124,16 @@ async function main() {
     product.overview = cnOverview;
     product.highlights = [
       cnOverview,
-      "页面内容按银海官网航次链接整理为中文说明，港口、活动、飞航/接驳和舱位库存以银海实时确认为准。",
+      "页面内容为航次咨询说明，港口、活动、飞航/接驳和舱位库存以银海实时确认为准。",
       product.priceFrom > 0 ? `蘑菇表格参考起价：${product.priceLabel}` : "该航次价格需顾问向银海实时确认。",
     ];
 
     detail.highlightSections = [
-      { title: "银海官网航线摘要", content: cnOverview },
-      { title: "银海官网全包项目", bullets: benefits },
+      { title: "航线亮点", content: cnOverview },
+      { title: "船上服务与包含", bullets: benefits },
     ];
     detail.itinerary = (detail.itinerary ?? []).map((item) => itineraryLine(item, product));
-    detail.itineraryNote = "以上日程按银海官网航次页面整理为中文说明；实际港口、时间、登陆和探险活动以船司最终确认为准。";
+    detail.itineraryNote = "以上日程为航次计划说明；实际港口、时间、登陆和探险活动以船司最终确认为准。";
     detail.shipDetail = {
       ...(detail.shipDetail ?? {}),
       intro: shipKey ? shipIntro[shipKey] : detail.shipDetail?.intro,

@@ -43,7 +43,7 @@
     <text x="24" y="65" class="title">Puerto Williams to King George Island</text>
     <text x="24" y="90" class="small">Voyage WI270124009 · 2027.01.24 — 2027.02.02</text>
   </g>
-  <text x="54" y="572" class="small">航线示意按银海官网港口顺序整理；具体登陆点与活动以船长、探险队长及天气海况安排为准。</text>
+  <text x="54" y="572" class="small">航线示意为港口顺序参考；具体登陆点与活动以船长、探险队长及天气海况安排为准。</text>
   <style>
     .title { font: 600 22px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #102233; }
     .kicker { font: 700 13px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; letter-spacing: .12em; fill: #8b6a28; }
