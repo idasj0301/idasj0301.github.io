@@ -705,8 +705,34 @@ const officialFilterGroups = [
   }
   .official-ticket-footer a {
     flex-shrink: 0;
-    color: var(--brand);
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 16px;
+    border: 1px solid rgba(0, 63, 122, 0.14);
+    border-radius: 980px;
+    background: rgba(0, 63, 122, 0.06);
+    color: #003f7a;
     font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    transition:
+      background 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+  .official-ticket-footer a::after {
+    content: "›";
+    font-size: 18px;
+    line-height: 1;
+    transform: translateY(-1px);
+  }
+  .official-ticket-footer a:hover {
+    border-color: rgba(0, 63, 122, 0.22);
+    background: rgba(0, 63, 122, 0.1);
+    transform: translateY(-1px);
   }
   .request-panel {
     padding: 20px;
@@ -892,9 +918,6 @@ const officialFilterGroups = [
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      text-decoration: none;
     }
     .ticket-final-cta {
       padding: 24px;
