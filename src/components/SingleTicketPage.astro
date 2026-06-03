@@ -130,9 +130,10 @@ const otherTicketProducts = activeProducts
   .sort(sortCards);
 
 const officialFilterGroups = [
+  { key: "company", label: "船司", options: uniqueValues(silverseaProducts.map((item) => item.company)) },
+  { key: "ship", label: "船名", options: uniqueValues(silverseaProducts.map((item) => item.product.shipName.replace("银海", "").trim())) },
   { key: "month", label: "出发月份", options: uniqueValues(silverseaProducts.map((item) => item.month)) },
   { key: "days", label: "天数", options: uniqueValues(silverseaProducts.map((item) => item.days)) },
-  { key: "ship", label: "船名", options: uniqueValues(silverseaProducts.map((item) => item.product.shipName.replace("银海", "").trim())) },
 ];
 ---
 
@@ -144,9 +145,6 @@ const officialFilterGroups = [
       </nav>
       <p class="eyebrow">CRUISE ONLY · 船客单船票</p>
       <h1>单船票</h1>
-      <p class="hero-lead">
-        按出发月份、天数、船名和航次号筛选银海单船票，进入详情页查看按官网链接整理的航线内容。
-      </p>
       <div class="hero-actions">
         <a href="#official-tickets" class="btn btn-primary">筛选银海航次</a>
         <a href="/inquiry/?from=tickets" class="btn btn-outline">提交条件让顾问查</a>
@@ -177,8 +175,8 @@ const officialFilterGroups = [
                 ))
               }
               <label class="keyword-filter">
-                <span>船名 / 关键词</span>
-                <input type="search" data-product-filter-key="keyword" placeholder="银海、圣诞、乔治王岛" />
+                <span>航次号 / 关键词</span>
+                <input type="search" data-product-filter-key="keyword" placeholder="EV261020006" />
               </label>
             </div>
             <div class="filter-actions">
@@ -483,8 +481,8 @@ const officialFilterGroups = [
     gap: 16px;
   }
   .ticket-filter-panel {
-    margin-bottom: 22px;
-    padding: 18px;
+    margin-bottom: 20px;
+    padding: 14px 16px;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.82);
@@ -496,46 +494,46 @@ const officialFilterGroups = [
     align-items: center;
     justify-content: space-between;
     gap: 14px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   .filter-head p {
     margin: 0;
     color: var(--ink);
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.2;
     font-weight: 650;
   }
   .filter-head span {
     color: var(--sub);
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.4;
   }
   .filter-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 12px;
+    gap: 10px;
   }
   .filter-grid label {
     min-width: 0;
   }
   .filter-grid span {
     display: block;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
     color: var(--sub);
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.35;
   }
   .filter-grid select,
   .filter-grid input {
     width: 100%;
-    min-height: 46px;
-    padding: 0 14px;
+    min-height: 38px;
+    padding: 0 11px;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
+    border-radius: 10px;
     background: #f5f5f7;
     color: var(--ink);
     font: inherit;
-    font-size: 15px;
+    font-size: 14px;
     outline: none;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
@@ -548,8 +546,8 @@ const officialFilterGroups = [
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 10px;
-    margin-top: 14px;
+    gap: 8px;
+    margin-top: 10px;
   }
   .filter-count {
     margin-right: auto;
@@ -557,11 +555,11 @@ const officialFilterGroups = [
     font-size: 14px;
   }
   .filter-actions button {
-    min-height: 44px;
-    padding: 0 20px;
+    min-height: 36px;
+    padding: 0 16px;
     border-radius: 999px;
     font: inherit;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
   }
