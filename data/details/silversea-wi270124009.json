@@ -77,88 +77,88 @@
   "highlightSections": [
     {
       "title": "银海官网航线摘要",
-      "content": "This exquisite 9-day voyage into Antarctica is an explorer’s dream come true. From Puerto Williams we’ll traverse Drake’s Passage and delve into the awe-inspiring sights of the White Kingdom. From the thrill of witnessing a giant glacier soaring out of ice-strewn, glassy waters, to wildlife watching with our polar experts, who know the terrain intimately and will take you to the optimum places to view penguin rookeries or whales, every moment is an adventure."
+      "content": "银海迎风号 · 威廉斯港至乔治王岛 9天，2027-01-24 至 2027-02-02，9天，航次 WI270124009。从威廉斯港登船，经德雷克海峡进入南极半岛和南设得兰群岛，最后在乔治王岛离船，适合希望保留一次海峡航行并以飞航返程衔接的客人。"
     },
     {
       "title": "银海官网全包项目",
       "bullets": [
-        "Butler service for every suite",
-        "Personalized service — nearly one crew member for every guest",
-        "24-hour in-suite dining",
-        "Complementary city center transportation when required by the destination",
-        "Port taxes and fees",
-        "Choice of restaurants, diverse cuisine, open-seating dining",
-        "Unlimited pour of champagne, spirits and up to 50 wines from the Silversea Cellar",
-        "Coffee, specialty coffees, and fine teas"
+        "每间套房均配备管家服务",
+        "高服务配比，提供细致个性化服务",
+        "24 小时套房内送餐服务",
+        "部分目的地提供市中心接驳服务",
+        "包含港务税费",
+        "多间餐厅、多元餐饮与开放式用餐",
+        "精选香槟、烈酒及银海酒窖葡萄酒畅饮",
+        "咖啡、精品咖啡与茶饮"
       ]
     }
   ],
   "itinerary": [
     {
       "day": "1",
-      "date": "Sun · January 24",
-      "title": "Puerto Williams",
-      "content": "银海官网日程：Puerto Williams，00:00 - 21:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "date": "周日 1月 24",
+      "title": "威廉斯港",
+      "content": "按银海官网日程，本日停靠或探索 威廉斯港，时间 00:00 - 21:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     },
     {
       "day": "2",
-      "date": "Mon · January 25",
+      "date": "周一 1月 25",
       "title": "International Waters",
-      "content": "银海官网日程：International Waters，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "content": "按银海官网日程，本日停靠或探索 International Waters，时间 00:00 - 00:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     },
     {
       "day": "3",
-      "date": "Tue · January 26",
+      "date": "周二 1月 26",
       "title": "International Waters",
-      "content": "银海官网日程：International Waters，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "content": "按银海官网日程，本日停靠或探索 International Waters，时间 00:00 - 00:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     },
     {
       "day": "4",
-      "date": "Wed · January 27",
-      "title": "Antarctic Sound",
-      "content": "银海官网日程：Antarctic Sound，05:00 - 05:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "date": "周三 1月 27",
+      "title": "南极海峡",
+      "content": "按银海官网日程，本日停靠或探索 南极海峡，时间 05:00 - 05:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     },
     {
       "day": "5",
-      "date": "Thu · January 28",
-      "title": "Antarctic Peninsula",
-      "content": "银海官网日程：Antarctic Peninsula，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "date": "周四 1月 28",
+      "title": "南极半岛",
+      "content": "按银海官网日程，本日停靠或探索 南极半岛，时间 00:00 - 00:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     },
     {
       "day": "6",
-      "date": "Fri · January 29",
-      "title": "Antarctic Peninsula",
-      "content": "银海官网日程：Antarctic Peninsula，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "date": "周五 1月 29",
+      "title": "南极半岛",
+      "content": "按银海官网日程，本日停靠或探索 南极半岛，时间 00:00 - 00:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     },
     {
       "day": "7",
-      "date": "Sat · January 30",
-      "title": "Antarctic Peninsula",
-      "content": "银海官网日程：Antarctic Peninsula，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "date": "周六 1月 30",
+      "title": "南极半岛",
+      "content": "按银海官网日程，本日停靠或探索 南极半岛，时间 00:00 - 00:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     },
     {
       "day": "8",
-      "date": "Sun · January 31",
-      "title": "Antarctic Peninsula",
-      "content": "银海官网日程：Antarctic Peninsula，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "date": "周日 1月 31",
+      "title": "南极半岛",
+      "content": "按银海官网日程，本日停靠或探索 南极半岛，时间 00:00 - 00:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     },
     {
       "day": "9",
-      "date": "Mon · February 1",
-      "title": "South Shetland Islands",
-      "content": "银海官网日程：South Shetland Islands，00:00 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "date": "周一 2月 1",
+      "title": "南设得兰群岛",
+      "content": "按银海官网日程，本日停靠或探索 南设得兰群岛，时间 00:00 - 00:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     },
     {
       "day": "10",
-      "date": "Tue · February 2",
-      "title": "King George Island",
-      "content": "银海官网日程：King George Island，05:30 - 00:00。具体登陆、巡游与活动以船司当日安排为准。"
+      "date": "周二 2月 2",
+      "title": "乔治王岛",
+      "content": "按银海官网日程，本日停靠或探索 乔治王岛，时间 05:30 - 00:00。具体登陆、巡游和探险活动以船司当日安排为准。"
     }
   ],
-  "itineraryNote": "以上日程按银海官网 https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-king-george-island-wi270124009.html 抓取整理；实际港口、时间、登陆和探险活动以船司最终确认为准。",
+  "itineraryNote": "以上日程按银海官网航次页面整理为中文说明；实际港口、时间、登陆和探险活动以船司最终确认为准。",
   "shipDetail": {
     "name": "Silver Wind 银海迎风号",
-    "intro": "A major upgrade in December 2018 saw Silver Wind looking better than ever. A second refurbishment in November 2021 saw her benefitting from a strengthened ice-class hull and made her one of the most adaptable ships in our fleet. Still timelessly elegant, still luxuriously relaxed, Silver Wind’s improved cruising versatility means she can travel from Polar Regions to iconic ports with fluid ease. With 24 Zodiac® boats offering an outstanding Zodiac®-to-guest ratio of 1:11, you can explore further in unparalleled comfort. Get ready for a wealth of diverse destination experiences aboard Silver Wind. Ship Details : https://www.silversea.com",
+    "intro": "Silver Wind 银海迎风号经过极地化升级，兼具小型探险船深入航行能力与银海全包式服务，适合南极半岛、德雷克海峡和南乔治亚航线。",
     "specs": [
       [
         "船司",
@@ -182,14 +182,14 @@
       ]
     ],
     "facilities": [
-      "Butler service for every suite",
-      "Personalized service — nearly one crew member for every guest",
-      "24-hour in-suite dining",
-      "Complementary city center transportation when required by the destination",
-      "Port taxes and fees",
-      "Choice of restaurants, diverse cuisine, open-seating dining",
-      "Unlimited pour of champagne, spirits and up to 50 wines from the Silversea Cellar",
-      "Coffee, specialty coffees, and fine teas"
+      "每间套房均配备管家服务",
+      "高服务配比，提供细致个性化服务",
+      "24 小时套房内送餐服务",
+      "部分目的地提供市中心接驳服务",
+      "包含港务税费",
+      "多间餐厅、多元餐饮与开放式用餐",
+      "精选香槟、烈酒及银海酒窖葡萄酒畅饮",
+      "咖啡、精品咖啡与茶饮"
     ],
     "cabins": [
       {

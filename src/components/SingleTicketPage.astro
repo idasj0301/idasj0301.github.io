@@ -62,21 +62,13 @@ function uniqueValues(values: string[]) {
   return [...new Set(values)].filter(Boolean);
 }
 
-function inquiryHref(params: Record<string, string>) {
-  const search = new URLSearchParams();
-  Object.entries(params).forEach(([key, value]) => {
-    if (value) search.set(key, value);
-  });
-  return `/inquiry/?${search.toString()}`;
-}
-
 const companyPriority = new Map([
   ["银海", 0],
   ["庞洛", 1],
   ["66度", 2],
 ]);
 
-const officialProducts = activeProducts.map((product) => {
+function toCardProduct(product: Product) {
   const detail = getProductDetail(product.slug);
   const company = productCompany(product);
   const destination = productDestination(product);
@@ -106,15 +98,6 @@ const officialProducts = activeProducts.map((product) => {
     month,
     days,
     voyageCode,
-    inquiryHref: inquiryHref({
-      from: "tickets",
-      trip: product.slug,
-      title,
-      destination,
-      company,
-      month,
-      note: voyageCode,
-    }),
     keywords: [
       product.title,
       product.summary,
@@ -127,20 +110,30 @@ const officialProducts = activeProducts.map((product) => {
     ].join("|"),
     coverSrc: detail?.heroImage ?? detail?.gallery?.[0]?.src,
   };
-}).sort((a, b) => {
+}
+
+function sortCards(a: ReturnType<typeof toCardProduct>, b: ReturnType<typeof toCardProduct>) {
   const rankA = companyPriority.get(a.company) ?? 9;
   const rankB = companyPriority.get(b.company) ?? 9;
   if (rankA !== rankB) return rankA - rankB;
   return a.product.departureDate.localeCompare(b.product.departureDate);
-});
+}
+
+const silverseaProducts = activeProducts
+  .filter((product) => product.slug.startsWith("silversea-"))
+  .map(toCardProduct)
+  .sort(sortCards);
+
+const otherTicketProducts = activeProducts
+  .filter((product) => !product.slug.startsWith("silversea-"))
+  .map(toCardProduct)
+  .sort(sortCards);
 
 const officialFilterGroups = [
-  { key: "company", label: "船司", options: uniqueValues(officialProducts.map((item) => item.company)) },
-  { key: "destination", label: "目的地", options: uniqueValues(officialProducts.map((item) => item.destination)) },
-  { key: "month", label: "出发月份", options: uniqueValues(officialProducts.map((item) => item.month)) },
-  { key: "days", label: "天数", options: uniqueValues(officialProducts.map((item) => item.days)) },
+  { key: "month", label: "出发月份", options: uniqueValues(silverseaProducts.map((item) => item.month)) },
+  { key: "days", label: "天数", options: uniqueValues(silverseaProducts.map((item) => item.days)) },
+  { key: "ship", label: "船名", options: uniqueValues(silverseaProducts.map((item) => item.product.shipName.replace("银海", "").trim())) },
 ];
-const silverseaCount = officialProducts.filter((item) => item.company === "银海").length;
 ---
 
 <article class="ticket-page">
@@ -152,43 +145,25 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
       <p class="eyebrow">CRUISE ONLY · 船客单船票</p>
       <h1>单船票</h1>
       <p class="hero-lead">
-        按船司、航线、档期和舱位政策匹配南极、北极及高端邮轮单船票。
-        适合已自行安排国际机票、签证和前后段行程的客人。
+        按出发月份、天数、船名和航次号筛选银海单船票，进入详情页查看按官网链接整理的航线内容。
       </p>
       <div class="hero-actions">
-        <a href="#official-tickets" class="btn btn-primary">查看在售银海航次</a>
+        <a href="#official-tickets" class="btn btn-primary">筛选银海航次</a>
         <a href="/inquiry/?from=tickets" class="btn btn-outline">提交条件让顾问查</a>
       </div>
       <p class="trust-note">最终价格、舱位、库存和优惠政策，以顾问向船司实时确认为准。</p>
     </div>
-    <aside class="hero-panel" aria-label="单船票服务摘要">
-      <div>
-        <strong>{silverseaCount}</strong>
-        <span>银海航次</span>
-      </div>
-      <div>
-        <strong>{activeProducts.length}</strong>
-        <span>在售单船票</span>
-      </div>
-      <div>
-        <strong>2026-27</strong>
-        <span>当前档期</span>
-      </div>
-    </aside>
   </section>
 
-  <section class="ticket-section live-section" id="official-tickets" aria-label="官网在售单船票">
-    <div class="section-heading route-heading">
-      <div>
-        <p>官网在售</p>
-        <h2>已整理成正式产品的单船票航程</h2>
-      </div>
-      <span>优先展示已整理成正式 SKU 的航次；参考起价、日期和天数来自已发布产品，舱位与最终费用仍以顾问确认为准。</span>
-    </div>
+  <section class="ticket-section live-section" id="official-tickets" aria-label="银海单船票筛选">
     {
-      activeProducts.length > 0 ? (
+      silverseaProducts.length > 0 ? (
         <div data-product-filters>
           <div class="ticket-filter-panel product-filter-panel">
+            <div class="filter-head">
+              <p>银海单船票</p>
+              <span data-product-filter-count>已显示 {silverseaProducts.length} 条</span>
+            </div>
             <div class="filter-grid product-filter-grid">
               {
                 officialFilterGroups.map((group) => (
@@ -207,7 +182,6 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
               </label>
             </div>
             <div class="filter-actions">
-              <span class="filter-count" data-product-filter-count>共 {activeProducts.length} 条</span>
               <button type="button" class="filter-search" data-product-filter-submit>搜索</button>
               <button type="button" class="filter-reset" data-product-filter-reset>重置</button>
             </div>
@@ -215,13 +189,14 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
 
           <div class="official-ticket-grid">
             {
-              officialProducts.map(({ product, company, title, subtitle, dateLine, displayTags, coverSrc, destination, month, days, voyageCode, keywords }, index) => (
+              silverseaProducts.map(({ product, company, title, subtitle, dateLine, displayTags, coverSrc, destination, month, days, voyageCode, keywords }, index) => (
                 <article
                   class="official-ticket-card"
                   data-company={company}
                   data-destination={destination}
                   data-month={month}
                   data-days={days}
+                  data-ship={product.shipName.replace("银海", "").trim()}
                   data-code={voyageCode}
                   data-keywords={keywords}
                 >
@@ -278,63 +253,43 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
     }
   </section>
 
-  <section class="ticket-section route-section" aria-label="热门咨询方向">
-    <div class="section-heading route-heading">
-      <div>
-        <p>没有合适航次？</p>
-        <h2>留下条件，让顾问按船司系统查</h2>
+  {otherTicketProducts.length > 0 && (
+    <section class="ticket-section other-ticket-section" aria-label="其他单船票">
+      <div class="compact-heading">
+        <p>其他单船票</p>
+        <h2>格陵兰与夏古号</h2>
       </div>
-      <span>正式 SKU 之外的档期、舱型、促销和包船余位变化较快，提交条件后由顾问实时匹配。</span>
-    </div>
-
-    <form class="request-panel" action="/inquiry/" method="get">
-      <input type="hidden" name="from" value="tickets-custom" />
-      <div class="request-grid">
-        <label>
-          <span>目的地</span>
-          <select name="destination">
-            <option value="">还没确定</option>
-            <option value="南极">南极</option>
-            <option value="北极">北极</option>
-            <option value="格陵兰">格陵兰</option>
-            <option value="加拉帕戈斯">加拉帕戈斯</option>
-          </select>
-        </label>
-        <label>
-          <span>偏好船司</span>
-          <select name="company">
-            <option value="">都可以比较</option>
-            <option value="银海">银海</option>
-            <option value="庞洛">庞洛</option>
-            <option value="66度">66度</option>
-            <option value="夸克">夸克</option>
-            <option value="A21">A21</option>
-          </select>
-        </label>
-        <label>
-          <span>出发月份</span>
-          <select name="month">
-            <option value="">都可以</option>
-            <option value="6月">6月</option>
-            <option value="7月">7月</option>
-            <option value="10月">10月</option>
-            <option value="11月">11月</option>
-            <option value="12月">12月</option>
-            <option value="1月">1月</option>
-            <option value="2月">2月</option>
-          </select>
-        </label>
-        <label class="request-note">
-          <span>补充需求</span>
-          <input name="note" type="search" placeholder="比如免单房差、圣诞档、阳台套房" />
-        </label>
+      <div class="official-ticket-grid compact-grid">
+        {
+          otherTicketProducts.map(({ product, company, title, subtitle, dateLine, displayTags, coverSrc, voyageCode }, index) => (
+            <article class="official-ticket-card">
+              <a class="official-ticket-media" href={`/trips/${product.slug}/`} aria-label={`查看${title}`}>
+                {coverSrc && (
+                  <img src={coverSrc} alt={product.imageAlt ?? title} loading={index < 2 ? "eager" : "lazy"} decoding="async" />
+                )}
+                <span class="company-pill">{company}</span>
+                <span class="duration-pill">{product.durationDays}天</span>
+              </a>
+              <div class="official-ticket-body">
+                <div class="official-ticket-meta">
+                  <span>{company}</span>
+                  <small>{voyageCode || product.shipName}</small>
+                </div>
+                <h3><a href={`/trips/${product.slug}/`}>{title}</a></h3>
+                <p class="official-ticket-date">{dateLine}</p>
+                {subtitle && <p class="official-ticket-subtitle">{subtitle}</p>}
+                {displayTags.length > 0 && <div class="official-ticket-tags">{displayTags.map((tag) => <span>{tag}</span>)}</div>}
+                <div class="official-ticket-footer">
+                  <strong data-has-price={product.priceFrom > 0 ? "1" : "0"}>{product.priceLabel}</strong>
+                  <a href={`/trips/${product.slug}/`}>查看详情</a>
+                </div>
+              </div>
+            </article>
+          ))
+        }
       </div>
-      <div class="request-actions">
-        <p>没有看到合适 SKU 时，用这个入口更快。</p>
-        <button type="submit">提交条件</button>
-      </div>
-    </form>
-  </section>
+    </section>
+  )}
 
   <section class="ticket-section faq-section" aria-label="单船票常见问题">
     <div class="section-heading">
@@ -436,9 +391,9 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
   }
   .ticket-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    grid-template-columns: minmax(0, 920px);
     gap: 24px;
-    align-items: stretch;
+    align-items: end;
     padding: 24px 0 18px;
   }
   .breadcrumb {
@@ -484,34 +439,6 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
     font-size: 15px;
     line-height: 1.6;
   }
-  .hero-panel {
-    display: grid;
-    gap: 1px;
-    overflow: hidden;
-    align-self: end;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--line);
-  }
-  .hero-panel div {
-    min-height: 92px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 22px;
-    background: #fff;
-  }
-  .hero-panel strong {
-    color: var(--brand);
-    font-size: 30px;
-    line-height: 1;
-    font-weight: 600;
-  }
-  .hero-panel span {
-    color: var(--sub);
-    font-size: 16px;
-    line-height: 1.45;
-  }
   .ticket-section {
     padding: 38px 0;
   }
@@ -519,16 +446,13 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
     padding-top: 24px;
   }
   .official-ticket-card,
-  .faq-list details,
-  .request-panel {
+  .faq-list details {
     border: 1px solid var(--line);
     border-radius: 8px;
     background: #fff;
   }
-  .section-heading span,
   .faq-list p,
-  .ticket-final-cta span,
-  .request-actions p {
+  .ticket-final-cta span {
     color: var(--sub);
     font-size: 16px;
     line-height: 1.68;
@@ -559,15 +483,36 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
     gap: 16px;
   }
   .ticket-filter-panel {
-    margin-bottom: 18px;
+    margin-bottom: 22px;
     padding: 18px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 18px 60px rgba(0, 28, 58, 0.08);
+    backdrop-filter: blur(18px);
+  }
+  .filter-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .filter-head p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 650;
+  }
+  .filter-head span {
+    color: var(--sub);
+    font-size: 14px;
+    line-height: 1.4;
   }
   .filter-grid {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 12px;
   }
   .filter-grid label {
@@ -583,14 +528,21 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
   .filter-grid select,
   .filter-grid input {
     width: 100%;
-    min-height: 44px;
-    padding: 0 12px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
     background: #f5f5f7;
     color: var(--ink);
     font: inherit;
     font-size: 15px;
+    outline: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  .filter-grid select:focus,
+  .filter-grid input:focus {
+    border-color: rgba(0, 113, 227, 0.55);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
   }
   .filter-actions {
     display: flex;
@@ -605,23 +557,39 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
     font-size: 14px;
   }
   .filter-actions button {
-    min-height: 42px;
-    padding: 0 18px;
-    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 999px;
     font: inherit;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
   }
   .filter-search {
-    border: 1px solid var(--brand);
-    background: var(--brand);
+    border: 1px solid #0071e3;
+    background: #0071e3;
     color: #fff;
   }
   .filter-reset {
-    border: 1px solid var(--line);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     background: #fff;
     color: var(--ink);
+  }
+  .compact-heading {
+    margin-bottom: 18px;
+  }
+  .compact-heading p {
+    margin: 0 0 7px;
+    color: var(--brand);
+    font-size: 13px;
+    font-weight: 650;
+  }
+  .compact-heading h2 {
+    margin: 0;
+    color: var(--ink);
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.14;
+    font-weight: 650;
   }
   .official-ticket-meta,
   .official-ticket-footer {
@@ -903,19 +871,14 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
   }
   @media (max-width: 980px) {
     .ticket-hero,
-    .route-heading,
     .ticket-final-cta {
       grid-template-columns: 1fr;
     }
     .official-ticket-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .filter-grid,
-    .request-grid {
+    .filter-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .request-note {
-      grid-column: 1 / -1;
     }
     .ticket-final-cta {
       display: grid;
@@ -945,36 +908,14 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
       font-size: 14px;
       line-height: 1.55;
     }
-    .hero-panel {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .hero-panel div {
-      min-height: 86px;
-      padding: 14px 12px;
-    }
-    .hero-panel strong {
-      font-size: 28px;
-    }
-    .hero-panel span {
-      font-size: 12px;
-      line-height: 1.35;
-    }
     .ticket-section {
       padding: 24px 0;
     }
     .live-section {
       padding-top: 18px;
     }
-    .official-ticket-grid,
-    .request-grid {
+    .official-ticket-grid {
       grid-template-columns: 1fr;
-    }
-    .route-heading {
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .route-heading > span {
-      display: none;
     }
     .section-heading p {
       margin-bottom: 6px;
@@ -1021,16 +962,6 @@ const silverseaCount = officialProducts.filter((item) => item.company === "银�
     .official-ticket-footer {
       align-items: flex-start;
       flex-direction: column;
-    }
-    .filter-count {
-      grid-column: 1 / -1;
-    }
-    .request-actions {
-      align-items: stretch;
-      flex-direction: column;
-    }
-    .request-actions button {
-      width: 100%;
     }
     .official-ticket-footer a {
       width: 100%;
