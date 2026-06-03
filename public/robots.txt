@@ -7,4 +7,4 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
-Sitemap: https://www.chuanke.com/sitemap-index.xml
+Sitemap: https://idasj0301.github.io/sitemap-index.xml

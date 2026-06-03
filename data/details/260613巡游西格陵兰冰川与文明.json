@@ -268,5 +268,10 @@
       "caption": "产品资料图片"
     }
   ],
-  "heroImage": "/trips/260613巡游西格陵兰冰川与文明/hero.jpg"
+  "heroImage": "/trips/260613巡游西格陵兰冰川与文明/hero.jpg",
+  "routeMap": {
+    "src": "/trips/260613巡游西格陵兰冰川与文明/route-map.png",
+    "alt": "巡游西格陵兰冰川与文明 航线图",
+    "caption": "巡游西格陵兰冰川与文明 · 航线示意"
+  }
 }

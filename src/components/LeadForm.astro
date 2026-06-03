@@ -3,21 +3,31 @@ interface Props {
   tripSlug?: string;
   tripTitle?: string;
   source?: string;
+  destination?: string;
+  company?: string;
+  month?: string;
+  note?: string;
 }
 
-const { tripSlug, tripTitle, source = "inquiry" } = Astro.props;
+const { tripSlug, tripTitle, source = "inquiry", destination, company, month, note } = Astro.props;
 const endpoint = import.meta.env.PUBLIC_LEAD_ENDPOINT ?? "";
+const noteParts = [
+  company ? `偏好船司：${company}` : "",
+  month ? `出发月份：${month}` : "",
+  note ? `补充需求：${note}` : "",
+].filter(Boolean);
+const initialNote = noteParts.join("\n");
 ---
 
 <form class="lead-form" id="lead-form" novalidate>
-  {tripTitle && (
-    <p class="lead-trip">
-      咨询航程：<strong>{tripTitle}</strong>
-    </p>
-  )}
+  <p class="lead-trip" id="lead-trip" hidden={!tripTitle}>
+    咨询航程：<strong id="lead-trip-title">{tripTitle ?? ""}</strong>
+  </p>
   <input type="hidden" name="tripSlug" value={tripSlug ?? ""} />
   <input type="hidden" name="tripTitle" value={tripTitle ?? ""} />
   <input type="hidden" name="source" value={source} />
+  <input type="hidden" name="preferredCompany" value={company ?? ""} />
+  <input type="hidden" name="preferredMonth" value={month ?? ""} />
 
   <div class="field">
     <label for="lead-name">您的称呼 <span class="req">*</span></label>
@@ -37,13 +47,14 @@ const endpoint = import.meta.env.PUBLIC_LEAD_ENDPOINT ?? "";
   <div class="field">
     <label for="lead-interest">感兴趣的方向</label>
     <select id="lead-interest" name="interest">
-      <option value="">暂不确定</option>
-      <option value="南极">南极</option>
-      <option value="北极">北极</option>
-      <option value="加拉帕戈斯">加拉帕戈斯</option>
-      <option value="南部非洲">南部非洲</option>
-      <option value="东非">东非</option>
-      <option value="南美">南美</option>
+      <option value="" selected={!destination}>暂不确定</option>
+      <option value="南极" selected={destination === "南极"}>南极</option>
+      <option value="北极" selected={destination === "北极"}>北极</option>
+      <option value="格陵兰" selected={destination === "格陵兰"}>格陵兰</option>
+      <option value="加拉帕戈斯" selected={destination === "加拉帕戈斯"}>加拉帕戈斯</option>
+      <option value="南部非洲" selected={destination === "南部非洲"}>南部非洲</option>
+      <option value="东非" selected={destination === "东非"}>东非</option>
+      <option value="南美" selected={destination === "南美"}>南美</option>
     </select>
   </div>
   <div class="field">
@@ -53,7 +64,7 @@ const endpoint = import.meta.env.PUBLIC_LEAD_ENDPOINT ?? "";
       name="note"
       rows={3}
       placeholder="方便顾问提前了解您的需求"
-    ></textarea>
+    >{initialNote}</textarea>
   </div>
   <label class="consent">
     <input type="checkbox" name="consent" required />
@@ -79,6 +90,49 @@ const endpoint = import.meta.env.PUBLIC_LEAD_ENDPOINT ?? "";
   const errEl = document.getElementById("lead-error");
   if (!form || !success) throw new Error("lead form missing");
 
+  const params = new URLSearchParams(window.location.search);
+  const query = {
+    tripSlug: params.get("trip") || params.get("tripSlug") || "",
+    tripTitle: params.get("title") || params.get("tripTitle") || "",
+    source: params.get("from") || params.get("source") || "",
+    destination: params.get("destination") || "",
+    company: params.get("company") || "",
+    month: params.get("month") || "",
+    note: params.get("note") || "",
+  };
+
+  const setField = (name, value) => {
+    const field = form.querySelector(`[name="${name}"]`);
+    if (field && value) field.value = value;
+  };
+
+  setField("tripSlug", query.tripSlug);
+  setField("tripTitle", query.tripTitle);
+  setField("source", query.source);
+  setField("preferredCompany", query.company);
+  setField("preferredMonth", query.month);
+
+  const interest = form.querySelector('[name="interest"]');
+  if (interest && query.destination) {
+    const hasOption = [...interest.options].some((option) => option.value === query.destination);
+    if (hasOption) interest.value = query.destination;
+  }
+
+  const noteInput = form.querySelector('[name="note"]');
+  const queryNote = [
+    query.company ? `偏好船司：${query.company}` : "",
+    query.month ? `出发月份：${query.month}` : "",
+    query.note ? `补充需求：${query.note}` : "",
+  ].filter(Boolean).join("\n");
+  if (noteInput && queryNote && !noteInput.value.trim()) noteInput.value = queryNote;
+
+  const tripBlock = document.getElementById("lead-trip");
+  const tripTitleEl = document.getElementById("lead-trip-title");
+  if (tripBlock && tripTitleEl && query.tripTitle) {
+    tripTitleEl.textContent = query.tripTitle;
+    tripBlock.hidden = false;
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (errEl) errEl.hidden = true;
@@ -97,6 +151,8 @@ const endpoint = import.meta.env.PUBLIC_LEAD_ENDPOINT ?? "";
       contact: String(fd.get("contact") ?? "").trim(),
       interest: String(fd.get("interest") ?? "").trim() || undefined,
       note: String(fd.get("note") ?? "").trim() || undefined,
+      preferredCompany: String(fd.get("preferredCompany") ?? "").trim() || undefined,
+      preferredMonth: String(fd.get("preferredMonth") ?? "").trim() || undefined,
       tripSlug: String(fd.get("tripSlug") ?? "").trim() || undefined,
       tripTitle: String(fd.get("tripTitle") ?? "").trim() || undefined,
       source: String(fd.get("source") ?? "inquiry"),

@@ -3,7 +3,7 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://idasj0301.github.io",
-  trailingSlash: "never",
+  trailingSlash: "always",
   integrations: [sitemap()],
   vite: {
     server: {

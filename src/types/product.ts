@@ -24,6 +24,7 @@ export interface Product {
   durationDays: number;
   priceFrom: number;
   priceLabel: string;
+  company?: string;
   shipName: string;
   summary: string;
   overview?: string;

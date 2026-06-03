@@ -2064,31 +2064,40 @@
       "银海",
       "单船票",
       "南极",
+      "EV261020006",
+      "Silver Endeavour",
       "双飞",
-      "Silver Endeavour"
+      "乔治王岛往返"
     ],
     "departureDate": "2026-10-20",
+    "endDate": "2026-10-26",
     "durationDays": 6,
-    "priceFrom": 0,
-    "priceLabel": "价格咨询",
+    "priceFrom": 19400,
+    "priceLabel": "US$19,400 起",
+    "company": "银海",
     "shipName": "银海奋进号 Silver Endeavour",
-    "summary": "银海奋进号南极半岛飞航 6 天单船票航程，船司航次 EV261020006，2026年10月20日自乔治王岛登船，2026年10月26日返回乔治王岛。该飞航航线可避开德雷克海峡长时间航行，重点探索南设得兰群岛、南极海峡与南极半岛，舱位和价格以顾问实时确认为准。",
-    "overview": "银海奋进号南极半岛飞航 6 天，乔治王岛往返，2026年10月20日至2026年10月26日，船司航次 EV261020006。",
+    "summary": "银海奋进号King George Island to King George Island 6 天单船票航程，船司航次 EV261020006，2026年10月20日至2026年10月26日。乔治王岛往返飞航线，可减少德雷克海峡长时间航行，重点探索南极海峡、南极半岛与南设得兰群岛。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海奋进号King George Island to King George Island，2026.10.20 — 2026.10.26，6天，船司航次 EV261020006。",
     "highlights": [
-      "飞航进入南极区域，减少德雷克海峡长时间海上航行",
-      "银海奢华探险船服务，船上含管家服务、餐饮、饮品、Wi-Fi 与船上小费等项目（以船司政策为准）",
-      "南设得兰群岛、南极海峡与南极半岛登陆/巡游安排，以天气、冰况和探险队长安排为准"
+      "King George Island to King George Island · Voyage EV261020006",
+      "Silver Endeavour 银海奋进号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
     ],
     "itinerary": [
       {
         "day": 1,
         "title": "乔治王岛登船",
-        "content": "抵达乔治王岛后登上银海奋进号，开启南极半岛飞航单船票航程。"
+        "content": "抵达乔治王岛后登船，开启南极半岛飞航单船票航程。"
       },
       {
-        "day": 3,
-        "title": "南极半岛探索",
-        "content": "在南设得兰群岛、南极海峡及南极半岛区域巡游或登陆，实际安排以天气海况为准。"
+        "day": 2,
+        "title": "南极海峡",
+        "content": "进入南极海峡，欣赏冰山水道和极地海鸟。"
+      },
+      {
+        "day": 5,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "在南极半岛和南设得兰群岛区域巡游或登陆，活动以天气海况为准。"
       },
       {
         "day": 6,
@@ -2096,15 +2105,14 @@
         "content": "返回乔治王岛并离船，结束邮轮航段。"
       }
     ],
-    "ship": "银海奋进号 Silver Endeavour：银海高端奢华探险船，配备极地探险设施、Zodiac 冲锋艇与专业探险团队，舱房与公共区域以船司实时资料为准。",
+    "ship": "Silver Endeavour 银海奋进号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
     "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
-    "notice": "南极飞航及登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
     "published": true,
     "featured": false,
-    "imageAlt": "银海奋进号南极半岛飞航 6天",
+    "imageAlt": "银海奋进号双飞6天 EV261020006",
     "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-king-george-island-ev261020006.html",
-    "wecomFrom": "tkt-006",
-    "endDate": "2026-10-26"
+    "wecomFrom": "tkt-006"
   },
   {
     "id": "tkt-007",
@@ -2116,31 +2124,40 @@
       "银海",
       "单船票",
       "南极",
+      "EV261026006",
+      "Silver Endeavour",
       "双飞",
-      "Silver Endeavour"
+      "乔治王岛往返"
     ],
     "departureDate": "2026-10-26",
+    "endDate": "2026-11-01",
     "durationDays": 6,
-    "priceFrom": 0,
-    "priceLabel": "价格咨询",
+    "priceFrom": 17400,
+    "priceLabel": "US$17,400 起",
+    "company": "银海",
     "shipName": "银海奋进号 Silver Endeavour",
-    "summary": "银海奋进号南极半岛飞航 6 天单船票航程，船司航次 EV261026006，2026年10月26日自乔治王岛登船，2026年11月1日返回乔治王岛。航程以飞航方式深入南极，适合希望缩短海上航行时间、集中体验南极海峡、南极半岛冰山与野生动物的客人，舱位和价格以顾问实时确认为准。",
-    "overview": "银海奋进号南极半岛飞航 6 天，乔治王岛往返，2026年10月26日至2026年11月1日，船司航次 EV261026006。",
+    "summary": "银海奋进号King George Island to King George Island 6 天单船票航程，船司航次 EV261026006，2026年10月26日至2026年11月1日。乔治王岛往返飞航线，可减少德雷克海峡长时间航行，重点探索南极海峡、南极半岛与南设得兰群岛。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海奋进号King George Island to King George Island，2026.10.26 — 2026.11.01，6天，船司航次 EV261026006。",
     "highlights": [
-      "乔治王岛往返飞航航线，适合想高效体验南极半岛的客人",
-      "银海奢华探险船服务，船上含管家服务、餐饮、饮品、Wi-Fi 与船上小费等项目（以船司政策为准）",
-      "企鹅、冰山、鲸类和南极海峡景观，以实际航线和探险队长安排为准"
+      "King George Island to King George Island · Voyage EV261026006",
+      "Silver Endeavour 银海奋进号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
     ],
     "itinerary": [
       {
         "day": 1,
         "title": "乔治王岛登船",
-        "content": "抵达乔治王岛后登上银海奋进号，进入南极半岛飞航航段。"
+        "content": "抵达乔治王岛后登船，开启南极半岛飞航单船票航程。"
       },
       {
-        "day": 3,
-        "title": "南极半岛探索",
-        "content": "在南极海峡、南设得兰群岛及南极半岛区域巡游或登陆，实际安排以天气海况为准。"
+        "day": 2,
+        "title": "南极海峡",
+        "content": "进入南极海峡，欣赏冰山水道和极地海鸟。"
+      },
+      {
+        "day": 5,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "在南极半岛和南设得兰群岛区域巡游或登陆，活动以天气海况为准。"
       },
       {
         "day": 6,
@@ -2148,15 +2165,14 @@
         "content": "返回乔治王岛并离船，结束邮轮航段。"
       }
     ],
-    "ship": "银海奋进号 Silver Endeavour：银海高端奢华探险船，配备极地探险设施、Zodiac 冲锋艇与专业探险团队，舱房与公共区域以船司实时资料为准。",
+    "ship": "Silver Endeavour 银海奋进号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
     "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
-    "notice": "南极飞航及登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
     "published": true,
     "featured": false,
-    "imageAlt": "银海奋进号南极半岛飞航 6天",
+    "imageAlt": "银海奋进号双飞6天 EV261026006",
     "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-king-george-island-ev261026006.html",
-    "wecomFrom": "tkt-007",
-    "endDate": "2026-11-01"
+    "wecomFrom": "tkt-007"
   },
   {
     "id": "tkt-008",
@@ -2168,47 +2184,55 @@
       "银海",
       "单船票",
       "南极",
+      "EV261101006",
+      "Silver Endeavour",
       "双飞",
-      "Silver Endeavour"
+      "乔治王岛往返"
     ],
     "departureDate": "2026-11-01",
+    "endDate": "2026-11-07",
     "durationDays": 6,
-    "priceFrom": 0,
-    "priceLabel": "价格咨询",
+    "priceFrom": 20400,
+    "priceLabel": "US$20,400 起",
+    "company": "银海",
     "shipName": "银海奋进号 Silver Endeavour",
-    "summary": "银海奋进号南极半岛飞航 6 天单船票航程，船司航次 EV261101006，2026年11月1日自乔治王岛登船，2026年11月7日返回乔治王岛。航程主打南极半岛短线体验，可在有限假期内接触冰山、企鹅、鲸类与 Zodiac 探险活动，舱位、价格和飞航衔接以顾问实时确认为准。",
-    "overview": "银海奋进号南极半岛飞航 6 天，乔治王岛往返，2026年11月1日至2026年11月7日，船司航次 EV261101006。",
+    "summary": "银海奋进号King George Island to King George Island 6 天单船票航程，船司航次 EV261101006，2026年11月1日至2026年11月7日。乔治王岛往返飞航线，可减少德雷克海峡长时间航行，重点探索南极海峡、南极半岛与南设得兰群岛。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海奋进号King George Island to King George Island，2026.11.01 — 2026.11.07，6天，船司航次 EV261101006。",
     "highlights": [
-      "南极半岛短线飞航航程，减少德雷克海峡航行时间",
-      "银海奢华探险船服务，船上含管家服务、餐饮、饮品、Wi-Fi 与船上小费等项目（以船司政策为准）",
-      "重点关注冰山、企鹅、鲸类与 Zodiac 探索，具体活动以当天条件为准"
+      "King George Island to King George Island · Voyage EV261101006",
+      "Silver Endeavour 银海奋进号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
     ],
     "itinerary": [
       {
         "day": 1,
         "title": "乔治王岛登船",
-        "content": "抵达乔治王岛后登上银海奋进号，开启南极半岛短线探险。"
+        "content": "抵达乔治王岛后登船，开启南极半岛飞航单船票航程。"
       },
       {
-        "day": 3,
-        "title": "南极半岛探索",
-        "content": "随船在南极海峡、南设得兰群岛及南极半岛区域巡游或登陆。"
+        "day": 2,
+        "title": "南极海峡",
+        "content": "进入南极海峡，欣赏冰山水道和极地海鸟。"
+      },
+      {
+        "day": 5,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "在南极半岛和南设得兰群岛区域巡游或登陆，活动以天气海况为准。"
       },
       {
         "day": 6,
         "title": "乔治王岛离船",
-        "content": "返回乔治王岛离船，结束邮轮航段。"
+        "content": "返回乔治王岛并离船，结束邮轮航段。"
       }
     ],
-    "ship": "银海奋进号 Silver Endeavour：银海高端奢华探险船，配备极地探险设施、Zodiac 冲锋艇与专业探险团队，舱房与公共区域以船司实时资料为准。",
+    "ship": "Silver Endeavour 银海奋进号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
     "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
-    "notice": "南极飞航及登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
     "published": true,
     "featured": false,
-    "imageAlt": "银海奋进号南极半岛飞航 6天",
+    "imageAlt": "银海奋进号双飞6天 EV261101006",
     "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-king-george-island-ev261101006.html",
-    "wecomFrom": "tkt-008",
-    "endDate": "2026-11-07"
+    "wecomFrom": "tkt-008"
   },
   {
     "id": "tkt-009",
@@ -2220,47 +2244,55 @@
       "银海",
       "单船票",
       "南极",
+      "EV261107006",
+      "Silver Endeavour",
       "双飞",
-      "Silver Endeavour"
+      "乔治王岛往返"
     ],
     "departureDate": "2026-11-07",
+    "endDate": "2026-11-13",
     "durationDays": 6,
-    "priceFrom": 0,
-    "priceLabel": "价格咨询",
+    "priceFrom": 20500,
+    "priceLabel": "US$20,500 起",
+    "company": "银海",
     "shipName": "银海奋进号 Silver Endeavour",
-    "summary": "银海奋进号南极半岛飞航 6 天单船票航程，船司航次 EV261107006，2026年11月7日自乔治王岛登船，2026年11月13日返回乔治王岛。该航次以南设得兰群岛、南极海峡和南极半岛为核心，适合希望用短假期体验银海南极探险服务的客人，价格和余舱以顾问实时确认为准。",
-    "overview": "银海奋进号南极半岛飞航 6 天，乔治王岛往返，2026年11月7日至2026年11月13日，船司航次 EV261107006。",
+    "summary": "银海奋进号King George Island to King George Island 6 天单船票航程，船司航次 EV261107006，2026年11月7日至2026年11月13日。乔治王岛往返飞航线，可减少德雷克海峡长时间航行，重点探索南极海峡、南极半岛与南设得兰群岛。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海奋进号King George Island to King George Island，2026.11.07 — 2026.11.13，6天，船司航次 EV261107006。",
     "highlights": [
-      "飞航进入南设得兰群岛，缩短传统南极航线的海上通勤时间",
-      "银海奢华探险船服务，船上含管家服务、餐饮、饮品、Wi-Fi 与船上小费等项目（以船司政策为准）",
-      "探险队视天气安排 Zodiac 巡游、登陆、观鸟与野生动物观察"
+      "King George Island to King George Island · Voyage EV261107006",
+      "Silver Endeavour 银海奋进号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
     ],
     "itinerary": [
       {
         "day": 1,
         "title": "乔治王岛登船",
-        "content": "抵达乔治王岛后登上银海奋进号，进入南极半岛航段。"
+        "content": "抵达乔治王岛后登船，开启南极半岛飞航单船票航程。"
       },
       {
-        "day": 3,
-        "title": "南极半岛探索",
-        "content": "在南极海峡、南设得兰群岛及南极半岛区域进行巡游或登陆探索。"
+        "day": 2,
+        "title": "南极海峡",
+        "content": "进入南极海峡，欣赏冰山水道和极地海鸟。"
+      },
+      {
+        "day": 5,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "在南极半岛和南设得兰群岛区域巡游或登陆，活动以天气海况为准。"
       },
       {
         "day": 6,
         "title": "乔治王岛离船",
-        "content": "返回乔治王岛离船，结束邮轮航段。"
+        "content": "返回乔治王岛并离船，结束邮轮航段。"
       }
     ],
-    "ship": "银海奋进号 Silver Endeavour：银海高端奢华探险船，配备极地探险设施、Zodiac 冲锋艇与专业探险团队，舱房与公共区域以船司实时资料为准。",
+    "ship": "Silver Endeavour 银海奋进号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
     "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
-    "notice": "南极飞航及登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
     "published": true,
     "featured": false,
-    "imageAlt": "银海奋进号南极半岛飞航 6天",
+    "imageAlt": "银海奋进号双飞6天 EV261107006",
     "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-king-george-island-ev261107006.html",
-    "wecomFrom": "tkt-009",
-    "endDate": "2026-11-13"
+    "wecomFrom": "tkt-009"
   },
   {
     "id": "tkt-010",
@@ -2272,31 +2304,40 @@
       "银海",
       "单船票",
       "南极",
+      "EV261119006",
+      "Silver Endeavour",
       "双飞",
-      "Silver Endeavour"
+      "乔治王岛往返"
     ],
     "departureDate": "2026-11-19",
+    "endDate": "2026-11-25",
     "durationDays": 6,
-    "priceFrom": 0,
-    "priceLabel": "价格咨询",
+    "priceFrom": 21600,
+    "priceLabel": "US$21,600 起",
+    "company": "银海",
     "shipName": "银海奋进号 Silver Endeavour",
-    "summary": "银海奋进号南极半岛飞航 6 天单船票航程，船司航次 EV261119006，2026年11月19日自乔治王岛登船，2026年11月25日返回乔治王岛。航次避开德雷克海峡长距离航行，集中安排南极海峡、南设得兰群岛与南极半岛探索，适合偏好奢华小船和短线南极体验的客人。",
-    "overview": "银海奋进号南极半岛飞航 6 天，乔治王岛往返，2026年11月19日至2026年11月25日，船司航次 EV261119006。",
+    "summary": "银海奋进号King George Island to King George Island 6 天单船票航程，船司航次 EV261119006，2026年11月19日至2026年11月25日。乔治王岛往返飞航线，可减少德雷克海峡长时间航行，重点探索南极海峡、南极半岛与南设得兰群岛。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海奋进号King George Island to King George Island，2026.11.19 — 2026.11.25，6天，船司航次 EV261119006。",
     "highlights": [
-      "乔治王岛往返飞航航次，适合短假期南极半岛体验",
-      "银海奢华探险船服务，船上含管家服务、餐饮、饮品、Wi-Fi 与船上小费等项目（以船司政策为准）",
-      "南极海峡、南设得兰群岛与半岛活动安排，以天气、冰况和探险队长安排为准"
+      "King George Island to King George Island · Voyage EV261119006",
+      "Silver Endeavour 银海奋进号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
     ],
     "itinerary": [
       {
         "day": 1,
         "title": "乔治王岛登船",
-        "content": "抵达乔治王岛后登上银海奋进号，开始南极半岛飞航航程。"
+        "content": "抵达乔治王岛后登船，开启南极半岛飞航单船票航程。"
       },
       {
-        "day": 3,
-        "title": "南极半岛探索",
-        "content": "在南极海峡、南设得兰群岛及南极半岛区域巡游或登陆，寻找冰山与野生动物。"
+        "day": 2,
+        "title": "南极海峡",
+        "content": "进入南极海峡，欣赏冰山水道和极地海鸟。"
+      },
+      {
+        "day": 5,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "在南极半岛和南设得兰群岛区域巡游或登陆，活动以天气海况为准。"
       },
       {
         "day": 6,
@@ -2304,122 +2345,17 @@
         "content": "返回乔治王岛并离船，结束邮轮航段。"
       }
     ],
-    "ship": "银海奋进号 Silver Endeavour：银海高端奢华探险船，配备极地探险设施、Zodiac 冲锋艇与专业探险团队，舱房与公共区域以船司实时资料为准。",
+    "ship": "Silver Endeavour 银海奋进号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
     "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
-    "notice": "南极飞航及登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
     "published": true,
     "featured": false,
-    "imageAlt": "银海奋进号南极半岛飞航 6天",
+    "imageAlt": "银海奋进号双飞6天 EV261119006",
     "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-king-george-island-ev261119006.html",
-    "wecomFrom": "tkt-010",
-    "endDate": "2026-11-25"
+    "wecomFrom": "tkt-010"
   },
   {
     "id": "tkt-011",
-    "slug": "silversea-wi261204008",
-    "title": "银海迎风号 · 乔治王岛至威廉斯港 8天",
-    "category": "ticket",
-    "subcategory": "双飞8天",
-    "tags": [
-      "银海",
-      "单船票",
-      "南极",
-      "双飞",
-      "Silver Wind"
-    ],
-    "departureDate": "2026-12-04",
-    "durationDays": 8,
-    "priceFrom": 0,
-    "priceLabel": "价格咨询",
-    "shipName": "银海迎风号 Silver Wind",
-    "summary": "银海迎风号乔治王岛至威廉斯港 8 天单船票航程，船司航次 WI261204008，2026年12月4日自乔治王岛登船，2026年12月12日在威廉斯港离船。航程覆盖南极海峡、南极半岛与德雷克海峡方向，适合希望结合飞航进入南极、再完整体验经典南极海域巡游的客人。",
-    "overview": "银海迎风号乔治王岛至威廉斯港 8 天，2026年12月4日至2026年12月12日，船司航次 WI261204008。",
-    "highlights": [
-      "乔治王岛登船、威廉斯港离船，兼顾飞航进入南极与南极半岛巡游体验",
-      "银海迎风号配备加强冰级船体和 Zodiac 冲锋艇，适合极地探险航线",
-      "南极海峡、南设得兰群岛、南极半岛及德雷克海峡相关安排，以船司最终行程为准"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "乔治王岛登船",
-        "content": "抵达乔治王岛后登上银海迎风号，开始南极单船票航程。"
-      },
-      {
-        "day": 4,
-        "title": "南极半岛探索",
-        "content": "在南极海峡、南设得兰群岛及南极半岛区域巡游或登陆，实际安排以天气海况为准。"
-      },
-      {
-        "day": 8,
-        "title": "威廉斯港离船",
-        "content": "抵达智利威廉斯港并离船，结束邮轮航段。"
-      }
-    ],
-    "ship": "银海迎风号 Silver Wind：经过极地化升级的银海探险船，配备加强冰级船体与 Zodiac 冲锋艇，舱房、餐饮和公共区域以船司实时资料为准。",
-    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
-    "notice": "南极飞航、德雷克海峡航行及登陆活动受天气、冰况、机场与船司安排影响，航线和活动可能调整。",
-    "published": true,
-    "featured": false,
-    "imageAlt": "银海迎风号乔治王岛至威廉斯港 8天",
-    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-puerto-williams-wi261204008.html",
-    "wecomFrom": "tkt-011",
-    "endDate": "2026-12-12"
-  },
-  {
-    "id": "tkt-012",
-    "slug": "silversea-ev261219008",
-    "title": "银海奋进号 · 南极白色圣诞 8天",
-    "category": "ticket",
-    "subcategory": "双飞8天",
-    "tags": [
-      "银海",
-      "单船票",
-      "南极",
-      "圣诞",
-      "Silver Endeavour"
-    ],
-    "departureDate": "2026-12-19",
-    "durationDays": 8,
-    "priceFrom": 0,
-    "priceLabel": "价格咨询",
-    "shipName": "银海奋进号 Silver Endeavour",
-    "summary": "银海奋进号南极白色圣诞 8 天单船票航程，船司航次 EV261219008，2026年12月19日自乔治王岛登船，2026年12月27日返回乔治王岛。航程以南极半岛圣诞档期为特色，在冰川、雪山和蓝色冰山之间探索企鹅、信天翁与鲸类活动，舱位和价格以顾问实时确认为准。",
-    "overview": "银海奋进号南极白色圣诞 8 天，乔治王岛往返，2026年12月19日至2026年12月27日，船司航次 EV261219008。",
-    "highlights": [
-      "南极圣诞档期飞航单船票，适合节假日高端探险旅行",
-      "银海奋进号奢华探险服务，兼顾极地登陆体验与高端船上服务",
-      "企鹅、信天翁、鲸类、冰川和蓝色冰山景观，以天气海况和探险队长安排为准"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "乔治王岛登船",
-        "content": "抵达乔治王岛后登上银海奋进号，开启南极圣诞档期航程。"
-      },
-      {
-        "day": 4,
-        "title": "南极半岛探索",
-        "content": "在南极半岛和南设得兰群岛区域巡游、登陆或开展 Zodiac 探索。"
-      },
-      {
-        "day": 8,
-        "title": "乔治王岛离船",
-        "content": "返回乔治王岛并离船，结束邮轮航段。"
-      }
-    ],
-    "ship": "银海奋进号 Silver Endeavour：银海高端奢华探险船，配备极地探险设施、Zodiac 冲锋艇与专业探险团队，舱房与公共区域以船司实时资料为准。",
-    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
-    "notice": "南极飞航及登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
-    "published": true,
-    "featured": false,
-    "imageAlt": "银海奋进号南极白色圣诞 8天",
-    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-king-george-island-ev261219008.html",
-    "wecomFrom": "tkt-012",
-    "endDate": "2026-12-27"
-  },
-  {
-    "id": "tkt-013",
     "slug": "silversea-wi270106009",
     "title": "银海迎风号 · 威廉斯港至乔治王岛 9天",
     "category": "ticket",
@@ -2428,46 +2364,799 @@
       "银海",
       "单船票",
       "南极",
+      "WI270106009",
+      "Silver Wind",
       "单飞",
-      "Silver Wind"
+      "德雷克海峡"
     ],
     "departureDate": "2027-01-06",
+    "endDate": "2027-01-15",
     "durationDays": 9,
-    "priceFrom": 0,
-    "priceLabel": "价格咨询",
+    "priceFrom": 23900,
+    "priceLabel": "US$23,900 起",
+    "company": "银海",
     "shipName": "银海迎风号 Silver Wind",
-    "summary": "银海迎风号威廉斯港至乔治王岛 9 天单船票航程，船司航次 WI270106009，2027年1月6日自威廉斯港登船，2027年1月15日在乔治王岛离船。航程从智利南端进入南极海域，探索南极半岛、冰川、雪山、海冰与野生动物，适合希望单飞衔接南极短线的客人。",
-    "overview": "银海迎风号威廉斯港至乔治王岛 9 天，2027年1月6日至2027年1月15日，船司航次 WI270106009。",
+    "summary": "银海迎风号Puerto Williams to King George Island 9 天单船票航程，船司航次 WI270106009，2027年1月6日至2027年1月15日。从威廉斯港启程，穿越德雷克海峡进入南极海域，最后在乔治王岛离船，适合单飞衔接南极短线。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号Puerto Williams to King George Island，2027.01.06 — 2027.01.15，9天，船司航次 WI270106009。",
     "highlights": [
-      "威廉斯港登船、乔治王岛离船，适合单飞衔接南极半岛航线",
-      "银海迎风号配备加强冰级船体和 Zodiac 冲锋艇，适合极地探险航线",
-      "南极半岛、冰川、海冰与野生动物观察，以天气海况和探险队长安排为准"
+      "Puerto Williams to King George Island · Voyage WI270106009",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
     ],
     "itinerary": [
       {
         "day": 1,
         "title": "威廉斯港登船",
-        "content": "在智利威廉斯港登上银海迎风号，开始南极单船票航程。"
+        "content": "登船后开启南极单飞单船票航段。"
       },
       {
-        "day": 5,
-        "title": "南极半岛探索",
-        "content": "随船进入南极海域，在南极半岛相关区域巡游或登陆，实际安排以天气海况为准。"
+        "day": 3,
+        "title": "德雷克海峡 / 南极海峡",
+        "content": "按航线方向穿越德雷克海峡或进入南极海峡。"
+      },
+      {
+        "day": 7,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "探索南极半岛、南极海峡与南设得兰群岛，参加船司安排的巡游、登陆或讲座。"
       },
       {
         "day": 9,
         "title": "乔治王岛离船",
-        "content": "抵达乔治王岛并离船，结束邮轮航段。"
+        "content": "抵达终点港并离船，结束邮轮航段。"
       }
     ],
-    "ship": "银海迎风号 Silver Wind：经过极地化升级的银海探险船，配备加强冰级船体与 Zodiac 冲锋艇，舱房、餐饮和公共区域以船司实时资料为准。",
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
     "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
-    "notice": "南极飞航、德雷克海峡航行及登陆活动受天气、冰况、机场与船司安排影响，航线和活动可能调整。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
     "published": true,
     "featured": false,
-    "imageAlt": "银海迎风号威廉斯港至乔治王岛 9天",
+    "imageAlt": "银海迎风号单飞9天 WI270106009",
     "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-king-george-island-wi270106009.html",
-    "wecomFrom": "tkt-013",
-    "endDate": "2027-01-15"
+    "wecomFrom": "tkt-011"
+  },
+  {
+    "id": "tkt-012",
+    "slug": "silversea-wi270115009",
+    "title": "银海迎风号 · 乔治王岛至威廉斯港 9天",
+    "category": "ticket",
+    "subcategory": "单飞9天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "WI270115009",
+      "Silver Wind",
+      "单飞",
+      "德雷克海峡"
+    ],
+    "departureDate": "2027-01-15",
+    "endDate": "2027-01-24",
+    "durationDays": 9,
+    "priceFrom": 23900,
+    "priceLabel": "US$23,900 起",
+    "company": "银海",
+    "shipName": "银海迎风号 Silver Wind",
+    "summary": "银海迎风号King George Island to Puerto Williams 9 天单船票航程，船司航次 WI270115009，2027年1月15日至2027年1月24日。从乔治王岛进入南极，探索南极半岛与南设得兰群岛，再经德雷克海峡前往威廉斯港。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号King George Island to Puerto Williams，2027.01.15 — 2027.01.24，9天，船司航次 WI270115009。",
+    "highlights": [
+      "King George Island to Puerto Williams · Voyage WI270115009",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "乔治王岛登船",
+        "content": "登船后开启南极单飞单船票航段。"
+      },
+      {
+        "day": 3,
+        "title": "德雷克海峡 / 南极海峡",
+        "content": "按航线方向穿越德雷克海峡或进入南极海峡。"
+      },
+      {
+        "day": 7,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "探索南极半岛、南极海峡与南设得兰群岛，参加船司安排的巡游、登陆或讲座。"
+      },
+      {
+        "day": 9,
+        "title": "威廉斯港离船",
+        "content": "抵达终点港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎风号单飞9天 WI270115009",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-puerto-williams-wi270115009.html",
+    "wecomFrom": "tkt-012"
+  },
+  {
+    "id": "tkt-013",
+    "slug": "silversea-wi270124009",
+    "title": "银海迎风号 · 威廉斯港至乔治王岛 9天",
+    "category": "ticket",
+    "subcategory": "单飞9天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "WI270124009",
+      "Silver Wind",
+      "单飞",
+      "德雷克海峡"
+    ],
+    "departureDate": "2027-01-24",
+    "endDate": "2027-02-02",
+    "durationDays": 9,
+    "priceFrom": 19400,
+    "priceLabel": "US$19,400 起",
+    "company": "银海",
+    "shipName": "银海迎风号 Silver Wind",
+    "summary": "银海迎风号Puerto Williams to King George Island 9 天单船票航程，船司航次 WI270124009，2027年1月24日至2027年2月2日。从威廉斯港启程，穿越德雷克海峡进入南极海域，最后在乔治王岛离船，适合单飞衔接南极短线。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号Puerto Williams to King George Island，2027.01.24 — 2027.02.02，9天，船司航次 WI270124009。",
+    "highlights": [
+      "Puerto Williams to King George Island · Voyage WI270124009",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "威廉斯港登船",
+        "content": "登船后开启南极单飞单船票航段。"
+      },
+      {
+        "day": 3,
+        "title": "德雷克海峡 / 南极海峡",
+        "content": "按航线方向穿越德雷克海峡或进入南极海峡。"
+      },
+      {
+        "day": 7,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "探索南极半岛、南极海峡与南设得兰群岛，参加船司安排的巡游、登陆或讲座。"
+      },
+      {
+        "day": 9,
+        "title": "乔治王岛离船",
+        "content": "抵达终点港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎风号单飞9天 WI270124009",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-king-george-island-wi270124009.html",
+    "wecomFrom": "tkt-013"
+  },
+  {
+    "id": "tkt-014",
+    "slug": "silversea-wi270202009",
+    "title": "银海迎风号 · 乔治王岛至威廉斯港 9天",
+    "category": "ticket",
+    "subcategory": "单飞9天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "WI270202009",
+      "Silver Wind",
+      "单飞",
+      "德雷克海峡"
+    ],
+    "departureDate": "2027-02-02",
+    "endDate": "2027-02-11",
+    "durationDays": 9,
+    "priceFrom": 22300,
+    "priceLabel": "US$22,300 起",
+    "company": "银海",
+    "shipName": "银海迎风号 Silver Wind",
+    "summary": "银海迎风号King George Island to Puerto Williams 9 天单船票航程，船司航次 WI270202009，2027年2月2日至2027年2月11日。从乔治王岛进入南极，探索南极半岛与南设得兰群岛，再经德雷克海峡前往威廉斯港。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号King George Island to Puerto Williams，2027.02.02 — 2027.02.11，9天，船司航次 WI270202009。",
+    "highlights": [
+      "King George Island to Puerto Williams · Voyage WI270202009",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "乔治王岛登船",
+        "content": "登船后开启南极单飞单船票航段。"
+      },
+      {
+        "day": 3,
+        "title": "德雷克海峡 / 南极海峡",
+        "content": "按航线方向穿越德雷克海峡或进入南极海峡。"
+      },
+      {
+        "day": 7,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "探索南极半岛、南极海峡与南设得兰群岛，参加船司安排的巡游、登陆或讲座。"
+      },
+      {
+        "day": 9,
+        "title": "威廉斯港离船",
+        "content": "抵达终点港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎风号单飞9天 WI270202009",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-puerto-williams-wi270202009.html",
+    "wecomFrom": "tkt-014"
+  },
+  {
+    "id": "tkt-015",
+    "slug": "silversea-wi270211009",
+    "title": "银海迎风号 · 威廉斯港至乔治王岛 9天",
+    "category": "ticket",
+    "subcategory": "单飞9天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "WI270211009",
+      "Silver Wind",
+      "单飞",
+      "德雷克海峡"
+    ],
+    "departureDate": "2027-02-11",
+    "endDate": "2027-02-20",
+    "durationDays": 9,
+    "priceFrom": 20600,
+    "priceLabel": "US$20,600 起",
+    "company": "银海",
+    "shipName": "银海迎风号 Silver Wind",
+    "summary": "银海迎风号Puerto Williams to King George Island 9 天单船票航程，船司航次 WI270211009，2027年2月11日至2027年2月20日。从威廉斯港启程，穿越德雷克海峡进入南极海域，最后在乔治王岛离船，适合单飞衔接南极短线。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号Puerto Williams to King George Island，2027.02.11 — 2027.02.20，9天，船司航次 WI270211009。",
+    "highlights": [
+      "Puerto Williams to King George Island · Voyage WI270211009",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "威廉斯港登船",
+        "content": "登船后开启南极单飞单船票航段。"
+      },
+      {
+        "day": 3,
+        "title": "德雷克海峡 / 南极海峡",
+        "content": "按航线方向穿越德雷克海峡或进入南极海峡。"
+      },
+      {
+        "day": 7,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "探索南极半岛、南极海峡与南设得兰群岛，参加船司安排的巡游、登陆或讲座。"
+      },
+      {
+        "day": 9,
+        "title": "乔治王岛离船",
+        "content": "抵达终点港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎风号单飞9天 WI270211009",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-king-george-island-wi270211009.html",
+    "wecomFrom": "tkt-015"
+  },
+  {
+    "id": "tkt-016",
+    "slug": "silversea-wi270220009",
+    "title": "银海迎风号 · 乔治王岛至威廉斯港 9天",
+    "category": "ticket",
+    "subcategory": "单飞9天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "WI270220009",
+      "Silver Wind",
+      "单飞",
+      "德雷克海峡"
+    ],
+    "departureDate": "2027-02-20",
+    "endDate": "2027-03-01",
+    "durationDays": 9,
+    "priceFrom": 18700,
+    "priceLabel": "US$18,700 起",
+    "company": "银海",
+    "shipName": "银海迎风号 Silver Wind",
+    "summary": "银海迎风号King George Island to Puerto Williams 9 天单船票航程，船司航次 WI270220009，2027年2月20日至2027年3月1日。从乔治王岛进入南极，探索南极半岛与南设得兰群岛，再经德雷克海峡前往威廉斯港。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号King George Island to Puerto Williams，2027.02.20 — 2027.03.01，9天，船司航次 WI270220009。",
+    "highlights": [
+      "King George Island to Puerto Williams · Voyage WI270220009",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "乔治王岛登船",
+        "content": "登船后开启南极单飞单船票航段。"
+      },
+      {
+        "day": 3,
+        "title": "德雷克海峡 / 南极海峡",
+        "content": "按航线方向穿越德雷克海峡或进入南极海峡。"
+      },
+      {
+        "day": 7,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "探索南极半岛、南极海峡与南设得兰群岛，参加船司安排的巡游、登陆或讲座。"
+      },
+      {
+        "day": 9,
+        "title": "威廉斯港离船",
+        "content": "抵达终点港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎风号单飞9天 WI270220009",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-puerto-williams-wi270220009.html",
+    "wecomFrom": "tkt-016"
+  },
+  {
+    "id": "tkt-017",
+    "slug": "silversea-wi270301009",
+    "title": "银海迎风号 · 威廉斯港至乔治王岛 9天",
+    "category": "ticket",
+    "subcategory": "单飞9天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "WI270301009",
+      "Silver Wind",
+      "单飞",
+      "德雷克海峡"
+    ],
+    "departureDate": "2027-03-01",
+    "endDate": "2027-03-10",
+    "durationDays": 9,
+    "priceFrom": 15800,
+    "priceLabel": "US$15,800 起",
+    "company": "银海",
+    "shipName": "银海迎风号 Silver Wind",
+    "summary": "银海迎风号Puerto Williams to King George Island 9 天单船票航程，船司航次 WI270301009，2027年3月1日至2027年3月10日。从威廉斯港启程，穿越德雷克海峡进入南极海域，最后在乔治王岛离船，适合单飞衔接南极短线。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号Puerto Williams to King George Island，2027.03.01 — 2027.03.10，9天，船司航次 WI270301009。",
+    "highlights": [
+      "Puerto Williams to King George Island · Voyage WI270301009",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "威廉斯港登船",
+        "content": "登船后开启南极单飞单船票航段。"
+      },
+      {
+        "day": 3,
+        "title": "德雷克海峡 / 南极海峡",
+        "content": "按航线方向穿越德雷克海峡或进入南极海峡。"
+      },
+      {
+        "day": 7,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "探索南极半岛、南极海峡与南设得兰群岛，参加船司安排的巡游、登陆或讲座。"
+      },
+      {
+        "day": 9,
+        "title": "乔治王岛离船",
+        "content": "抵达终点港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎风号单飞9天 WI270301009",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-king-george-island-wi270301009.html",
+    "wecomFrom": "tkt-017"
+  },
+  {
+    "id": "tkt-018",
+    "slug": "silversea-wi270310009",
+    "title": "银海迎风号 · 乔治王岛至威廉斯港 9天",
+    "category": "ticket",
+    "subcategory": "单飞9天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "WI270310009",
+      "Silver Wind",
+      "单飞",
+      "德雷克海峡"
+    ],
+    "departureDate": "2027-03-10",
+    "endDate": "2027-03-19",
+    "durationDays": 9,
+    "priceFrom": 13800,
+    "priceLabel": "US$13,800 起",
+    "company": "银海",
+    "shipName": "银海迎风号 Silver Wind",
+    "summary": "银海迎风号King George Island to Puerto Williams 9 天单船票航程，船司航次 WI270310009，2027年3月10日至2027年3月19日。从乔治王岛进入南极，探索南极半岛与南设得兰群岛，再经德雷克海峡前往威廉斯港。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号King George Island to Puerto Williams，2027.03.10 — 2027.03.19，9天，船司航次 WI270310009。",
+    "highlights": [
+      "King George Island to Puerto Williams · Voyage WI270310009",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "乔治王岛登船",
+        "content": "登船后开启南极单飞单船票航段。"
+      },
+      {
+        "day": 3,
+        "title": "德雷克海峡 / 南极海峡",
+        "content": "按航线方向穿越德雷克海峡或进入南极海峡。"
+      },
+      {
+        "day": 7,
+        "title": "南极半岛与南设得兰群岛",
+        "content": "探索南极半岛、南极海峡与南设得兰群岛，参加船司安排的巡游、登陆或讲座。"
+      },
+      {
+        "day": 9,
+        "title": "威廉斯港离船",
+        "content": "抵达终点港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎风号单飞9天 WI270310009",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/king-george-island-to-puerto-williams-wi270310009.html",
+    "wecomFrom": "tkt-018"
+  },
+  {
+    "id": "tkt-019",
+    "slug": "silversea-wi261107018",
+    "title": "银海迎风号 · 福克兰-南乔治亚-南极 18天",
+    "category": "ticket",
+    "subcategory": "南乔治亚18天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "WI261107018",
+      "Silver Wind",
+      "南乔治亚",
+      "南极半岛"
+    ],
+    "departureDate": "2026-11-07",
+    "endDate": "2026-11-25",
+    "durationDays": 18,
+    "priceFrom": 0,
+    "priceLabel": "价格咨询",
+    "company": "银海",
+    "shipName": "银海迎风号 Silver Wind",
+    "summary": "银海迎风号Puerto Williams to Puerto Williams 18 天单船票航程，船司航次 WI261107018，2026年11月7日至2026年11月25日。从威廉斯港往返，覆盖福克兰群岛、南乔治亚、象岛、南极海峡、南极半岛与南设得兰群岛，是完整南极长线体验。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号Puerto Williams to Puerto Williams，2026.11.07 — 2026.11.25，18天，船司航次 WI261107018。",
+    "highlights": [
+      "Puerto Williams to Puerto Williams · Voyage WI261107018",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "威廉斯港登船",
+        "content": "从智利威廉斯港登船，开启完整南极长线航程。"
+      },
+      {
+        "day": 4,
+        "title": "福克兰群岛",
+        "content": "巡游福克兰群岛方向，观察海鸟、企鹅和南大西洋岛屿风光。"
+      },
+      {
+        "day": 9,
+        "title": "南乔治亚",
+        "content": "深入南乔治亚，探索王企鹅、海豹和探险史遗迹。"
+      },
+      {
+        "day": 14,
+        "title": "象岛、南极海峡与南极半岛",
+        "content": "进入南极海域，探索象岛、南极海峡、南极半岛与南设得兰群岛。"
+      },
+      {
+        "day": 18,
+        "title": "威廉斯港离船",
+        "content": "经德雷克海峡返回威廉斯港并离船。"
+      }
+    ],
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎风号南乔治亚18天 WI261107018",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-puerto-williams-wi261107018.html",
+    "wecomFrom": "tkt-019"
+  },
+  {
+    "id": "tkt-020",
+    "slug": "silversea-e4261109015",
+    "title": "银海迎云号 · 南乔治亚与南极半岛 15天",
+    "category": "ticket",
+    "subcategory": "南乔治亚15天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "E4261109015",
+      "Silver Cloud",
+      "南乔治亚",
+      "南极半岛"
+    ],
+    "departureDate": "2026-11-09",
+    "endDate": "2026-11-24",
+    "durationDays": 15,
+    "priceFrom": 18900,
+    "priceLabel": "US$18,900 起",
+    "company": "银海",
+    "shipName": "银海迎云号 Silver Cloud",
+    "summary": "银海迎云号Puerto Williams to Puerto Williams 15 天单船票航程，船司航次 E4261109015，2026年11月9日至2026年11月24日。从威廉斯港往返，深入南乔治亚与南极半岛，兼顾海上巡游、野生动物观察和 Zodiac 探险活动。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎云号Puerto Williams to Puerto Williams，2026.11.09 — 2026.11.24，15天，船司航次 E4261109015。",
+    "highlights": [
+      "Puerto Williams to Puerto Williams · Voyage E4261109015",
+      "Silver Cloud 银海迎云号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "威廉斯港登船",
+        "content": "从智利威廉斯港登船，开启南乔治亚与南极半岛航程。"
+      },
+      {
+        "day": 4,
+        "title": "海上航行",
+        "content": "海上航行日，参加船上讲座和探险准备。"
+      },
+      {
+        "day": 8,
+        "title": "南乔治亚",
+        "content": "探索南乔治亚，观察王企鹅、海豹和冰川山地景观。"
+      },
+      {
+        "day": 12,
+        "title": "象岛与南极半岛",
+        "content": "进入南极海域，探索象岛、南极海峡、南极半岛与南设得兰群岛。"
+      },
+      {
+        "day": 15,
+        "title": "威廉斯港离船",
+        "content": "返回威廉斯港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Cloud 银海迎云号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎云号南乔治亚15天 E4261109015",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-puerto-williams-e4261109015.html",
+    "wecomFrom": "tkt-020"
+  },
+  {
+    "id": "tkt-021",
+    "slug": "silversea-e4261124015",
+    "title": "银海迎云号 · 南乔治亚与南极半岛 15天",
+    "category": "ticket",
+    "subcategory": "南乔治亚15天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "E4261124015",
+      "Silver Cloud",
+      "南乔治亚",
+      "南极半岛"
+    ],
+    "departureDate": "2026-11-24",
+    "endDate": "2026-12-09",
+    "durationDays": 15,
+    "priceFrom": 18900,
+    "priceLabel": "US$18,900 起",
+    "company": "银海",
+    "shipName": "银海迎云号 Silver Cloud",
+    "summary": "银海迎云号Puerto Williams to Puerto Williams 15 天单船票航程，船司航次 E4261124015，2026年11月24日至2026年12月9日。从威廉斯港往返，深入南乔治亚与南极半岛，兼顾海上巡游、野生动物观察和 Zodiac 探险活动。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎云号Puerto Williams to Puerto Williams，2026.11.24 — 2026.12.09，15天，船司航次 E4261124015。",
+    "highlights": [
+      "Puerto Williams to Puerto Williams · Voyage E4261124015",
+      "Silver Cloud 银海迎云号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "威廉斯港登船",
+        "content": "从智利威廉斯港登船，开启南乔治亚与南极半岛航程。"
+      },
+      {
+        "day": 4,
+        "title": "海上航行",
+        "content": "海上航行日，参加船上讲座和探险准备。"
+      },
+      {
+        "day": 8,
+        "title": "南乔治亚",
+        "content": "探索南乔治亚，观察王企鹅、海豹和冰川山地景观。"
+      },
+      {
+        "day": 12,
+        "title": "象岛与南极半岛",
+        "content": "进入南极海域，探索象岛、南极海峡、南极半岛与南设得兰群岛。"
+      },
+      {
+        "day": 15,
+        "title": "威廉斯港离船",
+        "content": "返回威廉斯港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Cloud 银海迎云号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎云号南乔治亚15天 E4261124015",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-puerto-williams-e4261124015.html",
+    "wecomFrom": "tkt-021"
+  },
+  {
+    "id": "tkt-022",
+    "slug": "silversea-wi261222015",
+    "title": "银海迎风号 · 南乔治亚与南极半岛 15天",
+    "category": "ticket",
+    "subcategory": "南乔治亚15天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "WI261222015",
+      "Silver Wind",
+      "南乔治亚",
+      "南极半岛"
+    ],
+    "departureDate": "2026-12-22",
+    "endDate": "2027-01-06",
+    "durationDays": 15,
+    "priceFrom": 24600,
+    "priceLabel": "US$24,600 起",
+    "company": "银海",
+    "shipName": "银海迎风号 Silver Wind",
+    "summary": "银海迎风号Puerto Williams to Puerto Williams 15 天单船票航程，船司航次 WI261222015，2026年12月22日至2027年1月6日。从威廉斯港往返，深入南乔治亚与南极半岛，兼顾海上巡游、野生动物观察和 Zodiac 探险活动。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎风号Puerto Williams to Puerto Williams，2026.12.22 — 2027.01.06，15天，船司航次 WI261222015。",
+    "highlights": [
+      "Puerto Williams to Puerto Williams · Voyage WI261222015",
+      "Silver Wind 银海迎风号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "威廉斯港登船",
+        "content": "从智利威廉斯港登船，开启南乔治亚与南极半岛航程。"
+      },
+      {
+        "day": 4,
+        "title": "海上航行",
+        "content": "海上航行日，参加船上讲座和探险准备。"
+      },
+      {
+        "day": 8,
+        "title": "南乔治亚",
+        "content": "探索南乔治亚，观察王企鹅、海豹和冰川山地景观。"
+      },
+      {
+        "day": 12,
+        "title": "象岛与南极半岛",
+        "content": "进入南极海域，探索象岛、南极海峡、南极半岛与南设得兰群岛。"
+      },
+      {
+        "day": 15,
+        "title": "威廉斯港离船",
+        "content": "返回威廉斯港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Wind 银海迎风号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎风号南乔治亚15天 WI261222015",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-puerto-williams-wi261222015.html",
+    "wecomFrom": "tkt-022"
+  },
+  {
+    "id": "tkt-023",
+    "slug": "silversea-e4270212015",
+    "title": "银海迎云号 · 南乔治亚与南极半岛 15天",
+    "category": "ticket",
+    "subcategory": "南乔治亚15天",
+    "tags": [
+      "银海",
+      "单船票",
+      "南极",
+      "E4270212015",
+      "Silver Cloud",
+      "南乔治亚",
+      "南极半岛"
+    ],
+    "departureDate": "2027-02-12",
+    "endDate": "2027-02-27",
+    "durationDays": 15,
+    "priceFrom": 39900,
+    "priceLabel": "US$39,900 起",
+    "company": "银海",
+    "shipName": "银海迎云号 Silver Cloud",
+    "summary": "银海迎云号Puerto Williams to Puerto Williams 15 天单船票航程，船司航次 E4270212015，2027年2月12日至2027年2月27日。从威廉斯港往返，深入南乔治亚与南极半岛，兼顾海上巡游、野生动物观察和 Zodiac 探险活动。 舱位、价格和费用包含以顾问向银海实时确认为准。",
+    "overview": "银海迎云号Puerto Williams to Puerto Williams，2027.02.12 — 2027.02.27，15天，船司航次 E4270212015。",
+    "highlights": [
+      "Puerto Williams to Puerto Williams · Voyage E4270212015",
+      "Silver Cloud 银海迎云号，银海全包式奢华探险邮轮服务",
+      "最终舱位、价格、税费和飞航/接驳安排以顾问向银海实时确认为准"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "威廉斯港登船",
+        "content": "从智利威廉斯港登船，开启南乔治亚与南极半岛航程。"
+      },
+      {
+        "day": 4,
+        "title": "海上航行",
+        "content": "海上航行日，参加船上讲座和探险准备。"
+      },
+      {
+        "day": 8,
+        "title": "南乔治亚",
+        "content": "探索南乔治亚，观察王企鹅、海豹和冰川山地景观。"
+      },
+      {
+        "day": 12,
+        "title": "象岛与南极半岛",
+        "content": "进入南极海域，探索象岛、南极海峡、南极半岛与南设得兰群岛。"
+      },
+      {
+        "day": 15,
+        "title": "威廉斯港离船",
+        "content": "返回威廉斯港并离船，结束邮轮航段。"
+      }
+    ],
+    "ship": "Silver Cloud 银海迎云号：舱房、餐饮、公共区域与探险设施以船司实时资料和签约合同为准。",
+    "feeNote": "单船票价格、舱位、税费、飞航衔接和附加服务以顾问实时确认为准；国际机票、签证、保险及个人消费通常另计。",
+    "notice": "南极航线、飞航和登陆活动受天气、冰况、机场与船司安排影响，航线、登陆点和飞行衔接可能调整。",
+    "published": true,
+    "featured": false,
+    "imageAlt": "银海迎云号南乔治亚15天 E4270212015",
+    "sourceFile": "单船票官网上架-致ida.xlsx / https://www.silversea.com/destinations/antarctica-cruise/puerto-williams-to-puerto-williams-e4270212015.html",
+    "wecomFrom": "tkt-023"
   }
 ]

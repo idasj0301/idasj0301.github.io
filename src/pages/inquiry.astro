@@ -5,6 +5,11 @@ import { SITE } from "../lib/site";
 
 const tripSlug = Astro.url.searchParams.get("trip") ?? undefined;
 const tripTitle = Astro.url.searchParams.get("title") ?? undefined;
+const source = Astro.url.searchParams.get("from") ?? "inquiry";
+const destination = Astro.url.searchParams.get("destination") ?? undefined;
+const company = Astro.url.searchParams.get("company") ?? undefined;
+const month = Astro.url.searchParams.get("month") ?? undefined;
+const note = Astro.url.searchParams.get("note") ?? undefined;
 ---
 
 <BaseLayout
@@ -21,7 +26,15 @@ const tripTitle = Astro.url.searchParams.get("title") ?? undefined;
     </header>
 
     <div class="inquiry-card">
-      <LeadForm tripSlug={tripSlug} tripTitle={tripTitle} source="inquiry" />
+      <LeadForm
+        tripSlug={tripSlug}
+        tripTitle={tripTitle}
+        source={source}
+        destination={destination}
+        company={company}
+        month={month}
+        note={note}
+      />
     </div>
 
     <p class="inquiry-alt">

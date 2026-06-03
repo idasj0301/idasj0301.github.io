@@ -25,7 +25,12 @@ const {
   pageHome = path === "/",
 } = Astro.props;
 
-const canonical = new URL(path, SITE.url).href;
+function canonicalPath(value: string) {
+  if (value === "/" || value.endsWith("/") || value.includes(".")) return value;
+  return `${value}/`;
+}
+
+const canonical = new URL(canonicalPath(path), SITE.url).href;
 const ldGraph = [organizationJsonLd(), ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
 ---
 

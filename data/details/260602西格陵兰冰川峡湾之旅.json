@@ -233,5 +233,10 @@
       "src": "/ships/profiles/seaventure/slide32-01.jpg",
       "alt": "剧院"
     }
-  ]
+  ],
+  "routeMap": {
+    "src": "/trips/260602西格陵兰冰川峡湾之旅/route-map.jpeg",
+    "alt": "西格陵兰冰川峡湾之旅 航线图",
+    "caption": "西格陵兰冰川峡湾之旅 · 航线示意"
+  }
 }

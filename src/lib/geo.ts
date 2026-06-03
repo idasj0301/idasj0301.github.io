@@ -8,6 +8,22 @@ function priceCurrency(product: Product) {
 }
 
 export function productJsonLd(product: Product) {
+  const offer =
+    product.priceFrom > 0
+      ? {
+          "@type": "Offer",
+          price: product.priceFrom,
+          priceCurrency: priceCurrency(product),
+          availability: "https://schema.org/InStock",
+          url: `${SITE.url}/trips/${product.slug}/`,
+        }
+      : {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          url: `${SITE.url}/trips/${product.slug}/`,
+          description: product.priceLabel,
+        };
+
   return {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
@@ -19,13 +35,7 @@ export function productJsonLd(product: Product) {
       name: SITE.name,
       url: SITE.url,
     },
-    offers: {
-      "@type": "Offer",
-      price: product.priceFrom,
-      priceCurrency: priceCurrency(product),
-      availability: "https://schema.org/InStock",
-      url: `${SITE.url}/trips/${product.slug}`,
-    },
+    offers: offer,
     itinerary: product.itinerary?.map((d) => ({
       "@type": "ItemList",
       name: `第${d.day}天 ${d.title}`,
