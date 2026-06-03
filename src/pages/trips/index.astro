@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProductGridWithYearFilter from "../../components/ProductGridWithYearFilter.astro";
+import { searchProducts } from "../../lib/products";
+import { SITE } from "../../lib/site";
+
+const q = Astro.url.searchParams.get("q") ?? "";
+const products = searchProducts(q);
+const title = q ? `搜索：${q} · ${SITE.name}` : `全部航程 · ${SITE.name}`;
+---
+
+<BaseLayout
+  title={title}
+  description="搜索船客全部在售南极、北极、加拉帕戈斯及轻探险航程。"
+  path="/trips"
+>
+  <div class="container page">
+    <header class="page-head">
+      <h1>全部航程</h1>
+      <form class="search" action="/trips" method="get" role="search">
+        <input type="search" name="q" value={q} placeholder="目的地、船名、航线" />
+        <button type="submit">搜索</button>
+      </form>
+      <p class="count">共 {products.length} 条在售航程</p>
+    </header>
+    <ProductGridWithYearFilter products={products} gridId="grid-trips-all" minForFilter={3} />
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    padding: 30px 0 var(--space-xl);
+  }
+  .page-head {
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.08;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin: 0;
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: min(100%, 560px);
+    min-height: 48px;
+    padding: 4px;
+    border-radius: 980px;
+    background: #f5f5f7;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  }
+  .search input {
+    flex: 1;
+    min-width: 0;
+    min-height: 40px;
+    padding: 0 16px;
+    font-size: 17px;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    color: var(--ink);
+  }
+  .search input:focus {
+    outline: none;
+  }
+  .search button {
+    min-height: 40px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 980px;
+    background: var(--brand);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .count {
+    font-size: 15px;
+    color: var(--color-muted);
+    margin: 0;
+  }
+  @media (max-width: 520px) {
+    .search {
+      width: 100%;
+    }
+    .search button {
+      padding: 0 14px;
+    }
+  }
+</style>

@@ -1,0 +1,719 @@
+---
+import type { Product } from "../types/product";
+import type { ProductDetail } from "../lib/product-details";
+import TripRouteMap from "./TripRouteMap.astro";
+import { getCategory } from "../lib/categories";
+import { formatDate } from "../lib/products";
+
+interface Props {
+  product: Product;
+  detail?: ProductDetail;
+}
+
+const { product, detail } = Astro.props;
+const cat = getCategory(product.category);
+const priceText = product.priceLabel;
+const isLandJourney =
+  product.shipName.includes("陆地") ||
+  (product.category === "light-expedition" && product.shipName === "陆地轻探险");
+const transportLabel = isLandJourney ? "交通/住宿" : "邮轮";
+const shipTabLabel = isLandJourney ? "安排" : "邮轮";
+const shipSectionTitle = isLandJourney ? "交通与住宿安排" : "邮轮与舱位";
+---
+
+<article class="trip-detail">
+  <section class="detail-hero">
+    <p class="eyebrow">{cat?.label} · {detail?.subtitle ?? product.shipName}</p>
+    <h1>{product.title}</h1>
+    {detail?.tags && (
+      <div class="tags">
+        {detail.tags.map((t) => (
+          <span class="tag">{t}</span>
+        ))}
+      </div>
+    )}
+    <div class="summary-grid">
+      <div><span class="v">{product.durationDays}天</span><span class="l">行程</span></div>
+      <div><span class="v">{formatDate(product.departureDate)}</span><span class="l">出发</span></div>
+      <div><span class="v">{priceText}</span><span class="l">参考价</span></div>
+      <div><span class="v">{product.shipName}</span><span class="l">{transportLabel}</span></div>
+    </div>
+  </section>
+
+  <div class:list={["detail-visual", { "has-image": detail?.heroImage }]}>
+    {detail?.heroImage && (
+      <img
+        src={detail.heroImage}
+        alt={product.imageAlt ?? product.title}
+        loading="eager"
+        decoding="async"
+      />
+    )}
+  </div>
+
+  <div class="tabs-sticky">
+    <nav class="tabs-inner" role="tablist">
+      <button type="button" class="tab on" data-tab="overview">概览</button>
+      {detail?.routeMap && (
+        <button type="button" class="tab" data-tab="route">航线图</button>
+      )}
+      <button type="button" class="tab" data-tab="highlight">亮点</button>
+      <button type="button" class="tab" data-tab="schedule">日程</button>
+      <button type="button" class="tab" data-tab="ship">{shipTabLabel}</button>
+      <button type="button" class="tab" data-tab="fee">费用</button>
+      <button type="button" class="tab" data-tab="notice">须知</button>
+    </nav>
+  </div>
+
+  <div class="detail-body">
+    <div class="detail-layout">
+      <div class="detail-main">
+        <section class="tab-panel on" data-panel="overview">
+          {detail?.routeMap && <TripRouteMap routeMap={detail.routeMap} embedded />}
+          <h2>产品概述</h2>
+          {detail?.metaTable ? (
+            <dl class="spec-sheet">
+              {detail.metaTable.map(([k, v]) => (
+                <div class="spec-row">
+                  <dt>{k}</dt>
+                  <dd>{v}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : (
+            <p>{product.overview ?? product.summary}</p>
+          )}
+          {detail?.cabins && detail.cabins.length > 0 && (
+            <>
+              <h3>舱位与价格</h3>
+              <div class="table-scroll">
+                <table class="data-table data-table--grid">
+                  <colgroup>
+                    <col class="cabin-col" />
+                    <col class="spec-col" />
+                    <col class="price-col" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>舱位</th>
+                      <th>说明</th>
+                      <th>价格</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {detail.cabins.map((c) => (
+                      <tr>
+                        <td>{c.name}</td>
+                        <td>{c.spec}</td>
+                        <td class:list={["price", { sold: c.soldOut }]}>
+                          {c.soldOut ? `${c.price} 售罄` : c.price}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+          {detail?.gallery && detail.gallery.length > 0 && (
+            <div class="trip-gallery">
+              <h3>航程实拍</h3>
+              <p class="gallery-note">图片来自产品资料，具体景观与登陆安排以实际航次为准。</p>
+              <div class="gallery-grid">
+                {detail.gallery.map((img) => (
+                  <figure>
+                    <img src={img.src} alt={img.alt} loading="lazy" />
+                    {img.caption && <figcaption>{img.caption}</figcaption>}
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
+          <p class="lead">{product.summary}</p>
+        </section>
+
+        {detail?.routeMap && (
+          <section class="tab-panel" data-panel="route">
+            <TripRouteMap routeMap={detail.routeMap} embedded />
+          </section>
+        )}
+
+        <section class="tab-panel" data-panel="highlight">
+          <h2>行程亮点</h2>
+          {detail?.highlightSections ? (
+            detail.highlightSections.map((s) => (
+              <div class="block">
+                {s.title !== "行程亮点" && <h3>{s.title}</h3>}
+                {s.content && <p set:html={s.content.replace(/\n/g, "<br />")} />}
+                {s.bullets && (
+                  <ul>
+                    {s.bullets.map((b) => (
+                      <li>{b}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))
+          ) : (
+            <ul>
+              {product.highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section class="tab-panel" data-panel="schedule">
+          <h2>每日安排</h2>
+          {detail?.routeMap && (
+            <p class="route-map-ref">
+              建议先查看 <button type="button" class="route-tab-link" data-goto-tab="route">航线</button> 页对照每日行程。
+            </p>
+          )}
+          {detail?.itinerary ? (
+            detail.itinerary.map((d) => (
+              <div class="day-card">
+                <div class="day-hd">
+                  <span>DAY {d.day}</span>
+                  {d.date && <span>{d.date}</span>}
+                </div>
+                <h4>{d.title}</h4>
+                {d.meta && <p class="day-meta">{d.meta}</p>}
+                <p>{d.content}</p>
+              </div>
+            ))
+          ) : (
+            product.itinerary?.map((d) => (
+              <div class="day-card">
+                <div class="day-hd">
+                  <span>第 {d.day} 天</span>
+                </div>
+                <h4>{d.title}</h4>
+                <p>{d.content}</p>
+              </div>
+            ))
+          )}
+          {detail?.itineraryNote && <p class="note">{detail.itineraryNote}</p>}
+        </section>
+
+        <section class="tab-panel" data-panel="ship">
+          <h2>{shipSectionTitle}</h2>
+          {detail?.shipDetail ? (
+            <>
+              <h3>{detail.shipDetail.name}</h3>
+              <p>{detail.shipDetail.intro}</p>
+              {detail.shipDetail.specs && (
+                <dl class="spec-sheet">
+                  {detail.shipDetail.specs.map(([k, v]) => (
+                    <div class="spec-row">
+                      <dt>{k}</dt>
+                      <dd>{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              {detail.shipDetail.facilities && (
+                <>
+                  <h4>公共区域</h4>
+                  <ul>
+                    {detail.shipDetail.facilities.map((f) => (
+                      <li>{f}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {detail.shipDetail.cabins?.map((c) => (
+                <div class="cabin-card">
+                  <h4 class:list={[{ sold: c.soldOut }]}>
+                    {c.name} · {c.price}
+                    {c.soldOut && " 售罄"}
+                  </h4>
+                  <p>{c.spec}</p>
+                </div>
+              ))}
+            </>
+          ) : (
+            <p>{product.ship ?? (isLandJourney ? "以行程标注酒店、营地、车辆、轻型飞机或当地交通为准。" : "")}</p>
+          )}
+        </section>
+
+        <section class="tab-panel" data-panel="fee">
+          <h2>费用说明</h2>
+          {detail?.feeIncluded ? (
+            <>
+              <h3>费用包含</h3>
+              <ul>
+                {detail.feeIncluded.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+              <h3>费用不含</h3>
+              <ul>
+                {detail.feeExcluded?.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p>{product.feeNote}</p>
+          )}
+        </section>
+
+        <section class="tab-panel" data-panel="notice">
+          <h2>出行须知</h2>
+          {detail?.noticeSections ? (
+            detail.noticeSections.map((s) => (
+              <div class="block">
+                <h3>{s.title}</h3>
+                {s.content && <p>{s.content}</p>}
+                {s.bullets && (
+                  <ul>
+                    {s.bullets.map((b) => (
+                      <li>{b}</li>
+                    ))}
+                  </ul>
+                )}
+                {s.table && (
+                  <dl class="spec-sheet">
+                    {s.table.map(([k, v]) => (
+                      <div class="spec-row">
+                        <dt>{k}</dt>
+                        <dd>{v}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+              </div>
+            ))
+          ) : (
+            <p>{product.notice}</p>
+          )}
+        </section>
+      </div>
+
+      <aside class="detail-side">
+        <p class="side-price">{priceText}</p>
+        <p class="side-note">提交需求后，顾问会按出发日期、舱位/房型和签证情况回访确认。</p>
+        <a href={`/inquiry?trip=${product.slug}&title=${encodeURIComponent(product.title)}`} class="btn btn-outline side-btn">预约留咨</a>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<script>
+  const root = document.querySelector(".trip-detail");
+  if (root) {
+    const tabs = root.querySelectorAll<HTMLButtonElement>(".tab");
+    const panels = root.querySelectorAll<HTMLElement>("[data-panel]");
+    const activate = (id: string) => {
+      tabs.forEach((t) => t.classList.toggle("on", t.dataset.tab === id));
+      panels.forEach((p) => p.classList.toggle("on", p.dataset.panel === id));
+    };
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => activate(tab.dataset.tab ?? "overview"));
+    });
+    root.querySelectorAll<HTMLButtonElement>("[data-goto-tab]").forEach((btn) => {
+      btn.addEventListener("click", () => activate(btn.dataset.gotoTab ?? "route"));
+    });
+  }
+</script>
+
+<style>
+  .trip-detail {
+    padding-bottom: 88px;
+  }
+  .detail-hero {
+    text-align: center;
+    padding: 40px 22px 32px;
+    background: var(--surface);
+  }
+  .eyebrow {
+    font-size: 17px;
+    color: var(--sub);
+    margin-bottom: 8px;
+  }
+  .detail-hero h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    max-width: 800px;
+    margin: 0 auto 16px;
+  }
+  .tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .tag {
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 980px;
+    background: #eef4fa;
+    color: var(--accent);
+  }
+  .tag:first-child {
+    background: #fef3e2;
+    color: #b45309;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .summary-grid .v {
+    display: block;
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .summary-grid .l {
+    font-size: 14px;
+    color: var(--sub);
+  }
+  .detail-visual {
+    position: relative;
+    height: min(48vw, 400px);
+    background: linear-gradient(160deg, #0c1929, #1b4965 50%, #8899aa);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .detail-visual.has-image {
+    background: #0c1929;
+  }
+  .detail-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .trip-gallery {
+    margin: 28px 0 8px;
+  }
+  .trip-gallery h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .gallery-note {
+    font-size: 15px;
+    color: var(--sub);
+    margin-bottom: 16px;
+  }
+  .route-map-ref {
+    font-size: 15px;
+    color: var(--sub);
+    margin: 0 0 20px;
+  }
+  .route-map-ref a {
+    color: var(--brand);
+    text-decoration: none;
+  }
+  .route-map-ref a:hover {
+    text-decoration: underline;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .gallery-grid figure {
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f5f5f7;
+  }
+  .gallery-grid img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery-grid figcaption {
+    font-size: 13px;
+    color: var(--sub);
+    padding: 8px 10px;
+    line-height: 1.4;
+  }
+  .tabs-sticky {
+    position: sticky;
+    top: var(--nav-h);
+    z-index: 50;
+    background: rgba(251, 251, 253, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .tabs-inner {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 14px 22px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .tab {
+    border: none;
+    background: none;
+    font-size: 17px;
+    color: var(--sub);
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 980px;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .tab.on {
+    background: var(--brand);
+    color: #fff;
+    font-weight: 500;
+  }
+  .route-tab-link {
+    border: none;
+    background: none;
+    padding: 0;
+    font: inherit;
+    color: var(--brand);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .detail-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 22px;
+  }
+  .detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 32px;
+    align-items: start;
+  }
+  .detail-main,
+  .detail-side {
+    min-width: 0;
+  }
+  .tab-panel {
+    display: none;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .tab-panel.on {
+    display: block;
+  }
+  .tab-panel h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .tab-panel h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 28px 0 12px;
+    color: var(--accent);
+  }
+  .tab-panel h4 {
+    font-size: 20px;
+    margin: 12px 0 8px;
+  }
+  .lead {
+    margin-top: 20px;
+    color: var(--sub);
+    font-size: 17px;
+  }
+  .block {
+    margin-bottom: 24px;
+  }
+  /* 概览参数：无网格线，仅行间分隔 */
+  .spec-sheet {
+    margin: 20px 0 24px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .spec-row {
+    display: grid;
+    grid-template-columns: minmax(6.5em, 30%) 1fr;
+    gap: 12px 20px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .spec-row:last-child {
+    border-bottom: none;
+  }
+  .spec-row dt {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--sub);
+    line-height: 1.45;
+  }
+  .spec-row dd {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  @media (max-width: 520px) {
+    .spec-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 14px 16px;
+    }
+  }
+  /* 舱位等多列表格：仅横向分隔 */
+  .table-scroll {
+    margin: 16px 0 24px;
+    overflow-x: auto;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .data-table {
+    width: 100%;
+    min-width: 720px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 17px;
+    margin: 0;
+    background: var(--surface);
+    border: none;
+  }
+  .data-table--grid .cabin-col {
+    width: 10.5em;
+  }
+  .data-table--grid .price-col {
+    width: 13em;
+  }
+  .data-table th,
+  .data-table td {
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 14px 18px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .data-table th:first-child,
+  .data-table td:first-child {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+  .data-table td:nth-child(2) {
+    overflow-wrap: anywhere;
+  }
+  .data-table thead th {
+    background: #fbfbfd;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sub);
+    letter-spacing: 0.02em;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .data-table tbody tr:last-child td,
+  .data-table tbody tr:last-child th {
+    border-bottom: none;
+  }
+  .data-table .price {
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .data-table .sold {
+    color: var(--sub);
+    text-decoration: line-through;
+  }
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .day-hd {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .day-meta {
+    font-size: 15px;
+    color: var(--sub);
+    background: #f5f5f7;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 8px 0;
+  }
+  .note {
+    font-size: 15px;
+    color: var(--sub);
+    margin-top: 16px;
+    padding: 14px;
+    background: #fef3e2;
+    border-radius: 10px;
+  }
+  .cabin-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+  .cabin-card h4.sold {
+    color: var(--sub);
+    text-decoration: line-through;
+  }
+  ul {
+    padding-left: 1.25em;
+  }
+  li {
+    margin: 10px 0;
+    color: var(--sub);
+  }
+  li::marker {
+    color: var(--accent);
+  }
+  .detail-side {
+    position: sticky;
+    top: calc(var(--nav-h) + 60px);
+  }
+  .side-price {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .side-note {
+    color: var(--sub);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .side-btn {
+    width: 100%;
+    margin-top: 12px;
+  }
+  @media (max-width: 900px) {
+    .detail-layout {
+      grid-template-columns: 1fr;
+    }
+    .summary-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 734px) {
+    .tabs-inner {
+      justify-content: flex-start;
+      padding: 12px 16px;
+      scroll-padding-inline: 16px;
+    }
+  }
+</style>

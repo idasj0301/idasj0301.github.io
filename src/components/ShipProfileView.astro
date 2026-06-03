@@ -1,0 +1,556 @@
+---
+import ProductCard from "./ProductCard.astro";
+import type { ShipBrand } from "../lib/ships";
+import type { ShipProfile } from "../lib/ship-profiles";
+import { productsForBrand } from "../lib/ships";
+
+interface Props {
+  brand: ShipBrand;
+  profile?: ShipProfile;
+}
+
+const { brand, profile } = Astro.props;
+const related = productsForBrand(brand);
+const title = profile?.vesselName ?? brand.name;
+const subtitle = profile?.vesselNameEn ?? brand.nameEn;
+const tagline = profile?.tagline ?? brand.blurb;
+const heroImage = profile?.heroImage;
+const heroIsLogo = heroImage === brand.logo;
+---
+
+<article class="ship-profile">
+  <header class="ship-hero">
+    <nav class="ship-crumb" aria-label="面包屑">
+      <a href="/ships">船司甄选</a>
+      <span aria-hidden="true">›</span>
+      <span>{title}</span>
+    </nav>
+    <div class="ship-hero-inner">
+      <div class="ship-hero-copy">
+        <img class="ship-hero-logo" src={brand.logo} alt="" width="200" height="56" />
+        <p class="ship-eyebrow">{subtitle}</p>
+        <h1>{title}</h1>
+        <p class="ship-lead">{tagline}</p>
+        <div class="ship-tag-row">
+          {brand.tags.map((t) => (
+            <span>{t}</span>
+          ))}
+        </div>
+        <div class="ship-hero-cta">
+          <a class="btn btn-primary" href="/advisor">咨询该船航次</a>
+          {related[0] && (
+            <a class="btn btn-ghost" href="#trips">
+              查看 {related.length} 个在售航程
+            </a>
+          )}
+        </div>
+      </div>
+      {
+        heroImage && (
+          <figure class:list={["ship-hero-media", { "is-logo": heroIsLogo }]}>
+            <img
+              src={heroImage}
+              alt={`${title} 实景`}
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        )
+      }
+    </div>
+  </header>
+
+  {
+    profile?.specs && profile.specs.length > 0 && (
+      <div class="ship-spec-bar" aria-label="船舶参数">
+        <div class="ship-spec-grid">
+          {profile.specs.slice(0, 8).map(([k, v]) => (
+            <div>
+              <span class="v">{v}</span>
+              <span class="l">{k}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <div class="ship-body">
+    {
+      profile?.highlights && (
+        <section class="ship-block">
+          <h2>船型亮点</h2>
+          <ul class="ship-highlights">
+            {profile.highlights.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      profile?.sections?.map((s) => (
+        <section class="ship-block">
+          <h2>{s.title}</h2>
+          <p>{s.content}</p>
+          {s.bullets && (
+            <ul>
+              {s.bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))
+    }
+
+    {
+      profile?.vessels && profile.vessels.length > 0 && (
+        <section class="ship-block">
+          <h2>甄选船型</h2>
+          <div class="ship-vessel-grid">
+            {profile.vessels.map((v) => (
+              <article class="ship-vessel-card">
+                {v.role && <p class="ship-vessel-role">{v.role}</p>}
+                <h3>{v.name}</h3>
+                {v.nameEn && <p class="ship-vessel-en">{v.nameEn}</p>}
+                <p>{v.intro}</p>
+                {v.specs && (
+                  <dl class="ship-vessel-specs">
+                    {v.specs.map(([k, val]) => (
+                      <div>
+                        <dt>{k}</dt>
+                        <dd>{val}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                {v.cabins && (
+                  <ul class="ship-vessel-cabins">
+                    {v.cabins.map((c) => (
+                      <li>{c}</li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      !profile?.sections?.length && (
+        <section class="ship-block">
+          <h2>品牌简介</h2>
+          <p>{brand.blurb}</p>
+          <p class="ship-muted">
+            该船型详细图文资料整理中，欢迎<a href="/advisor">联系顾问</a>索取最新船册与航次报价。
+          </p>
+        </section>
+      )
+    }
+
+    {
+      profile?.facilities && profile.facilities.length > 0 && (
+        <section class="ship-block">
+          <h2>公共区域与设施</h2>
+          <ul>
+            {profile.facilities.map((f) => (
+              <li>{f}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      profile?.cabins && profile.cabins.length > 0 && (
+        <section class="ship-block">
+          <h2>舱型参考</h2>
+          <div class="ship-cabin-grid">
+            {profile.cabins.map((c) => (
+              <div class="ship-cabin-card">
+                <h3>{c.name}</h3>
+                <p>{c.spec}</p>
+                {c.note && <span class="note">{c.note}</span>}
+              </div>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      profile?.gallery && profile.gallery.length > 0 && (
+        <section class="ship-block ship-gallery-block">
+          <h2>船上实景</h2>
+          <div class="ship-gallery">
+            {profile.gallery.map((g) => (
+              <figure>
+                <img src={g.src} alt={g.alt} loading="lazy" decoding="async" />
+                {g.alt && <figcaption>{g.alt}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+  </div>
+
+  <section class="ship-related" id="trips">
+    <div class="ship-related-inner">
+      <h2>{related.length > 0 ? `相关航程（${related.length}）` : "相关航程"}</h2>
+      {
+        related.length > 0 ? (
+          <div class="ship-trip-cards">
+            {related.map((p) => (
+              <ProductCard product={p} />
+            ))}
+          </div>
+        ) : (
+          <p class="ship-muted">
+            该船司档期整理中，请<a href="/advisor">联系顾问</a>获取航次与舱位报价。
+          </p>
+        )
+      }
+    </div>
+  </section>
+</article>
+
+<style>
+  .ship-profile {
+    width: 100%;
+  }
+  .ship-hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: var(--space-md) var(--page-pad) var(--space-lg);
+  }
+  .ship-crumb {
+    max-width: var(--max-width);
+    margin: 0 auto var(--space-md);
+    font-size: 14px;
+    color: var(--sub);
+  }
+  .ship-crumb a {
+    color: var(--brand);
+    text-decoration: none;
+  }
+  .ship-crumb a:hover {
+    text-decoration: underline;
+  }
+  .ship-hero-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 42%);
+    gap: clamp(24px, 4vw, 48px);
+    align-items: center;
+  }
+  .ship-hero-logo {
+    max-height: 52px;
+    width: auto;
+    margin-bottom: 16px;
+    object-fit: contain;
+    object-position: left;
+  }
+  .ship-eyebrow {
+    font-size: 15px;
+    color: var(--sub);
+    margin-bottom: 8px;
+  }
+  .ship-hero h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-bottom: 12px;
+  }
+  .ship-lead {
+    font-size: var(--font-size-lg);
+    color: var(--sub);
+    line-height: 1.5;
+    max-width: 36em;
+    margin-bottom: 16px;
+  }
+  .ship-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .ship-tag-row span {
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 980px;
+    background: #f5f5f7;
+    color: var(--sub);
+  }
+  .ship-hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 980px;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none !important;
+    transition: background 0.2s var(--ease), color 0.2s var(--ease);
+  }
+  .btn-primary {
+    background: var(--brand);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--brand-hover);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--brand);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .btn-ghost:hover {
+    background: #f5f5f7;
+  }
+  .ship-hero-media {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #f5f5f7;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    aspect-ratio: 4 / 3;
+  }
+  .ship-hero-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .ship-hero-media.is-logo img {
+    object-fit: contain;
+    padding: clamp(24px, 4vw, 56px);
+    background: #fff;
+  }
+  .ship-spec-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  .ship-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .ship-spec-grid > div {
+    padding: 18px 12px;
+    text-align: center;
+    border-right: 1px solid var(--line);
+  }
+  .ship-spec-grid > div:last-child {
+    border-right: none;
+  }
+  .ship-spec-grid .v {
+    display: block;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .ship-spec-grid .l {
+    display: block;
+    font-size: 12px;
+    color: var(--sub);
+    margin-top: 4px;
+  }
+  .ship-body {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--page-pad) var(--space-xl);
+  }
+  .ship-block {
+    margin-bottom: var(--space-lg);
+  }
+  .ship-block h2 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .ship-block p,
+  .ship-block li {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height);
+    color: var(--sub);
+  }
+  .ship-block p {
+    margin-bottom: 12px;
+  }
+  .ship-block ul {
+    padding-left: 1.2em;
+  }
+  .ship-block li {
+    margin: 8px 0;
+  }
+  .ship-highlights {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .ship-highlights li {
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: var(--ink);
+    margin: 0;
+  }
+  .ship-cabin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .ship-cabin-card {
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .ship-cabin-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .ship-cabin-card p {
+    margin: 0;
+    font-size: 15px;
+  }
+  .ship-cabin-card .note {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--brand);
+  }
+  .ship-vessel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 14px;
+  }
+  .ship-vessel-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+  }
+  .ship-vessel-card h3 {
+    font-size: 19px;
+    margin: 4px 0 2px;
+  }
+  .ship-vessel-role,
+  .ship-vessel-en {
+    margin: 0;
+    color: var(--sub);
+    font-size: 14px;
+  }
+  .ship-vessel-specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 14px 0 0;
+  }
+  .ship-vessel-specs div {
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+  }
+  .ship-vessel-specs dt {
+    font-size: 13px;
+    color: var(--sub);
+  }
+  .ship-vessel-specs dd {
+    margin: 3px 0 0;
+    font-weight: 600;
+  }
+  .ship-vessel-cabins {
+    margin-top: 12px;
+  }
+  .ship-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+  }
+  .ship-gallery figure {
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f5f5f7;
+  }
+  .ship-gallery img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+  .ship-gallery figcaption {
+    font-size: 13px;
+    color: var(--sub);
+    padding: 8px 10px;
+  }
+  .ship-muted {
+    font-size: 17px;
+    color: var(--sub);
+  }
+  .ship-related {
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+    padding: var(--space-lg) var(--page-pad) var(--space-xl);
+  }
+  .ship-related-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .ship-related h2 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-md);
+    text-align: left;
+  }
+  .ship-trip-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .ship-trip-cards :global(.product-card) {
+    flex: 0 1 min(360px, 100%);
+    max-width: 400px;
+    min-width: 0;
+  }
+  @media (max-width: 900px) {
+    .ship-hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .ship-hero-media {
+      order: -1;
+    }
+  }
+  @media (max-width: 734px) {
+    .ship-spec-grid > div:nth-child(2n) {
+      border-right: none;
+    }
+    .ship-spec-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .ship-gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

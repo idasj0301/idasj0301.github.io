@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { articles } from "../../lib/products";
+import { SITE } from "../../lib/site";
+
+const list = articles.filter((a) => a.published);
+---
+
+<BaseLayout title={`船说 · 文章 · ${SITE.name}`} description="船客客人故事、极地手记与攻略文章。" path="/articles">
+  <div class="container page">
+    <h1>船说 · 文章</h1>
+    <p class="lead">客人故事与极地手记，辅助您了解真实出行体验。</p>
+    <div class="list">
+      {list.map((a) => (
+        <a href={`/articles/${a.slug}`} class="item">
+          {a.tag && <span class="pill pill-gold">{a.tag}</span>}
+          <h2>{a.title}</h2>
+          <p>{a.author} · {a.excerpt}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    padding: var(--space-md) 0 var(--space-xl);
+  }
+  h1 {
+    font-size: 32px;
+  }
+  .lead {
+    color: var(--color-muted);
+    margin: 12px 0 var(--space-md);
+  }
+  .item {
+    display: block;
+    padding: var(--space-md);
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-sm);
+    text-decoration: none !important;
+    color: inherit;
+  }
+  .item h2 {
+    font-size: 22px;
+    margin: 8px 0;
+  }
+  .item p {
+    font-size: 16px;
+    color: var(--color-muted);
+  }
+</style>

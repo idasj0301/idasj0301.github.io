@@ -1,0 +1,46 @@
+{
+  "name": "chuanke-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "prebuild": "node scripts/generate-llms.mjs",
+    "build": "astro build",
+    "build:lead": "PUBLIC_LEAD_ENDPOINT=/api/lead npm run build",
+    "preview": "astro preview",
+    "serve:lead": "node server/lead-server.mjs",
+    "check": "astro check",
+    "validate:products": "node scripts/validate-products.mjs",
+    "sync:products": "node scripts/sync-products-from-drive.mjs",
+    "sync:route-maps": "node scripts/sync-route-maps-from-drive.mjs",
+    "publish:listings": "node scripts/publish-listing-products.mjs",
+    "generate:details": "node scripts/generate-product-details.mjs",
+    "fix:metadata": "node scripts/fix-product-metadata.mjs",
+    "normalize:prices": "node scripts/normalize-price-labels.mjs",
+    "update:prices": "node scripts/update-display-prices.mjs",
+    "update:highlights": "node scripts/update-highlights-from-ppt.mjs",
+    "fix:ships": "node scripts/fix-ship-name-consistency.mjs",
+    "fix:cards": "node scripts/normalize-product-card-fields.mjs",
+    "clean:highlights": "node scripts/clean-highlight-sections.mjs",
+    "normalize:detail-copy": "node scripts/normalize-detail-copy.mjs",
+    "seed:galapagos": "node scripts/seed-galapagos-catalog.mjs",
+    "import:product-images": "node scripts/import-product-images-from-ppt.mjs",
+    "audit:site": "node scripts/audit-site.mjs",
+    "audit:content": "node scripts/audit-content.mjs",
+    "audit:products": "node scripts/audit-products-deep.mjs",
+    "audit:consistency": "node scripts/audit-consistency.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.3.1",
+    "astro": "^5.7.10",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.8.3"
+  }
+}

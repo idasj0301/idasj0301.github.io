@@ -1,0 +1,249 @@
+---
+interface Props {
+  tripSlug?: string;
+  tripTitle?: string;
+  source?: string;
+}
+
+const { tripSlug, tripTitle, source = "inquiry" } = Astro.props;
+const endpoint = import.meta.env.PUBLIC_LEAD_ENDPOINT ?? "";
+---
+
+<form class="lead-form" id="lead-form" novalidate>
+  {tripTitle && (
+    <p class="lead-trip">
+      咨询航程：<strong>{tripTitle}</strong>
+    </p>
+  )}
+  <input type="hidden" name="tripSlug" value={tripSlug ?? ""} />
+  <input type="hidden" name="tripTitle" value={tripTitle ?? ""} />
+  <input type="hidden" name="source" value={source} />
+
+  <div class="field">
+    <label for="lead-name">您的称呼 <span class="req">*</span></label>
+    <input id="lead-name" name="name" type="text" required autocomplete="name" placeholder="例如：张先生" />
+  </div>
+  <div class="field">
+    <label for="lead-contact">手机或微信 <span class="req">*</span></label>
+    <input
+      id="lead-contact"
+      name="contact"
+      type="text"
+      required
+      autocomplete="tel"
+      placeholder="便于顾问与您联系"
+    />
+  </div>
+  <div class="field">
+    <label for="lead-interest">感兴趣的方向</label>
+    <select id="lead-interest" name="interest">
+      <option value="">暂不确定</option>
+      <option value="南极">南极</option>
+      <option value="北极">北极</option>
+      <option value="加拉帕戈斯">加拉帕戈斯</option>
+      <option value="南部非洲">南部非洲</option>
+      <option value="东非">东非</option>
+      <option value="南美">南美</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="lead-note">补充说明（选填）</label>
+    <textarea
+      id="lead-note"
+      name="note"
+      rows={3}
+      placeholder="方便顾问提前了解您的需求"
+    ></textarea>
+  </div>
+  <label class="consent">
+    <input type="checkbox" name="consent" required />
+    <span>同意船客顾问通过上述联系方式与我沟通行程信息</span>
+  </label>
+  <p class="form-hint">信息仅用于行程咨询，不会用于在线收款。提交后顾问将在 1 个工作日内回复。</p>
+  <button type="submit" class="btn btn-primary btn-wide">提交留资</button>
+  <p id="lead-error" class="lead-error" hidden role="alert"></p>
+</form>
+
+<div id="lead-success" class="lead-success" hidden>
+  <p class="success-title">已收到您的预约</p>
+  <p class="success-desc">顾问将尽快通过您留下的联系方式与您联系。您也可以立即添加企业微信，沟通更快捷。</p>
+  <div class="success-actions">
+    <a href="/advisor" class="btn btn-primary btn-wide">添加旅行顾问</a>
+    <a href="/trips" class="btn btn-outline btn-wide">继续浏览航程</a>
+  </div>
+</div>
+
+<script is:inline define:vars={{ endpoint }}>
+  const form = document.getElementById("lead-form");
+  const success = document.getElementById("lead-success");
+  const errEl = document.getElementById("lead-error");
+  if (!form || !success) throw new Error("lead form missing");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (errEl) errEl.hidden = true;
+
+    const fd = new FormData(form);
+    if (!fd.get("consent")) {
+      if (errEl) {
+        errEl.textContent = "请勾选同意顾问联系您。";
+        errEl.hidden = false;
+      }
+      return;
+    }
+
+    const payload = {
+      name: String(fd.get("name") ?? "").trim(),
+      contact: String(fd.get("contact") ?? "").trim(),
+      interest: String(fd.get("interest") ?? "").trim() || undefined,
+      note: String(fd.get("note") ?? "").trim() || undefined,
+      tripSlug: String(fd.get("tripSlug") ?? "").trim() || undefined,
+      tripTitle: String(fd.get("tripTitle") ?? "").trim() || undefined,
+      source: String(fd.get("source") ?? "inquiry"),
+      pageUrl: window.location.href,
+      submittedAt: new Date().toISOString(),
+    };
+
+    if (!payload.name || !payload.contact) {
+      if (errEl) {
+        errEl.textContent = "请填写称呼与联系方式。";
+        errEl.hidden = false;
+      }
+      return;
+    }
+
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) btn.disabled = true;
+
+    let ok = false;
+    if (endpoint) {
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        ok = res.ok;
+      } catch {
+        ok = false;
+      }
+    }
+
+    try {
+      const key = "chuanke_leads_v1";
+      const prev = JSON.parse(localStorage.getItem(key) ?? "[]");
+      localStorage.setItem(key, JSON.stringify([payload, ...prev].slice(0, 50)));
+    } catch {
+      /* local backup is best-effort */
+    }
+
+    if (!endpoint) ok = true;
+    if (!ok && errEl) {
+      errEl.textContent = "提交失败，请稍后重试或直接拨打 010-85864460。";
+      errEl.hidden = false;
+      if (btn) btn.disabled = false;
+      return;
+    }
+
+    form.hidden = true;
+    success.hidden = false;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+<style>
+  .lead-form,
+  .lead-success {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .lead-trip {
+    font-size: 16px;
+    color: var(--sub);
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    background: #f5f5f7;
+    border-radius: 12px;
+    line-height: 1.5;
+  }
+  .field {
+    margin-bottom: 18px;
+  }
+  .field label {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .req {
+    color: #b45309;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    font-size: 17px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    font-family: inherit;
+    background: #fff;
+    color: var(--ink);
+  }
+  .field textarea {
+    min-height: 96px;
+    resize: vertical;
+  }
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--sub);
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  .consent input {
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .form-hint {
+    font-size: 14px;
+    color: var(--sub);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .btn-wide {
+    width: 100%;
+    min-height: 48px;
+  }
+  .lead-error {
+    color: #b91c1c;
+    font-size: 15px;
+    margin-top: 12px;
+  }
+  .lead-success {
+    text-align: center;
+    padding: 8px 0;
+  }
+  .success-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .success-desc {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--sub);
+    margin-bottom: 24px;
+  }
+  .success-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+</style>

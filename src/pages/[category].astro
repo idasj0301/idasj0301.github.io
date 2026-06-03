@@ -1,0 +1,279 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductGridWithYearFilter from "../components/ProductGridWithYearFilter.astro";
+import ShipBrandGrid from "../components/ShipBrandGrid.astro";
+import SingleTicketPage from "../components/SingleTicketPage.astro";
+import { CATEGORIES } from "../lib/categories";
+import { getCategoryPageProducts } from "../lib/products";
+import type { ProductCategory } from "../types/product";
+import { breadcrumbJsonLd } from "../lib/geo";
+import { SITE } from "../lib/site";
+
+export function getStaticPaths() {
+  return CATEGORIES.map((c) => ({ params: { category: c.path.slice(1) } }));
+}
+
+const slugMap: Record<string, ProductCategory> = {
+  antarctic: "antarctic",
+  arctic: "arctic",
+  galapagos: "galapagos",
+  "light-expedition": "light-expedition",
+  tickets: "ticket",
+  ships: "ship",
+};
+
+const segment = Astro.params.category!;
+const catKey = slugMap[segment];
+const meta = CATEGORIES.find((c) => c.path === `/${segment}`)!;
+const products = getCategoryPageProducts(catKey);
+const isShips = segment === "ships";
+const isTickets = segment === "tickets";
+const title = isTickets ? `单船票 · ${SITE.name}` : `${meta.label} · ${SITE.name}`;
+const description = isTickets
+  ? "船客单船票服务，按船司、航线、档期和舱位政策匹配南极、北极及高端邮轮单船票，最终价格、舱位和库存以顾问实时确认为准。"
+  : meta.description;
+const breadcrumbLd = breadcrumbJsonLd([
+  { name: "首页", url: SITE.url },
+  { name: meta.label, url: `${SITE.url}${meta.path}` },
+]);
+const ticketLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "什么是单船票？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "单船票通常指只购买邮轮或探险船航段，适合已自行安排国际机票、签证、前后段住宿或岸上行程的客人。",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "单船票价格和余舱为什么要实时确认？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "探险邮轮舱位数量有限，价格会随船司政策、舱型、档期和促销变化。官网展示可咨询方向，最终价格、舱位和库存以顾问实时确认为准。",
+      },
+    },
+  ],
+};
+const ld = isTickets ? [breadcrumbLd, ticketLd] : breadcrumbLd;
+---
+
+<BaseLayout title={title} description={description} path={meta.path} jsonLd={ld}>
+  {isTickets ? (
+    <SingleTicketPage products={products} />
+  ) : (
+  <div class="container page">
+    <nav class="breadcrumb" aria-label="面包屑">
+      <a href="/">首页</a> › <span>{meta.label}</span>
+    </nav>
+    <h1>{meta.label}</h1>
+    <p class="lead">{meta.description}</p>
+
+    {isShips && (
+      <p class="ships-note">点击品牌卡片进入船舶介绍页，查看方案中的船型图文与在售航程。</p>
+    )}
+
+    {meta.filters && !isShips && (
+      <div class="filters" role="tablist" aria-label="筛选" data-tag-filter-for={`grid-${segment}`}>
+        {meta.filters.map((f) => (
+          <button
+            type="button"
+            class:list={["filter", { on: f === "全部" }]}
+            data-tag={f === "全部" ? "all" : f}
+            aria-pressed={f === "全部" ? "true" : "false"}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+    )}
+
+    {isShips ? (
+      <ShipBrandGrid />
+    ) : (
+      <ProductGridWithYearFilter products={products} gridId={`grid-${segment}`} minForFilter={2}>
+        <p slot="empty" class="empty">
+          该分类下暂无在售航程，请直连顾问获取尾盘档期。
+        </p>
+      </ProductGridWithYearFilter>
+    )}
+
+  </div>
+  )}
+</BaseLayout>
+
+<style>
+  .page {
+    padding: var(--space-md) 0 var(--space-xl);
+  }
+  .breadcrumb {
+    font-size: 16px;
+    color: var(--color-muted);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  .lead {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    max-width: 720px;
+    margin-bottom: var(--space-md);
+    line-height: var(--line-height);
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: var(--space-md);
+  }
+  .filter {
+    padding: 10px 18px;
+    border-radius: 24px;
+    font-size: 16px;
+    font-family: inherit;
+    background: #f3f4f6;
+    color: var(--color-muted);
+    border: none;
+    cursor: pointer;
+  }
+  .filter.on {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .empty {
+    grid-column: 1 / -1;
+    font-size: var(--font-size-sm);
+    padding: var(--space-lg);
+    text-align: center;
+  }
+  .ticket-note {
+    margin-top: var(--space-md);
+    font-size: 16px;
+    color: var(--color-muted);
+    max-width: 720px;
+    line-height: var(--line-height);
+  }
+  .ships-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    max-width: 720px;
+    margin: -8px 0 var(--space-md);
+    line-height: var(--line-height);
+  }
+  .ticket-search-panel {
+    margin: 26px 0 24px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .ticket-search-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .ticket-search-head h2 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .ticket-search-head p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--sub);
+  }
+  .ticket-search-grid {
+    display: grid;
+    grid-template-columns: minmax(120px, 0.7fr) repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    align-items: start;
+  }
+  .ticket-filter-group {
+    min-width: 0;
+    padding: 13px;
+    border-radius: 12px;
+    background: #f5f5f7;
+  }
+  .ticket-filter-group > span {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--sub);
+  }
+  .ticket-filter-group > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .ticket-filter {
+    min-height: 38px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 980px;
+    background: #f5f5f7;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+  .ticket-search-grid > .ticket-filter {
+    align-self: end;
+    justify-self: start;
+    min-height: 40px;
+  }
+  .ticket-filter-group .ticket-filter {
+    min-height: 34px;
+    background: #fff;
+    color: var(--sub);
+  }
+  .ticket-filter:hover {
+    background: #e8eaed;
+    color: var(--ink);
+  }
+  .ticket-filter.on {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .ticket-filter-group .ticket-filter.on {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  @media (max-width: 980px) {
+    .ticket-search-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .ticket-search-grid > .ticket-filter {
+      grid-column: 1 / -1;
+      justify-self: flex-start;
+    }
+  }
+  @media (max-width: 734px) {
+    .ticket-search-panel {
+      margin-top: 22px;
+      padding: 18px;
+    }
+    .ticket-search-head {
+      display: block;
+    }
+    .ticket-search-head h2 {
+      margin-bottom: 6px;
+    }
+    .ticket-search-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,667 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutHero from "../components/AboutHero.astro";
+import { SITE } from "../lib/site";
+import aboutData from "../../data/about.json";
+
+const about = aboutData;
+const officePhotoByTitle = new Map(about.officeGallery.map((item) => [item.title, item]));
+const [featuredGroupPhoto, ...secondaryGroupPhotos] = about.groupPhotos;
+---
+
+<BaseLayout
+  title={`关于我们 · ${SITE.name}`}
+  description="北京船客国际旅行社：2002 年成立，IAATO/AECO 双认证，深耕以邮轮为核心的高端旅行领域，提供极地、邮轮与轻探险深度旅行解决方案。"
+  path="/about"
+>
+  <article class="about-page">
+    <header class="about-hero">
+      <AboutHero about={about} />
+      <section class="stats-band" aria-label="关键数据">
+        <div class="stats-intro">
+          <p>船客经验</p>
+          <h2>用长期运营，支撑每一次远行</h2>
+          <span>从极地包船到全球邮轮资源，官网呈现的是一套已被多年出行验证过的服务体系。</span>
+        </div>
+        <ul class="stats">
+          {
+            about.stats.map((s) => (
+              <li>
+                <strong>{s.value}</strong>
+                <span>{s.label}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </header>
+
+    <section class="about-section container">
+      <h2>资质与荣誉</h2>
+      <ul class="badge-list">
+        {about.credentials.map((c) => <li>{c}</li>)}
+      </ul>
+      <p class="note">旅行社业务经营许可证、企业法人营业执照等证照可向顾问索取查阅。</p>
+    </section>
+
+    <section class="about-section container">
+      <h2>旅行目的地</h2>
+      <div class="dest-grid">
+        {
+          about.destinations.map((d) => (
+            <a href={d.path} class="dest-card">
+              <h3>{d.title}</h3>
+              <p>{d.desc}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="about-section container">
+      <h2>公司历程</h2>
+      <ol class="timeline">
+        {
+          about.milestones.map((m) => (
+            <li>
+              <span class="year">{m.year}</span>
+              <p>{m.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="about-section container">
+      <h2>我们的优势</h2>
+      {about.advantages.map((p) => <p>{p}</p>)}
+      <p>
+        我们理解成熟旅客对<strong>清晰信息、稳妥节奏与可信顾问</strong>的需求。官网展示参考航程与价格区间，不构成合同要约；预约与咨询通过<strong>企业微信顾问</strong>一对一完成。
+      </p>
+    </section>
+
+    <section class="about-section container group-photos-section">
+      <div class="section-heading-row">
+        <div>
+          <h2>真实出团合照</h2>
+          <p>来自船客历年带队现场，记录与客人一起抵达极地、邮轮与小众目的地的真实瞬间。</p>
+        </div>
+      </div>
+      {
+        featuredGroupPhoto && (
+          <figure class="group-photo-feature">
+            <img src={featuredGroupPhoto.image} alt={featuredGroupPhoto.alt} loading="lazy" />
+            <figcaption>
+              <strong>{featuredGroupPhoto.title}</strong>
+              <span>{featuredGroupPhoto.desc}</span>
+            </figcaption>
+          </figure>
+        )
+      }
+      <div class="group-photo-wall">
+        {
+          secondaryGroupPhotos.map((item) => (
+            <figure class="group-photo-card">
+              <img src={item.image} alt={item.alt} loading="lazy" />
+              <figcaption>
+                <strong>{item.title}</strong>
+                <span>{item.desc}</span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="about-section container">
+      <h2>以承诺，构筑信任</h2>
+      <div class="promise-grid">
+        {
+          about.servicePromises.map((item) => (
+            <article class="promise-card">
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="about-section container partner-showcase-section">
+      <div class="section-heading-row">
+        <div>
+          <h2>合作伙伴</h2>
+          <p>长期连接全球邮轮公司、奢华旅行组织与高端旅行资源，为客户提供更稳定的一手服务能力。</p>
+        </div>
+      </div>
+      <div class="partner-showcase">
+        <div class="logo-wall" aria-label="合作船司与组织 logo">
+          {
+            about.partnerLogos.map((item) => (
+              <div class="logo-tile">
+                <img src={item.image} alt={item.name} loading="lazy" />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section container alt">
+      <h2>负责任的旅行</h2>
+      <p>{about.responsible}</p>
+    </section>
+
+    <section class="about-section container contact">
+      <div class="section-heading-row">
+        <div>
+          <h2>线下联系方式</h2>
+          <p>北京、上海、广州办公室可承接线下到访、电话咨询与区域客户服务。</p>
+        </div>
+      </div>
+      <div class="office-card-grid">
+        {
+          about.offices.map((o) => {
+            const photo = officePhotoByTitle.get(o.name);
+            return (
+              <article class={`office-card ${photo ? "has-photo" : "text-only"}`}>
+                {photo && <img src={photo.image} alt={photo.alt} loading="lazy" />}
+                <div class="office-card-body">
+                  <h3>{o.name}</h3>
+                  <p>{o.address}</p>
+                  {o.phone && (
+                    <p>
+                      电话：<a href={`tel:${o.phone.replace(/\D/g, "")}`}>{o.phone}</a>
+                    </p>
+                  )}
+                  {photo && <span>{photo.desc}</span>}
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+      <div class="contact-actions">
+        <div class="cta-row">
+          <a href="/advisor" class="btn btn-primary">联系旅行顾问</a>
+          <a href="/inquiry" class="btn btn-outline">预约留咨</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding-bottom: var(--space-xl);
+  }
+  .about-hero {
+    padding: 0 0 48px;
+    background: var(--bg);
+  }
+  .stats-band {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.86fr) minmax(0, 1.4fr);
+    gap: 28px;
+    align-items: stretch;
+    max-width: var(--max-width);
+    margin: 34px auto 0;
+    padding: 0 var(--page-pad);
+  }
+  .stats-intro {
+    padding: 28px 30px;
+    color: #fff;
+    background: linear-gradient(135deg, #003066 0%, #0b4c78 100%);
+    border-radius: var(--radius);
+  }
+  .stats-intro p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .stats-intro h2 {
+    margin: 0 0 14px;
+    font-size: clamp(24px, 2.8vw, 34px);
+    line-height: 1.18;
+    font-weight: 600;
+    color: #fff;
+  }
+  .stats-intro span {
+    display: block;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .stats {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0;
+    padding: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .stats li {
+    min-height: 146px;
+    padding: 22px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+  }
+  .stats li:nth-child(5) {
+    grid-column: span 2;
+  }
+  .stats strong {
+    display: block;
+    font-size: clamp(30px, 2.6vw, 40px);
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .stats span {
+    display: block;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--sub);
+    max-width: 9em;
+  }
+  .about-section {
+    padding: 40px var(--page-pad);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .about-section.alt {
+    background: var(--surface);
+    max-width: none;
+    width: 100%;
+  }
+  .about-section.alt > h2,
+  .about-section.alt > p {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-primary);
+  }
+  .about-section p {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height);
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .about-section .note {
+    max-width: 760px;
+    margin: 14px 0 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--line);
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--sub);
+  }
+  .badge-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .badge-list li {
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .dest-card {
+    display: block;
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--surface);
+    text-decoration: none !important;
+    color: inherit;
+    transition: box-shadow 0.2s;
+  }
+  .dest-card:hover {
+    box-shadow: 0 8px 24px rgba(27, 73, 101, 0.1);
+  }
+  .dest-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+  }
+  .dest-card p {
+    font-size: 16px;
+    color: var(--sub);
+    margin: 0;
+  }
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .promise-card {
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .promise-card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+  .promise-card p {
+    font-size: 16px;
+    color: var(--sub);
+    margin: 0;
+  }
+  .section-heading-row {
+    display: grid;
+    grid-template-columns: minmax(0, 760px);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .section-heading-row h2 {
+    margin-bottom: 8px;
+  }
+  .section-heading-row p {
+    max-width: 720px;
+    color: var(--sub);
+    margin: 0;
+  }
+  .group-photos-section {
+    width: 100%;
+    max-width: none;
+    margin: 24px 0 0;
+    padding: 72px var(--page-pad);
+    background: #f5f5f7;
+  }
+  .group-photos-section .section-heading-row {
+    grid-template-columns: 1fr;
+    max-width: 780px;
+    margin: 0 auto 34px;
+    text-align: center;
+  }
+  .group-photos-section .section-heading-row h2 {
+    margin-bottom: 12px;
+    color: #1d1d1f;
+    font-size: clamp(36px, 4.8vw, 58px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+  .group-photos-section .section-heading-row p {
+    max-width: 680px;
+    margin: 0 auto;
+    color: #6e6e73;
+    font-size: clamp(17px, 1.8vw, 21px);
+    line-height: 1.55;
+  }
+  .group-photo-feature,
+  .group-photo-card {
+    margin: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: none;
+  }
+  .group-photo-feature {
+    max-width: var(--max-width);
+    margin: 0 auto 18px;
+  }
+  .group-photo-feature img,
+  .group-photo-card img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
+  .group-photo-feature img {
+    aspect-ratio: 16 / 8.6;
+    height: auto;
+    object-position: center 56%;
+  }
+  .group-photo-card img {
+    aspect-ratio: 4 / 3;
+    height: auto;
+    object-position: center;
+  }
+  .group-photo-feature figcaption,
+  .group-photo-card figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 22px 22px;
+    background: #fff;
+  }
+  .group-photo-feature strong,
+  .group-photo-card strong {
+    font-size: clamp(18px, 1.7vw, 22px);
+    line-height: 1.35;
+    font-weight: 600;
+    color: #1d1d1f;
+  }
+  .group-photo-feature span,
+  .group-photo-card span {
+    font-size: 15px;
+    line-height: 1.58;
+    color: #6e6e73;
+  }
+  .group-photo-wall {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .group-photo-card {
+    min-width: 0;
+  }
+  .partner-showcase {
+    max-width: 100%;
+  }
+  .office-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+  }
+  .office-card {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+  .office-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+  }
+  .office-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .office-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+  .office-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--sub);
+    margin-bottom: 8px;
+  }
+  .office-card span {
+    display: block;
+    margin-top: auto;
+    padding-top: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--sub);
+  }
+  .office-card.text-only {
+    background: linear-gradient(180deg, #fff 0%, #f5f8fb 100%);
+  }
+  .office-card.text-only .office-card-body {
+    min-height: 260px;
+  }
+  .logo-wall {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .logo-tile {
+    display: grid;
+    place-items: center;
+    min-height: 88px;
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .logo-tile img {
+    display: block;
+    width: 100%;
+    height: 54px;
+    max-width: 150px;
+    object-fit: contain;
+  }
+  .timeline {
+    list-style: none;
+    padding: 0;
+    border-left: 2px solid var(--line);
+    margin-left: 8px;
+  }
+  .timeline li {
+    padding: 0 0 24px 24px;
+    position: relative;
+  }
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-primary);
+  }
+  .year {
+    display: block;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+  }
+  .timeline p {
+    font-size: var(--font-size-sm);
+    color: var(--sub);
+    margin: 0;
+  }
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .legal-links {
+    font-size: 15px;
+    color: var(--sub);
+    margin: 0;
+  }
+  @media (max-width: 734px) {
+    .stats-band {
+      grid-template-columns: 1fr;
+      margin-top: 28px;
+      gap: 12px;
+    }
+    .stats-intro {
+      padding: 22px;
+    }
+    .stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .stats li {
+      min-height: 136px;
+      padding: 18px 16px;
+    }
+    .stats strong {
+      font-size: 34px;
+    }
+    .stats li:nth-child(3) {
+      grid-column: 1 / -1;
+    }
+    .stats li:nth-child(5) {
+      grid-column: auto;
+    }
+    .group-photo-feature {
+      margin-bottom: 14px;
+    }
+    .group-photo-wall {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .group-photos-section {
+      padding-top: 54px;
+      padding-bottom: 54px;
+    }
+    .group-photo-feature figcaption,
+    .group-photo-card figcaption {
+      padding: 15px 16px 18px;
+    }
+    .office-card-grid {
+      grid-template-columns: 1fr;
+    }
+    .office-card.text-only .office-card-body {
+      min-height: auto;
+    }
+    .contact-actions {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .logo-wall {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .logo-tile {
+      min-height: 82px;
+      padding: 14px;
+    }
+    .logo-tile img {
+      height: 46px;
+    }
+  }
+</style>

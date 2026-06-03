@@ -1,0 +1,68 @@
+{
+  "brandId": "seaventure",
+  "vesselName": "Seaventure 海神号",
+  "vesselNameEn": "66° Expeditions · Seaventure",
+  "tagline": "世界上第一艘专为极地探险建造的探险邮轮",
+  "heroImage": "/ships/profiles/seaventure/slide29-00.jpg",
+  "highlights": [
+    "第一艘专为极地探险旅行建造的邮轮",
+    "第一艘环绕斯瓦尔巴与北极航行的探险邮轮",
+    "曾 2 次穿越东北航道、9 次穿越西北航道",
+    "安全航行超过 300 个南北极航次",
+    "2022 年全面升级，SUPER 1A 抗冰级"
+  ],
+  "sections": [
+    {
+      "title": "全新升级 · 超高冰抗",
+      "content": "她是世界上第一艘专为极地探险建造的探险邮轮，已连续安全运营超过 300 个航次，于 2022 年完成升级更新。拥有最高抗冰等级 SUPER 1A，更好地支持冰区航行条件。"
+    },
+    {
+      "title": "专为华人游客定制",
+      "content": "因独有中国 DNA，懂中国客人的习惯与需求：全船中英双语服务、迎合中国人口味的美食等，致力打造更高服务水准。"
+    },
+    {
+      "title": "国际化探险团队",
+      "content": "邮轮团队来自世界各地，在各自领域拥有深厚专业知识与丰富经验，对南北极充满热爱。"
+    }
+  ],
+  "specs": [
+    ["改造", "2022"],
+    ["载客", "140 人"],
+    ["船员", "120 人"],
+    ["抗冰", "SUPER 1A"],
+    ["船长", "111.5 m"],
+    ["船宽", "17 m"],
+    ["吨位", "6752"],
+    ["航速", "14.5 节"],
+    ["餐厅", "2 个"]
+  ],
+  "facilities": [
+    "美食餐厅：早午自助，晚点餐",
+    "俱乐部酒吧：免费软饮与茶点",
+    "酒吧大厅：约 149 人",
+    "日光甲板与游泳池",
+    "健身房、桑拿房",
+    "极地图书馆、全景休息厅",
+    "公民科学实验室、医疗中心"
+  ],
+  "cabins": [
+    { "name": "舷窗房", "spec": "17.5㎡ · 3 层 · 双舷窗", "note": "售罄档期以实际为准" },
+    { "name": "海景房", "spec": "18.6㎡ · 4/5 层 · 方窗" },
+    { "name": "三人海景房", "spec": "18.6㎡ · 4 层" },
+    { "name": "阳台房", "spec": "21.1㎡（含阳台 3.6㎡）· 6 层 · 私人阳台" },
+    { "name": "船东套房", "spec": "30.8㎡（含阳台 5.4㎡）· 7 层 · 浸泡浴缸" }
+  ],
+  "gallery": [
+    { "src": "/ships/profiles/seaventure/slide28-02.jpg", "alt": "海神号外观" },
+    { "src": "/ships/profiles/seaventure/slide31-00.jpg", "alt": "美食餐厅" },
+    { "src": "/ships/profiles/seaventure/slide31-01.jpg", "alt": "俱乐部酒吧" },
+    { "src": "/ships/profiles/seaventure/slide32-00.jpg", "alt": "露天泳池" },
+    { "src": "/ships/profiles/seaventure/slide32-01.jpg", "alt": "剧院" },
+    { "src": "/ships/profiles/seaventure/slide32-02.jpg", "alt": "健身房" },
+    { "src": "/ships/profiles/seaventure/slide33-00.jpg", "alt": "舷窗房" },
+    { "src": "/ships/profiles/seaventure/slide33-01.jpg", "alt": "海景房" },
+    { "src": "/ships/profiles/seaventure/slide34-00.jpg", "alt": "阳台房" },
+    { "src": "/ships/profiles/seaventure/slide34-01.jpg", "alt": "船东套房" }
+  ],
+  "relatedSlugs": ["2026-wangguin-antarctica-22d"]
+}

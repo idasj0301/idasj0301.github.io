@@ -1,0 +1,955 @@
+---
+import type { Product } from "../types/product";
+import { getProductDetail } from "../lib/product-details";
+import { getCardSubtitle, getCardTitle, formatCardDateLine } from "../lib/product-card";
+
+interface Props {
+  products: Product[];
+}
+
+const { products } = Astro.props;
+
+const faqItems = [
+  {
+    question: "单船票和跟团产品有什么区别？",
+    answer: "单船票通常只预订邮轮或探险船航段，适合已经自行安排国际机票、签证、前后段住宿或岸上行程的客人；跟团产品则会把更多陆地段、交通和领队服务打包在一起。",
+  },
+  {
+    question: "单船票通常包含什么、不包含什么？",
+    answer: "通常包含船上住宿、船上餐食、船上活动和船司安排的登陆或巡游项目；国际机票、签证、保险、出发前后酒店和额外岸上行程通常不包含，具体以船司条款和签约确认为准。",
+  },
+  {
+    question: "适合哪些客人只订船票？",
+    answer: "适合有较强自主出行能力、已安排国际段、希望灵活组合前后旅行，或已经明确想搭乘某家船司、某艘船、某个档期的客人。",
+  },
+  {
+    question: "舱位和价格为什么要实时确认？",
+    answer: "探险邮轮舱位数量有限，不同船司会随档期、舱型、促销政策和汇率变化调整价格。官网展示的是可咨询方向，最终余舱和报价需要顾问向船司实时确认。",
+  },
+  {
+    question: "船客可以帮我比较哪些船司？",
+    answer: "船客可协助比较庞洛、银海、夸克、66度、A21、SWAN、OW、信天翁、欧若拉等船司资源，并结合目的地、天数、预算、舱型偏好和出行经验给出建议。",
+  },
+  {
+    question: "已经有机票和签证，能不能只订船票？",
+    answer: "可以。你可以把已有机票、签证、计划出发月份和想去的目的地告诉顾问，顾问会优先按可衔接的船期和船司政策帮你筛选。",
+  },
+];
+
+function productCompany(product: Product) {
+  if (product.shipName.includes("银海") || product.shipName.includes("Silver")) return "银海";
+  if (product.shipName.includes("海神")) return "66度";
+  if (product.shipName.includes("指挥官夏古")) return "庞洛";
+  return "船客合作船司";
+}
+
+function productDestination(product: Product) {
+  const text = `${product.title} ${product.summary} ${product.subcategory} ${(product.tags ?? []).join(" ")}`;
+  if (text.includes("南极")) return "南极";
+  if (text.includes("北极") || text.includes("格陵兰") || text.includes("斯瓦尔巴")) return "北极";
+  if (text.includes("加拉帕戈斯")) return "加拉帕戈斯";
+  return "其他";
+}
+
+function monthLabel(product: Product) {
+  return `${new Date(`${product.departureDate}T12:00:00`).getMonth() + 1}月`;
+}
+
+function uniqueValues(values: string[]) {
+  return [...new Set(values)].filter(Boolean);
+}
+
+const companyPriority = new Map([
+  ["银海", 0],
+  ["庞洛", 1],
+  ["66度", 2],
+]);
+
+const officialProducts = products.map((product) => {
+  const detail = getProductDetail(product.slug);
+  const company = productCompany(product);
+  const destination = productDestination(product);
+  const month = monthLabel(product);
+  const days = `${product.durationDays}天`;
+  const displayTags = [...new Set(product.tags ?? [])]
+    .filter((tag) => {
+      if ([product.subcategory, product.shipName, company, "单船票"].includes(tag)) return false;
+      return !product.shipName.includes(tag);
+    })
+    .slice(0, 2);
+
+  return {
+    product,
+    company,
+    title: getCardTitle(product),
+    subtitle: getCardSubtitle(product),
+    dateLine: formatCardDateLine(product),
+    displayTags,
+    destination,
+    month,
+    days,
+    keywords: [
+      product.title,
+      product.summary,
+      product.shipName,
+      product.subcategory,
+      destination,
+      month,
+      ...(product.tags ?? []),
+    ].join("|"),
+    coverSrc: detail?.heroImage ?? detail?.gallery?.[0]?.src,
+  };
+}).sort((a, b) => {
+  const rankA = companyPriority.get(a.company) ?? 9;
+  const rankB = companyPriority.get(b.company) ?? 9;
+  if (rankA !== rankB) return rankA - rankB;
+  return a.product.departureDate.localeCompare(b.product.departureDate);
+});
+
+const officialFilterGroups = [
+  { key: "company", label: "船司", options: uniqueValues(officialProducts.map((item) => item.company)) },
+  { key: "destination", label: "目的地", options: uniqueValues(officialProducts.map((item) => item.destination)) },
+  { key: "month", label: "出发月份", options: uniqueValues(officialProducts.map((item) => item.month)) },
+  { key: "days", label: "天数", options: uniqueValues(officialProducts.map((item) => item.days)) },
+];
+---
+
+<article class="ticket-page">
+  <section class="ticket-hero">
+    <div class="ticket-hero-copy">
+      <nav class="breadcrumb" aria-label="面包屑">
+        <a href="/">首页</a> › <span>单船票</span>
+      </nav>
+      <p class="eyebrow">CRUISE ONLY · 船客单船票</p>
+      <h1>单船票</h1>
+      <p class="hero-lead">
+        按船司、航线、档期和舱位政策匹配南极、北极及高端邮轮单船票。
+        适合已自行安排国际机票、签证和前后段行程的客人。
+      </p>
+      <div class="hero-actions">
+        <a href="/inquiry?from=tickets" class="btn btn-primary">提交船票需求</a>
+        <a href="/advisor?from=tickets" class="btn btn-outline">咨询实时余舱</a>
+      </div>
+      <p class="trust-note">最终价格、舱位、库存和优惠政策，以顾问向船司实时确认为准。</p>
+    </div>
+    <aside class="hero-panel" aria-label="单船票服务摘要">
+      <div>
+        <strong>{products.length}</strong>
+        <span>在售航次</span>
+      </div>
+      <div>
+        <strong>银海</strong>
+        <span>优先展示</span>
+      </div>
+      <div>
+        <strong>2026-27</strong>
+        <span>当前档期</span>
+      </div>
+    </aside>
+  </section>
+
+  <section class="ticket-section live-section" aria-label="官网在售单船票">
+    <div class="section-heading route-heading">
+      <div>
+        <p>官网在售</p>
+        <h2>已整理成正式产品的单船票航程</h2>
+      </div>
+      <span>优先展示已整理成正式 SKU 的航次；参考起价、日期和天数来自已发布产品，舱位与最终费用仍以顾问确认为准。</span>
+    </div>
+    {
+      products.length > 0 ? (
+        <div data-product-filters>
+          <div class="ticket-filter-panel product-filter-panel">
+            <div class="filter-grid product-filter-grid">
+              {
+                officialFilterGroups.map((group) => (
+                  <label>
+                    <span>{group.label}</span>
+                    <select data-product-filter-key={group.key}>
+                      <option value="all">全部</option>
+                      {group.options.map((option) => <option value={option}>{option}</option>)}
+                    </select>
+                  </label>
+                ))
+              }
+              <label class="keyword-filter">
+                <span>船名 / 关键词</span>
+                <input type="search" data-product-filter-key="keyword" placeholder="银海、圣诞、乔治王岛" />
+              </label>
+            </div>
+            <div class="filter-actions">
+              <span class="filter-count" data-product-filter-count>共 {products.length} 条</span>
+              <button type="button" class="filter-search" data-product-filter-submit>搜索</button>
+              <button type="button" class="filter-reset" data-product-filter-reset>重置</button>
+            </div>
+          </div>
+
+          <div class="official-ticket-grid">
+            {
+              officialProducts.map(({ product, company, title, subtitle, dateLine, displayTags, coverSrc, destination, month, days, keywords }, index) => (
+                <article
+                  class="official-ticket-card"
+                  data-company={company}
+                  data-destination={destination}
+                  data-month={month}
+                  data-days={days}
+                  data-keywords={keywords}
+                >
+                  <a
+                    class="official-ticket-media"
+                    href={`/trips/${product.slug}`}
+                    aria-label={`查看${title}`}
+                  >
+                    {
+                      coverSrc ? (
+                        <img
+                          src={coverSrc}
+                          alt={product.imageAlt ?? title}
+                          loading={index < 6 ? "eager" : "lazy"}
+                          fetchpriority={index < 3 ? "high" : "auto"}
+                          decoding="async"
+                        />
+                      ) : (
+                        <span class="official-ticket-fallback" aria-hidden="true">{company}</span>
+                      )
+                    }
+                    <span class="company-pill">{company}</span>
+                    <span class="duration-pill">{product.durationDays}天</span>
+                  </a>
+                  <div class="official-ticket-body">
+                    <div class="official-ticket-meta">
+                      <span>{company}</span>
+                      <small>{product.shipName}</small>
+                    </div>
+                    <h3><a href={`/trips/${product.slug}`}>{title}</a></h3>
+                    <p class="official-ticket-date">{dateLine}</p>
+                    {subtitle && <p class="official-ticket-subtitle">{subtitle}</p>}
+                    {
+                      displayTags.length > 0 && (
+                        <div class="official-ticket-tags">
+                          {displayTags.map((tag) => <span>{tag}</span>)}
+                        </div>
+                      )
+                    }
+                    <div class="official-ticket-footer">
+                      <strong data-has-price={product.priceFrom > 0 ? "1" : "0"}>{product.priceLabel}</strong>
+                      <a href={`/inquiry?from=tickets&trip=${encodeURIComponent(product.slug)}`}>查舱位 / 问价格</a>
+                    </div>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+          <p class="filter-empty" data-product-filter-empty hidden>当前条件暂无正式 SKU，可调整筛选或直接提交需求。</p>
+        </div>
+      ) : (
+        <p class="ticket-empty">正式单船票产品正在整理，请直连顾问获取最新航次。</p>
+      )
+    }
+  </section>
+
+  <section class="ticket-section route-section" aria-label="热门咨询方向">
+    <div class="section-heading route-heading">
+      <div>
+        <p>没有合适航次？</p>
+        <h2>留下条件，让顾问按船司系统查</h2>
+      </div>
+      <span>正式 SKU 之外的档期、舱型、促销和包船余位变化较快，提交条件后由顾问实时匹配。</span>
+    </div>
+
+    <form class="request-panel" action="/inquiry" method="get">
+      <input type="hidden" name="from" value="tickets-custom" />
+      <div class="request-grid">
+        <label>
+          <span>目的地</span>
+          <select name="destination">
+            <option value="">还没确定</option>
+            <option value="南极">南极</option>
+            <option value="北极">北极</option>
+            <option value="格陵兰">格陵兰</option>
+            <option value="加拉帕戈斯">加拉帕戈斯</option>
+          </select>
+        </label>
+        <label>
+          <span>偏好船司</span>
+          <select name="company">
+            <option value="">都可以比较</option>
+            <option value="银海">银海</option>
+            <option value="庞洛">庞洛</option>
+            <option value="66度">66度</option>
+            <option value="夸克">夸克</option>
+            <option value="A21">A21</option>
+          </select>
+        </label>
+        <label>
+          <span>出发月份</span>
+          <select name="month">
+            <option value="">都可以</option>
+            <option value="6月">6月</option>
+            <option value="7月">7月</option>
+            <option value="10月">10月</option>
+            <option value="11月">11月</option>
+            <option value="12月">12月</option>
+            <option value="1月">1月</option>
+            <option value="2月">2月</option>
+          </select>
+        </label>
+        <label class="request-note">
+          <span>补充需求</span>
+          <input name="note" type="search" placeholder="比如免单房差、圣诞档、阳台套房" />
+        </label>
+      </div>
+      <div class="request-actions">
+        <p>没有看到合适 SKU 时，用这个入口更快。</p>
+        <button type="submit">提交条件</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="ticket-section faq-section" aria-label="单船票常见问题">
+    <div class="section-heading">
+      <p>FAQ</p>
+      <h2>单船票常见问题</h2>
+    </div>
+    <div class="faq-list">
+      {
+        faqItems.map((item) => (
+          <details>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="ticket-final-cta">
+    <div>
+      <p>已经有大致目的地或月份？</p>
+      <h2>把你的时间、预算和想搭的船司告诉顾问</h2>
+      <span>船客会按船司、航线、档期、舱位政策帮你缩小范围，再确认实时余舱与最终报价。</span>
+    </div>
+    <a href="/inquiry?from=tickets-bottom" class="btn btn-primary">提交船票需求</a>
+  </section>
+</article>
+
+<script>
+  function initProductFilters() {
+    document.querySelectorAll<HTMLElement>("[data-product-filters]").forEach((root) => {
+      if (root.dataset.bound === "1") return;
+      root.dataset.bound = "1";
+
+      const cards = root.querySelectorAll<HTMLElement>(".official-ticket-card");
+      const empty = root.querySelector<HTMLElement>("[data-product-filter-empty]");
+      const count = root.querySelector<HTMLElement>("[data-product-filter-count]");
+      const controls = root.querySelectorAll<HTMLInputElement | HTMLSelectElement>("[data-product-filter-key]");
+      const submit = root.querySelector<HTMLButtonElement>("[data-product-filter-submit]");
+      const reset = root.querySelector<HTMLButtonElement>("[data-product-filter-reset]");
+
+      function valueFor(card: HTMLElement, key: string) {
+        if (key === "keyword") return (card.dataset.keywords ?? "").toLowerCase();
+        return card.dataset[key] ?? "";
+      }
+
+      function apply() {
+        let visible = 0;
+        cards.forEach((card) => {
+          const show = [...controls].every((control) => {
+            const key = control.dataset.productFilterKey ?? "";
+            const selected = control.value.trim();
+            if (!selected || selected === "all") return true;
+            const value = valueFor(card, key);
+            if (key === "keyword") return value.includes(selected.toLowerCase());
+            return value === selected;
+          });
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+        if (count) count.textContent = `已显示 ${visible} 条`;
+        if (empty) empty.hidden = visible !== 0;
+      }
+
+      submit?.addEventListener("click", apply);
+      reset?.addEventListener("click", () => {
+        controls.forEach((control) => {
+          control.value = control instanceof HTMLSelectElement ? "all" : "";
+        });
+        apply();
+      });
+      controls.forEach((control) => {
+        control.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") apply();
+        });
+      });
+      apply();
+    });
+  }
+
+  initProductFilters();
+  document.addEventListener("astro:page-load", initProductFilters);
+</script>
+
+<style>
+  .ticket-page {
+    padding-bottom: var(--space-xl);
+    background: #fbfbfd;
+  }
+  .ticket-hero,
+  .ticket-section,
+  .ticket-final-cta {
+    width: min(100% - 2 * var(--page-pad), var(--max-width));
+    margin: 0 auto;
+  }
+  .ticket-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    gap: 24px;
+    align-items: stretch;
+    padding: 38px 0 34px;
+  }
+  .breadcrumb {
+    margin-bottom: 28px;
+    font-size: 15px;
+    color: var(--sub);
+  }
+  .eyebrow,
+  .section-heading p {
+    margin: 0 0 10px;
+    color: var(--brand);
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+  .ticket-hero h1 {
+    margin: 0;
+    color: var(--ink);
+    font-size: clamp(56px, 8vw, 112px);
+    line-height: 0.98;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+  .hero-lead {
+    max-width: 760px;
+    margin: 22px 0 0;
+    color: #424245;
+    font-size: clamp(22px, 2.5vw, 32px);
+    line-height: 1.32;
+    letter-spacing: 0;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .trust-note {
+    max-width: 700px;
+    margin: 18px 0 0;
+    color: var(--sub);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .hero-panel {
+    display: grid;
+    gap: 1px;
+    overflow: hidden;
+    align-self: end;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--line);
+  }
+  .hero-panel div {
+    min-height: 118px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 22px;
+    background: #fff;
+  }
+  .hero-panel strong {
+    color: var(--brand);
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 600;
+  }
+  .hero-panel span {
+    color: var(--sub);
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .ticket-section {
+    padding: 54px 0;
+  }
+  .official-ticket-card,
+  .faq-list details,
+  .request-panel {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .section-heading span,
+  .faq-list p,
+  .ticket-final-cta span,
+  .request-actions p {
+    color: var(--sub);
+    font-size: 16px;
+    line-height: 1.68;
+  }
+  .section-heading {
+    max-width: 780px;
+    margin-bottom: 24px;
+  }
+  .section-heading h2,
+  .ticket-final-cta h2 {
+    margin: 0 0 12px;
+    color: var(--ink);
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.12;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+  .route-heading {
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+    gap: 24px;
+    align-items: end;
+  }
+  .official-ticket-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .ticket-filter-panel {
+    margin-bottom: 18px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .filter-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .filter-grid label {
+    min-width: 0;
+  }
+  .filter-grid span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--sub);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .filter-grid select,
+  .filter-grid input {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #f5f5f7;
+    color: var(--ink);
+    font: inherit;
+    font-size: 15px;
+  }
+  .filter-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .filter-count {
+    margin-right: auto;
+    color: var(--sub);
+    font-size: 14px;
+  }
+  .filter-actions button {
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .filter-search {
+    border: 1px solid var(--brand);
+    background: var(--brand);
+    color: #fff;
+  }
+  .filter-reset {
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+  }
+  .official-ticket-meta,
+  .official-ticket-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .official-ticket-meta span {
+    color: var(--brand);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .official-ticket-footer a {
+    font-size: 15px;
+  }
+  .filter-empty,
+  .ticket-empty {
+    grid-column: 1 / -1;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--sub);
+    font-size: 16px;
+    text-align: center;
+  }
+  .official-ticket-card {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+  }
+  .official-ticket-card[hidden] {
+    display: none;
+  }
+  .official-ticket-media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #0d2f4f;
+    color: #fff;
+    text-decoration: none;
+  }
+  .official-ticket-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.35s var(--ease);
+  }
+  .official-ticket-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.58) 100%);
+    pointer-events: none;
+  }
+  .official-ticket-card:hover .official-ticket-media img {
+    transform: scale(1.04);
+  }
+  .official-ticket-fallback {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, #0d2f4f 0%, #1f6d72 55%, #d8a84f 100%);
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .company-pill,
+  .duration-pill {
+    position: absolute;
+    z-index: 1;
+    bottom: 14px;
+    max-width: calc(100% - 28px);
+    padding: 6px 11px;
+    border-radius: 980px;
+    background: rgba(0, 0, 0, 0.42);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.2;
+    backdrop-filter: blur(8px);
+  }
+  .company-pill {
+    left: 14px;
+  }
+  .duration-pill {
+    right: 14px;
+  }
+  .official-ticket-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+  }
+  .official-ticket-meta {
+    min-width: 0;
+    padding: 0 0 12px;
+  }
+  .official-ticket-meta small {
+    min-width: 0;
+    color: var(--sub);
+    font-size: 13px;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .official-ticket-card h3 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 21px;
+    line-height: 1.32;
+    font-weight: 600;
+  }
+  .official-ticket-card h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .official-ticket-card h3 a:hover {
+    color: var(--brand);
+  }
+  .official-ticket-date,
+  .official-ticket-subtitle {
+    margin: 9px 0 0;
+    color: var(--sub);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .official-ticket-subtitle {
+    margin-top: 6px;
+  }
+  .official-ticket-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 14px;
+  }
+  .official-ticket-tags span {
+    max-width: 100%;
+    padding: 5px 9px;
+    border-radius: 980px;
+    background: #f1f5f7;
+    color: #45606d;
+    font-size: 12px;
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .official-ticket-footer {
+    margin-top: auto;
+    padding-top: 18px;
+  }
+  .official-ticket-footer strong {
+    color: var(--ink);
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 650;
+  }
+  .official-ticket-footer strong[data-has-price="0"] {
+    color: var(--brand);
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .official-ticket-footer a {
+    flex-shrink: 0;
+    color: var(--brand);
+    font-weight: 600;
+  }
+  .request-panel {
+    padding: 20px;
+  }
+  .request-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(260px, 1.3fr);
+    gap: 12px;
+  }
+  .request-grid label {
+    min-width: 0;
+  }
+  .request-grid span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--sub);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .request-grid select,
+  .request-grid input {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #f5f5f7;
+    color: var(--ink);
+    font: inherit;
+    font-size: 15px;
+  }
+  .request-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .request-actions p {
+    margin: 0;
+  }
+  .request-actions button {
+    min-height: 44px;
+    flex-shrink: 0;
+    padding: 0 20px;
+    border: 1px solid var(--brand);
+    border-radius: 8px;
+    background: var(--brand);
+    color: #fff;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .faq-list {
+    display: grid;
+    gap: 10px;
+  }
+  .faq-list details {
+    padding: 20px 22px;
+  }
+  .faq-list summary {
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .faq-list p {
+    margin: 12px 0 0;
+  }
+  .ticket-final-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 20px;
+    padding: 32px;
+    border-radius: 8px;
+    background: #062b56;
+    color: #fff;
+  }
+  .ticket-final-cta p {
+    margin: 0 0 8px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 15px;
+  }
+  .ticket-final-cta h2 {
+    color: #fff;
+    font-size: clamp(28px, 3.6vw, 44px);
+  }
+  .ticket-final-cta span {
+    color: rgba(255, 255, 255, 0.76);
+  }
+  .ticket-final-cta .btn {
+    flex-shrink: 0;
+    background: #fff;
+    color: #062b56;
+  }
+  @media (max-width: 980px) {
+    .ticket-hero,
+    .route-heading,
+    .ticket-final-cta {
+      grid-template-columns: 1fr;
+    }
+    .official-ticket-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .filter-grid,
+    .request-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .request-note {
+      grid-column: 1 / -1;
+    }
+    .ticket-final-cta {
+      display: grid;
+    }
+  }
+  @media (max-width: 734px) {
+    .ticket-hero {
+      padding-top: 24px;
+    }
+    .breadcrumb {
+      margin-bottom: 20px;
+    }
+    .ticket-hero h1 {
+      font-size: 58px;
+    }
+    .hero-lead {
+      font-size: 22px;
+    }
+    .hero-panel {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .hero-panel div {
+      min-height: 86px;
+      padding: 14px 12px;
+    }
+    .hero-panel strong {
+      font-size: 28px;
+    }
+    .hero-panel span {
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .ticket-section {
+      padding: 38px 0;
+    }
+    .official-ticket-grid,
+    .filter-grid,
+    .request-grid {
+      grid-template-columns: 1fr;
+    }
+    .route-heading {
+      gap: 8px;
+    }
+    .filter-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .official-ticket-footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .filter-count {
+      grid-column: 1 / -1;
+    }
+    .request-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .request-actions button {
+      width: 100%;
+    }
+    .official-ticket-footer a {
+      width: 100%;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .ticket-final-cta {
+      padding: 24px;
+    }
+    .ticket-final-cta .btn {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../lib/site";
+---
+
+<BaseLayout
+  title={`25 周年专题 · ${SITE.name}`}
+  description="船客 25 周年极地同行专题，精选航程与客人故事。"
+  path="/anniversary"
+>
+  <section class="hero">
+    <div class="container">
+      <p class="kicker">1999–2026</p>
+      <h1>廿五载 · 极地同行</h1>
+      <p>二十五年来，船客陪伴旅客抵达地球两极。周年期间咨询顾问可享专属礼遇（以顾问说明为准）。</p>
+      <a href="/advisor" class="btn btn-primary">咨询周年礼遇</a>
+    </div>
+  </section>
+  <section class="container section">
+    <h2>推荐阅读</h2>
+    <p><a href="/articles/story-wang-antarctica">廿五载同行：带着父亲完成南极梦</a></p>
+    <p><a href="/trips">查看在售航程 ›</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1b4965, #b45309 120%);
+    color: #fff;
+    padding: var(--space-xl) 0;
+  }
+  .kicker {
+    color: #fef3e2;
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 36px;
+    margin: 12px 0;
+  }
+  .hero p {
+    font-size: var(--font-size-sm);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+  .section h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .section p {
+    font-size: var(--font-size-sm);
+    margin-bottom: 10px;
+  }
+</style>

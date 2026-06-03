@@ -1,0 +1,358 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import { getProductsByMonth, getPublishedProducts } from "../lib/products";
+import { SITE } from "../lib/site";
+
+const now = new Date();
+const availableYears = [2026, 2027];
+const all = getPublishedProducts();
+const countsByYear = Object.fromEntries(
+  availableYears.map((y) => [
+    y,
+    Array.from({ length: 12 }, (_, i) => ({
+      month: i + 1,
+      count: getProductsByMonth(y, i + 1).length,
+    })),
+  ]),
+);
+const defaultYear = availableYears.includes(now.getFullYear()) ? now.getFullYear() : availableYears[0];
+const defaultMonth =
+  countsByYear[defaultYear].find((m) => m.count > 0)?.month ?? now.getMonth() + 1;
+---
+
+<BaseLayout
+  title={`旅行日历 ${defaultYear}年${defaultMonth}月 · ${SITE.name}`}
+  description="按出发月份查看船客极地及轻探险航程档期。"
+  path="/calendar"
+>
+  <div class="container page">
+    <header class="calendar-head">
+      <h1>旅行日历</h1>
+      <p class="lead">按出发月份快速查看在售产品。</p>
+    </header>
+
+    <div
+      class="calendar-tools"
+      aria-label="旅行日历筛选"
+      data-default-year={defaultYear}
+      data-default-month={defaultMonth}
+      data-counts={JSON.stringify(countsByYear)}
+    >
+      <nav class="year-tabs" aria-label="年份">
+        {availableYears.map((y) => (
+          <a href={`/calendar?y=${y}`} class:list={["year-tab", { on: y === defaultYear }]} data-year={y}>
+            {y}
+          </a>
+        ))}
+      </nav>
+
+      <div class="month-grid" aria-label={`${defaultYear} 年月份`}>
+        {countsByYear[defaultYear].map((item) => (
+          <a
+            href={`/calendar?y=${defaultYear}&m=${item.month}`}
+            class:list={["month-card", { on: item.month === defaultMonth, empty: item.count === 0 }]}
+            aria-current={item.month === defaultMonth ? "true" : undefined}
+            data-month={item.month}
+          >
+            <strong>{item.month} 月</strong>
+            <span>{item.count > 0 ? `${item.count} 条产品` : "暂无产品"}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <p class="year-summary">
+      {defaultYear} 年共 {all.filter((p) => new Date(p.departureDate).getFullYear() === defaultYear).length} 条在售产品；当前查看 {defaultMonth} 月。
+    </p>
+
+    <h2 class="section-title calendar-current-title">{defaultYear} 年 {defaultMonth} 月出发</h2>
+    <div class="product-grid calendar-grid">
+      {all.map((p) => {
+        const d = new Date(`${p.departureDate}T12:00:00`);
+        const y = d.getFullYear();
+        const m = d.getMonth() + 1;
+        const visible = y === defaultYear && m === defaultMonth;
+        return (
+          <div class="calendar-item" data-year={y} data-month={m} hidden={!visible}>
+            <ProductCard product={p} />
+          </div>
+        );
+      })}
+      <p class="empty calendar-empty" hidden>
+        本月暂无在售档期，<a href="/advisor">联系顾问</a>了解尾盘。
+      </p>
+    </div>
+
+    <details class="all-months">
+      <summary>查看 {defaultYear} 年全年概览（{all.filter((p) => new Date(p.departureDate).getFullYear() === defaultYear).length} 条）</summary>
+      <ul>
+        {all.map((p) => (
+          <li data-year={new Date(`${p.departureDate}T12:00:00`).getFullYear()}>
+            <a href={`/trips/${p.slug}`}>{p.departureDate.slice(0, 7)} · {p.title}</a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  </div>
+</BaseLayout>
+
+<script>
+  const tools = document.querySelector<HTMLElement>(".calendar-tools");
+  if (tools) {
+    const counts = JSON.parse(tools.dataset.counts ?? "{}") as Record<string, { month: number; count: number }[]>;
+    const years = Object.keys(counts).map(Number);
+    const defaultYear = Number(tools.dataset.defaultYear);
+    const defaultMonth = Number(tools.dataset.defaultMonth);
+    const yearTabs = [...document.querySelectorAll<HTMLAnchorElement>(".year-tab")];
+    const monthCards = [...document.querySelectorAll<HTMLAnchorElement>(".month-card")];
+    const items = [...document.querySelectorAll<HTMLElement>(".calendar-item")];
+    const yearSummary = document.querySelector<HTMLElement>(".year-summary");
+    const currentTitle = document.querySelector<HTMLElement>(".calendar-current-title");
+    const empty = document.querySelector<HTMLElement>(".calendar-empty");
+    const overview = [...document.querySelectorAll<HTMLElement>(".all-months li[data-year]")];
+    const overviewSummary = document.querySelector<HTMLElement>(".all-months summary");
+
+    const firstActiveMonth = (year: number) =>
+      counts[String(year)]?.find((m) => m.count > 0)?.month ?? defaultMonth;
+    const normalizeYear = (value: number) => (years.includes(value) ? value : defaultYear);
+    const normalizeMonth = (value: number, year: number) =>
+      Number.isInteger(value) && value >= 1 && value <= 12 ? value : firstActiveMonth(year);
+
+    function applyCalendar(nextYear: number, nextMonth: number, replaceUrl = true) {
+      const year = normalizeYear(nextYear);
+      const month = normalizeMonth(nextMonth, year);
+      const list = counts[String(year)] ?? [];
+      const yearTotal = list.reduce((sum, item) => sum + item.count, 0);
+
+      yearTabs.forEach((tab) => {
+        const on = Number(tab.dataset.year) === year;
+        tab.classList.toggle("on", on);
+        tab.href = `/calendar?y=${tab.dataset.year}`;
+      });
+
+      monthCards.forEach((card) => {
+        const cardMonth = Number(card.dataset.month);
+        const info = list.find((item) => item.month === cardMonth);
+        const count = info?.count ?? 0;
+        card.href = `/calendar?y=${year}&m=${cardMonth}`;
+        card.classList.toggle("on", cardMonth === month);
+        card.classList.toggle("empty", count === 0);
+        card.setAttribute("aria-current", cardMonth === month ? "true" : "false");
+        const label = card.querySelector("span");
+        if (label) label.textContent = count > 0 ? `${count} 条产品` : "暂无产品";
+      });
+
+      let visible = 0;
+      items.forEach((item) => {
+        const show = Number(item.dataset.year) === year && Number(item.dataset.month) === month;
+        item.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (empty) empty.hidden = visible > 0;
+
+      overview.forEach((item) => {
+        item.hidden = Number(item.dataset.year) !== year;
+      });
+      if (overviewSummary) overviewSummary.textContent = `查看 ${year} 年全年概览（${yearTotal} 条）`;
+      if (yearSummary) yearSummary.textContent = `${year} 年共 ${yearTotal} 条在售产品；当前查看 ${month} 月。`;
+      if (currentTitle) currentTitle.textContent = `${year} 年 ${month} 月出发`;
+      document.title = `旅行日历 ${year}年${month}月 · 船客`;
+
+      if (replaceUrl) {
+        history.replaceState(null, "", `/calendar?y=${year}&m=${month}`);
+      }
+    }
+
+    yearTabs.forEach((tab) => {
+      tab.addEventListener("click", (event) => {
+        event.preventDefault();
+        const year = normalizeYear(Number(tab.dataset.year));
+        applyCalendar(year, firstActiveMonth(year));
+      });
+    });
+    monthCards.forEach((card) => {
+      card.addEventListener("click", (event) => {
+        event.preventDefault();
+        const activeYear = normalizeYear(Number(document.querySelector<HTMLElement>(".year-tab.on")?.dataset.year));
+        applyCalendar(activeYear, Number(card.dataset.month));
+      });
+    });
+
+    const params = new URLSearchParams(location.search);
+    const initialYear = normalizeYear(Number(params.get("y")));
+    const initialMonth = normalizeMonth(Number(params.get("m")), initialYear);
+    applyCalendar(initialYear, initialMonth, Boolean(location.search));
+  }
+</script>
+
+<style>
+  .page {
+    padding: 30px 0 var(--space-xl);
+  }
+  .calendar-head {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.08;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin: 0;
+  }
+  .lead {
+    color: var(--color-muted);
+    margin: 0;
+    font-size: 17px;
+  }
+  .calendar-tools {
+    max-width: 980px;
+    margin: 0 auto 12px;
+  }
+  .year-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    width: min(100%, 260px);
+    margin: 0 auto 12px;
+    padding: 4px;
+    border-radius: 980px;
+    background: #f5f5f7;
+  }
+  .year-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 16px;
+    border-radius: 980px;
+    color: var(--ink);
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .year-tab.on {
+    background: #fff;
+    color: var(--ink);
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.08),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  }
+  .month-grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px 2px 8px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .month-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .month-card {
+    flex: 0 0 auto;
+    min-width: 88px;
+    height: 56px;
+    padding: 8px 14px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+    color: inherit;
+    text-decoration: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2px;
+    scroll-snap-align: start;
+    transition:
+      background 0.2s var(--ease),
+      border-color 0.2s var(--ease),
+      box-shadow 0.2s var(--ease),
+      transform 0.2s var(--ease),
+      opacity 0.2s var(--ease);
+  }
+  .month-card strong {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+  .month-card span {
+    color: var(--sub);
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .month-card.on {
+    border-color: rgba(0, 0, 0, 0.06);
+    background: #fff;
+    color: var(--ink);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.08),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  }
+  .month-card.empty {
+    opacity: 0.42;
+    background: #fbfbfd;
+  }
+  .year-summary {
+    color: var(--sub);
+    font-size: 15px;
+    text-align: center;
+    margin: 0 0 20px;
+  }
+  .calendar-current-title {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .empty {
+    grid-column: 1 / -1;
+    padding: 26px;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    background: #f5f5f7;
+    border-radius: 18px;
+  }
+  .calendar-item {
+    min-width: 0;
+  }
+  .calendar-item[hidden] {
+    display: none !important;
+  }
+  .all-months {
+    max-width: 980px;
+    margin: 28px auto 0;
+    font-size: 15px;
+    color: var(--sub);
+  }
+  .all-months summary {
+    cursor: pointer;
+    color: var(--apple-link);
+  }
+  .all-months ul {
+    margin-top: 12px;
+    padding-left: 1.2em;
+  }
+  .all-months li {
+    margin-bottom: 8px;
+  }
+  @media (max-width: 520px) {
+    .calendar-head {
+      justify-items: start;
+      text-align: left;
+    }
+    .year-tabs {
+      width: 100%;
+    }
+    .month-card {
+      min-width: 78px;
+    }
+  }
+</style>

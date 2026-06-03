@@ -1,0 +1,249 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HomeBanner from "../components/HomeBanner.astro";
+import ProductCard from "../components/ProductCard.astro";
+import {
+  getFeaturedProducts,
+  getHomeCategoryProducts,
+  getProductsByCategory,
+  articles,
+} from "../lib/products";
+import { SITE } from "../lib/site";
+import aboutData from "../../data/about.json";
+
+const featured = getFeaturedProducts(6);
+const antarctic = getHomeCategoryProducts("antarctic", 3);
+const arctic = getHomeCategoryProducts("arctic", 3);
+const galapagos = getProductsByCategory("galapagos");
+const lightExpedition = getProductsByCategory("light-expedition");
+const inspire = articles.filter((a) => a.published).slice(0, 2);
+---
+
+<BaseLayout title={SITE.title} description={SITE.description} path="/">
+  <div class="home-top">
+    <h1 class="sr-only">船客极地邮轮与探险旅行</h1>
+    <HomeBanner />
+    <section class="dual-entry">
+      <a href="/calendar" class="entry primary">旅行日历</a>
+      <a href="/trips" class="entry">全部航程</a>
+    </section>
+  </div>
+
+  <section class="section container">
+    <h2 class="section-title">近期出发 · 南极</h2>
+    <div class="product-grid">
+      {antarctic.map((p) => <ProductCard product={p} />)}
+    </div>
+    <p class="section-more-wrap">
+      <a href="/antarctic" class="apple-more-link">查看更多</a>
+    </p>
+  </section>
+
+  <section class="section container alt-bg">
+    <h2 class="section-title">近期出发 · 北极</h2>
+    <div class="product-grid">
+      {arctic.map((p) => <ProductCard product={p} />)}
+    </div>
+    <p class="section-more-wrap">
+      <a href="/arctic" class="apple-more-link">查看更多</a>
+    </p>
+  </section>
+
+  <section class="section container">
+    <h2 class="section-title">加拉帕戈斯</h2>
+    <div class="product-grid">
+      {galapagos.map((p) => <ProductCard product={p} />)}
+    </div>
+    {galapagos.length > 0 && (
+      <p class="section-more-wrap">
+        <a href="/galapagos" class="apple-more-link">查看更多</a>
+      </p>
+    )}
+  </section>
+
+  <section class="section container alt-bg">
+    <h2 class="section-title">其他轻探险</h2>
+    <div class="product-grid">
+      {lightExpedition.map((p) => <ProductCard product={p} />)}
+    </div>
+    {lightExpedition.length > 0 && (
+      <p class="section-more-wrap">
+        <a href="/light-expedition" class="apple-more-link">查看更多</a>
+      </p>
+    )}
+  </section>
+
+  <section class="section container">
+    <h2 class="section-title">
+      推荐航程
+      <a href="/trips">全部航程 ›</a>
+    </h2>
+    <div class="product-grid">
+      {featured.map((p) => <ProductCard product={p} />)}
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2 class="section-title">
+      船说 · 精选
+      <a href="/articles">更多文章 ›</a>
+    </h2>
+    <div class="article-list">
+      {inspire.map((a) => (
+        <a href={`/articles/${a.slug}`} class="article-card">
+          {a.tag && <span class="pill pill-gold">{a.tag}</span>}
+          <h3>{a.title}</h3>
+          <p>{a.author} · {a.excerpt.slice(0, 48)}…</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section about-band">
+    <div class="container">
+      <h2>关于船客</h2>
+      <p>{aboutData.homeBlurb}</p>
+      <a href="/about" class="btn btn-outline">了解品牌 ›</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .home-top {
+    background: var(--bg);
+    padding-bottom: 14px;
+  }
+  .dual-entry {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: min(100% - var(--page-pad) * 2, 420px);
+    margin: 14px auto 0;
+    padding: 4px;
+    border-radius: 980px;
+    background: rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1b4965, #2a6f97);
+    color: #fff;
+    padding: var(--space-xl) 0;
+  }
+  .hero-inner {
+    max-width: 720px;
+  }
+  .kicker {
+    font-size: 16px;
+    opacity: 0.9;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 12px 0;
+    line-height: 1.25;
+  }
+  .sub {
+    font-size: var(--font-size-sm);
+    opacity: 0.92;
+    line-height: 1.7;
+  }
+  .search {
+    display: flex;
+    gap: 10px;
+    margin-top: var(--space-md);
+    max-width: 560px;
+  }
+  .search input {
+    flex: 1;
+    min-height: var(--cta-h);
+    padding: 0 16px;
+    font-size: 17px;
+    border: none;
+    border-radius: var(--radius);
+  }
+  .entry {
+    flex: 1;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
+    border-radius: 980px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    color: var(--color-primary);
+    background: transparent;
+    text-decoration: none !important;
+    white-space: nowrap;
+    transition:
+      background 0.2s var(--ease),
+      color 0.2s var(--ease),
+      box-shadow 0.2s var(--ease);
+  }
+  .entry.primary {
+    background: var(--brand);
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+  .entry:not(.primary):hover {
+    background: rgba(255, 255, 255, 0.72);
+  }
+  @media (max-width: 520px) {
+    .dual-entry {
+      width: calc(100% - var(--page-pad) * 2);
+    }
+    .entry {
+      padding: 0 12px;
+      font-size: 14px;
+    }
+  }
+  .alt-bg {
+    background: var(--color-surface);
+    width: 100%;
+  }
+  .section.alt-bg .container,
+  .section .container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-left: var(--page-pad);
+    padding-right: var(--page-pad);
+    box-sizing: border-box;
+  }
+  .article-list {
+    display: grid;
+    gap: var(--space-sm);
+  }
+  .article-card {
+    display: block;
+    padding: var(--space-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    text-decoration: none !important;
+    color: inherit;
+  }
+  .article-card h3 {
+    font-size: 20px;
+    margin: 8px 0;
+  }
+  .article-card p {
+    font-size: 16px;
+    color: var(--color-muted);
+  }
+  .about-band {
+    background: #f0f7fa;
+    padding: var(--space-lg) 0;
+  }
+  .about-band h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: 12px;
+  }
+  .about-band p {
+    max-width: 720px;
+    margin-bottom: var(--space-md);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height);
+  }
+</style>

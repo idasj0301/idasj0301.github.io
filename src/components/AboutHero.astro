@@ -1,0 +1,164 @@
+---
+import type aboutData from "../../data/about.json";
+
+type About = typeof aboutData;
+
+interface Props {
+  about: About;
+}
+
+const { about } = Astro.props;
+const banner = about.banner;
+const [brandTitle, brandPromise] = about.title.split("：");
+---
+
+<section class="about-kv" aria-label="关于船客">
+  <div class="about-kv-media" style={`background: ${banner.fallback}`}>
+    <img
+      src={banner.image}
+      alt={banner.alt}
+      class="about-kv-img"
+      style={`object-position: ${banner.position ?? "center"}`}
+      loading="eager"
+      onerror="this.style.display='none'"
+    />
+    <div class="about-kv-shade" aria-hidden="true"></div>
+  </div>
+  <div class="about-kv-copy">
+    <h1>
+      {
+        brandPromise ? (
+          <>
+            <span class="about-kv-brand">{brandTitle}</span><span class="about-kv-promise">{brandPromise}</span>
+          </>
+        ) : (
+          about.title
+        )
+      }
+    </h1>
+  </div>
+</section>
+
+<section class="about-highlights" aria-label="品牌要点">
+  {
+    about.highlights.map((item) => (
+      <article class="highlight-card">
+        <h2>{item.title}</h2>
+        <p>{item.desc}</p>
+      </article>
+    ))
+  }
+</section>
+
+<style>
+  .about-kv {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .about-kv-media {
+    position: relative;
+    overflow: hidden;
+    height: min(52vw, 560px);
+    min-height: 420px;
+    background-size: cover;
+    background-position: center;
+  }
+  .about-kv-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .about-kv-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.58) 0%,
+      rgba(0, 0, 0, 0.34) 36%,
+      rgba(0, 0, 0, 0.08) 100%
+    );
+  }
+  .about-kv-copy {
+    position: absolute;
+    left: var(--page-pad);
+    right: var(--page-pad);
+    top: clamp(80px, 8vw, 108px);
+    z-index: 1;
+    color: #fff;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+  }
+  .about-kv-copy h1 {
+    max-width: 980px;
+    font-family: var(--font-sans);
+    font-size: clamp(42px, 5.2vw, 74px);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: 0;
+    text-wrap: balance;
+    text-shadow: 0 2px 28px rgba(0, 0, 0, 0.28);
+  }
+  .about-kv-brand {
+    display: block;
+    font-weight: 600;
+  }
+  .about-kv-promise {
+    display: block;
+    margin-top: 8px;
+    font-size: clamp(24px, 2.6vw, 36px);
+    font-weight: 500;
+    line-height: 1.18;
+  }
+  .about-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    max-width: var(--max-width);
+    margin: 34px auto 0;
+    padding: 0 var(--page-pad) 8px;
+  }
+  .highlight-card {
+    padding: 22px 24px;
+    background: var(--surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+  }
+  .highlight-card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .highlight-card p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--sub);
+    margin: 0;
+  }
+  @media (max-width: 734px) {
+    .about-kv-media {
+      min-height: 340px;
+      height: 74vw;
+    }
+    .about-kv-copy {
+      top: 74px;
+    }
+    .about-kv-copy h1 {
+      font-size: 42px;
+      line-height: 1.06;
+      max-width: 100%;
+    }
+    .about-kv-promise {
+      font-size: 22px;
+      line-height: 1.22;
+    }
+  }
+</style>

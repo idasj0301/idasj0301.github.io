@@ -1,0 +1,220 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { wecomLink } from "../lib/wecom";
+import { SITE } from "../lib/site";
+import aboutData from "../../data/about.json";
+
+const link = wecomLink();
+const phone = aboutData.offices.find((o) => o.phone)?.phone ?? "010-85864460";
+const tel = phone.replace(/\D/g, "");
+const steps = [
+  { n: "1", title: "扫码添加", desc: "企业微信直连船客顾问" },
+  { n: "2", title: "说明需求", desc: "航程、舱位、出发时间" },
+  { n: "3", title: "获取方案", desc: "报价与行程细节一对一确认" },
+];
+---
+
+<BaseLayout
+  title={`直连旅行顾问 · ${SITE.name}`}
+  description="添加船客企业微信顾问，获取南极北极航程推荐与出行建议。"
+  path="/advisor"
+  hideMobileBar
+>
+  <div class="advisor-page">
+    <header class="advisor-hero">
+      <p class="advisor-eyebrow">船客旅行顾问</p>
+      <h1>一对一专属服务</h1>
+      <p class="advisor-tagline">官网不提供在线支付 · 顾问为您确认舱位与档期</p>
+    </header>
+
+    <div class="advisor-card">
+      <div class="qr-wrap">
+        <img
+          src="/advisor-qr.png"
+          alt="船客旅行顾问企业微信二维码"
+          class="qr-img"
+          width="220"
+          height="224"
+          onerror="this.style.display='none';this.nextElementSibling.hidden=false"
+        />
+        <div class="qr-placeholder" hidden>
+          <span>企业微信二维码暂未加载</span>
+        </div>
+      </div>
+
+      <ol class="advisor-steps">
+        {
+          steps.map((s) => (
+            <li>
+              <span class="step-n">{s.n}</span>
+              <div>
+                <strong>{s.title}</strong>
+                <p>{s.desc}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="advisor-actions">
+        {
+          link && (
+            <a href={link} class="btn btn-primary btn-wide" target="_blank" rel="noopener noreferrer">
+              打开企业微信添加
+            </a>
+          )
+        }
+        <a href={`tel:${tel}`} class="btn btn-outline btn-wide">
+          电话咨询 {phone}
+        </a>
+      </div>
+    </div>
+
+    <ul class="advisor-trust">
+      <li>廿五载极地邮轮经验</li>
+      <li>IAATO / AECO 双认证旅行社</li>
+      <li>参考报价以顾问确认为准</li>
+    </ul>
+
+    <p class="advisor-inquiry">
+      暂不方便扫码？<a href="/inquiry">填写预约留咨</a>，顾问将主动联系您。
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .advisor-page {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 32px var(--page-pad) 80px;
+  }
+  .advisor-hero {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .advisor-eyebrow {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--sub);
+    margin-bottom: 12px;
+  }
+  .advisor-hero h1 {
+    font-size: clamp(32px, 5vw, 40px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+  }
+  .advisor-tagline {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--sub);
+    margin: 0;
+  }
+  .advisor-card {
+    background: var(--surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 0 8px 32px rgba(27, 73, 101, 0.08);
+  }
+  .qr-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  .qr-img {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 220px;
+    height: auto;
+  }
+  .qr-placeholder {
+    width: 220px;
+    height: 220px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #f5f5f7, #eef4fa);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--sub);
+    text-align: center;
+    padding: 16px;
+  }
+  .qr-placeholder[hidden] {
+    display: none;
+  }
+  .qr-placeholder code {
+    font-size: 12px;
+  }
+  .advisor-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .advisor-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .step-n {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .advisor-steps strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+  .advisor-steps p {
+    font-size: 15px;
+    color: var(--sub);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .advisor-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btn-wide {
+    width: 100%;
+    min-height: 48px;
+  }
+  .advisor-trust {
+    list-style: none;
+    padding: 24px 0 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    font-size: 14px;
+    color: var(--sub);
+  }
+  .advisor-trust li {
+    padding: 0 4px;
+  }
+  .advisor-inquiry {
+    text-align: center;
+    font-size: 16px;
+    color: var(--sub);
+    margin-top: 28px;
+    line-height: 1.6;
+  }
+</style>

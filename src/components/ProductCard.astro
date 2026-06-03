@@ -1,0 +1,196 @@
+---
+import type { Product } from "../types/product";
+import { getProductDetail } from "../lib/product-details";
+import { getCategory } from "../lib/categories";
+import {
+  getCardTitle,
+  getCardSubtitle,
+  formatCardDateLine,
+  getDepartureYear,
+} from "../lib/product-card";
+import { isExtensionProduct } from "../lib/products";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const detail = getProductDetail(product.slug);
+const cat = getCategory(product.category);
+const coverSrc = detail?.heroImage ?? detail?.gallery?.[0]?.src;
+const cardTitle = getCardTitle(product);
+const cardSubtitle = getCardSubtitle(product);
+const dateLine = formatCardDateLine(product);
+const year = String(getDepartureYear(product));
+const priceText = product.priceLabel;
+const departureMonth = `${new Date(product.departureDate).getMonth() + 1}月`;
+const destinationFilterValues = ["西格陵兰", "北极三岛", "南极半岛", "南乔治亚岛", "北极三岛"]
+  .filter((value, index, values) => values.indexOf(value) === index)
+  .filter((value) => product.title.includes(value) || product.summary.includes(value));
+const filterValues = [
+  product.subcategory,
+  product.shipName,
+  `${product.durationDays}天`,
+  departureMonth,
+  ...destinationFilterValues,
+  ...(product.tags ?? []),
+  isExtensionProduct(product) ? "延长线" : undefined,
+]
+  .filter(Boolean)
+  .join("|");
+const grad =
+  cat?.slug === "antarctic"
+    ? "linear-gradient(145deg, #0c1929 0%, #1b4965 45%, #2d6a8f 100%)"
+    : cat?.slug === "arctic"
+      ? "linear-gradient(145deg, #0f1c2e 0%, #2a4a6b 50%, #5b8ab5 100%)"
+      : cat?.slug === "galapagos"
+        ? "linear-gradient(145deg, #0d2818 0%, #1a5c40 50%, #3d8b6e 100%)"
+        : "linear-gradient(145deg, #2c1810 0%, #6b4423 50%, #a67c52 100%)";
+---
+
+<a
+  href={`/trips/${product.slug}`}
+  class="product-card"
+  data-year={year}
+  data-filter-values={filterValues}
+  data-title={product.title}
+>
+  <div
+    class="card-media"
+    style={coverSrc ? undefined : `background: ${grad}`}
+    role="img"
+    aria-label={product.imageAlt ?? cardTitle}
+  >
+    {coverSrc && (
+      <img
+        src={coverSrc}
+        alt=""
+        class="card-img"
+        loading="lazy"
+        decoding="async"
+      />
+    )}
+    <span class="ship-tag">{product.shipName}</span>
+  </div>
+  <div class="card-body">
+    <h3 class="title">{cardTitle}</h3>
+    <p class="meta">{dateLine}</p>
+    {cardSubtitle && <p class="subtitle">{cardSubtitle}</p>}
+    <p class="price" data-has-price={product.priceFrom > 0 ? "1" : "0"}>{priceText}</p>
+  </div>
+</a>
+
+<style>
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none !important;
+    color: inherit;
+    box-shadow: inset 0 0 0 1px var(--line);
+    transition:
+      transform 0.35s var(--ease),
+      box-shadow 0.35s var(--ease);
+  }
+  .product-card[hidden] {
+    display: none !important;
+  }
+  .product-card:hover {
+    transform: scale(1.02);
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+      0 12px 40px rgba(0, 0, 0, 0.08);
+  }
+  .product-card:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+  }
+  .card-media {
+    position: relative;
+    height: min(28vw, 200px);
+    min-height: 160px;
+    display: flex;
+    align-items: flex-end;
+    padding: 14px 16px;
+    flex-shrink: 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .card-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .card-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.45) 100%);
+    pointer-events: none;
+  }
+  .ship-tag {
+    position: relative;
+    z-index: 1;
+    font-size: 13px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+    padding: 5px 12px;
+    border-radius: 980px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 18px 20px;
+    background: var(--surface);
+    gap: 6px;
+  }
+  .title {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--ink);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .meta {
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--sub, var(--color-muted));
+    margin: 0;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--sub, var(--color-muted));
+    margin: 0;
+    line-height: 1.4;
+  }
+  .price {
+    font-size: var(--font-size-lg, 18px);
+    color: var(--ink);
+    font-weight: 600;
+    margin: auto 0 0;
+    padding-top: 10px;
+    letter-spacing: -0.01em;
+  }
+  .price[data-has-price="0"] {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--sub, var(--color-muted));
+  }
+</style>

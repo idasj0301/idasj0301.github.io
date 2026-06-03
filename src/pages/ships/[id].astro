@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ShipProfileView from "../../components/ShipProfileView.astro";
+import { SHIP_BRANDS } from "../../lib/ships";
+import { getShipPage } from "../../lib/ship-profiles";
+import { breadcrumbJsonLd } from "../../lib/geo";
+import { SITE } from "../../lib/site";
+
+export function getStaticPaths() {
+  return SHIP_BRANDS.map((b) => ({ params: { id: b.id } }));
+}
+
+const { id } = Astro.params;
+const page = getShipPage(id!);
+if (!page) return Astro.redirect("/ships");
+
+const { brand, profile } = page;
+const titleName = profile?.vesselName ?? brand.name;
+const title = `${titleName} · 船司甄选 · ${SITE.name}`;
+const description = profile?.tagline ?? brand.blurb;
+const ld = breadcrumbJsonLd([
+  { name: "首页", url: SITE.url },
+  { name: "船司甄选", url: `${SITE.url}/ships` },
+  { name: titleName, url: `${SITE.url}/ships/${brand.id}` },
+]);
+---
+
+<BaseLayout title={title} description={description} path={`/ships/${brand.id}`} jsonLd={ld}>
+  <ShipProfileView brand={brand} profile={profile} />
+</BaseLayout>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdvisorCTA from "../../components/AdvisorCTA.astro";
+import { articles, getArticleBySlug } from "../../lib/products";
+import { articleJsonLd } from "../../lib/geo";
+import { SITE } from "../../lib/site";
+
+export function getStaticPaths() {
+  return articles
+    .filter((a) => a.published)
+    .map((a) => ({ params: { slug: a.slug } }));
+}
+
+const article = getArticleBySlug(Astro.params.slug!);
+if (!article) return Astro.redirect("/articles");
+---
+
+<BaseLayout
+  title={`${article.title} · ${SITE.name}`}
+  description={article.excerpt}
+  path={`/articles/${article.slug}`}
+  jsonLd={articleJsonLd(article)}
+>
+  <article class="container page">
+    <nav class="breadcrumb"><a href="/articles">船说</a> › <span>{article.title}</span></nav>
+    {article.tag && <span class="pill pill-gold">{article.tag}</span>}
+    <h1>{article.title}</h1>
+    <p class="meta">{article.author}</p>
+    <div class="body">
+      {article.body.split("\n").map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+    <AdvisorCTA from={`article-${article.slug}`} compact />
+  </article>
+</BaseLayout>
+
+<style>
+  .page {
+    padding: var(--space-md) 0 var(--space-xl);
+    max-width: 720px;
+  }
+  .breadcrumb {
+    font-size: 16px;
+    color: var(--color-muted);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    margin: 12px 0;
+  }
+  .meta {
+    color: var(--color-muted);
+    margin-bottom: var(--space-md);
+    font-size: 16px;
+  }
+  .body p {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height);
+    margin-bottom: 1em;
+  }
+</style>

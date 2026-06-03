@@ -1,0 +1,65 @@
+[
+  {
+    "id": "silversea",
+    "name": "银海邮轮",
+    "nameEn": "Silversea Cruises",
+    "logo": "/ships/silversea.png",
+    "tags": ["奢华", "南极", "北极"],
+    "match": ["银海"],
+    "blurb": "全套房奢华探险邮轮，南极半环与双飞航线常见选择。"
+  },
+  {
+    "id": "seaventure",
+    "name": "66度探险 · 海神号",
+    "nameEn": "66° Expeditions · Seaventure",
+    "logo": "/ships/expeditions-66.png",
+    "tags": ["包船", "飞船游", "王企鹅"],
+    "match": ["海神", "66度", "Seaventure"],
+    "blurb": "船客×66度探险包船航次，邮轮为 Seaventure 海神号。飞船游、南乔治亚与王企鹅等主力线路。"
+  },
+  {
+    "id": "quark",
+    "name": "夸克探险",
+    "nameEn": "Quark Expeditions",
+    "logo": "/ships/quark.svg",
+    "tags": ["探险", "南极", "摄影"],
+    "match": ["夸克"],
+    "blurb": "极地探险老牌运营商，经典半岛与福克兰联线。"
+  },
+  {
+    "id": "ponant",
+    "name": "庞洛邮轮",
+    "nameEn": "Ponant",
+    "logo": "/ships/ponant.jpg",
+    "tags": ["奢华", "探险", "金伯利"],
+    "match": ["庞洛", "Ponant"],
+    "blurb": "法式奢华探险邮轮，金伯利、加帕与极地航线。"
+  },
+  {
+    "id": "atlas",
+    "name": "Atlas Ocean Voyages",
+    "nameEn": "Atlas",
+    "logo": "/ships/atlas.png",
+    "tags": ["探险", "新船"],
+    "match": ["Atlas", "信天翁", "环球领航者"],
+    "blurb": "极地探险新运力，部分航次以信天翁等品牌合作呈现。"
+  },
+  {
+    "id": "hapag_lloyd",
+    "name": "赫伯罗特",
+    "nameEn": "Hapag-Lloyd Cruises",
+    "logo": "/ships/hapag_lloyd.png",
+    "tags": ["德式", "奢华", "探险"],
+    "match": ["赫伯", "Hapag", "汉萨", "指挥官夏古", "夏古号"],
+    "blurb": "德国品质探险邮轮，北极与环球深度航线。"
+  },
+  {
+    "id": "scenic",
+    "name": "Scenic Eclipse",
+    "nameEn": "Scenic",
+    "logo": "/ships/scenic_virgin.png",
+    "tags": ["奢华", "探险", "直升机"],
+    "match": ["Scenic", "Eclipse"],
+    "blurb": "超奢华探险游艇，南北极高端定制与摄影团。"
+  }
+]

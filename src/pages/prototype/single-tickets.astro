@@ -1,0 +1,935 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const cruisePartners = [
+  {
+    key: "ponant",
+    name: "庞洛",
+    fullName: "PONANT Explorations",
+    logo: "/prototype/ship-logos/ponant.jpg",
+    priority: "重点合作",
+    routeHint: "南极、金伯利、加拉帕戈斯与奢华探险航线",
+  },
+  {
+    key: "silversea",
+    name: "银海",
+    fullName: "Silversea",
+    logo: "/prototype/ship-logos/silversea.png",
+    priority: "重点合作",
+    routeHint: "南极双飞、半岛深度、奢华探险邮轮",
+  },
+  {
+    key: "quark",
+    name: "夸克",
+    fullName: "Quark Expeditions",
+    logo: "/prototype/ship-logos/quark.svg",
+    priority: "重点合作",
+    routeHint: "极地探险、摄影、半岛与福克兰联线",
+  },
+  {
+    key: "sixty-six",
+    name: "66度",
+    fullName: "66° Expeditions",
+    logo: "/prototype/ship-logos/66-expeditions.png",
+    priority: "重点合作",
+    routeHint: "海神号包船、南北极中文服务航线",
+  },
+  {
+    key: "a21",
+    name: "A21",
+    fullName: "Antarctica21",
+    logo: "/prototype/ship-logos/antarctica21.webp",
+    priority: "合作船司",
+    routeHint: "飞越德雷克、南极半岛短线与精品探险",
+  },
+  {
+    key: "swan",
+    name: "SWAN",
+    fullName: "Swan Hellenic",
+    logo: "/prototype/ship-logos/swan-hellenic.png",
+    priority: "合作船司",
+    routeHint: "文化探险、小型探险船与高纬度航线",
+  },
+  {
+    key: "ow",
+    name: "OW",
+    fullName: "Oceanwide Expeditions",
+    logo: "",
+    priority: "合作船司",
+    routeHint: "极地探险航线，logo 待补",
+  },
+  {
+    key: "albatros",
+    name: "信天翁",
+    fullName: "Albatros Expeditions",
+    logo: "/prototype/ship-logos/albatros.png",
+    priority: "合作船司",
+    routeHint: "南北极探险航次与小船体验",
+  },
+  {
+    key: "aurora",
+    name: "欧若拉",
+    fullName: "Aurora Expeditions",
+    logo: "/prototype/ship-logos/aurora.svg",
+    priority: "合作船司",
+    routeHint: "澳新极地探险船司，南极与北极航线",
+  },
+];
+
+const silverseaTopPlaceholders = [
+  "银海南极双飞短线",
+  "银海南极半岛深度",
+  "银海南乔治亚 + 南极半岛",
+  "银海北极斯瓦尔巴",
+  "银海南极圈航线",
+];
+
+const cruises = [
+  {
+    id: "silversea-antarctica-7d",
+    company: "银海",
+    ship: "银海奋进号",
+    logo: "/prototype/ship-logos/silversea.png",
+    title: "银海 7 天 6 晚双飞 · 南极半岛",
+    destination: "南极半岛",
+    month: "12月",
+    days: "7天",
+    policy: ["免单房差", "早鸟政策"],
+    cabins: "Classic Veranda / Superior Veranda",
+    inventory: "少量余舱",
+    price: "顾问实时确认",
+    note: "适合已自行安排国际机票与签证、想快速完成南极体验的客人。",
+  },
+  {
+    id: "silversea-antarctica-15d",
+    company: "银海",
+    ship: "银海奋进号",
+    logo: "/prototype/ship-logos/silversea.png",
+    title: "银海 15 天 14 晚 · 南极半岛深度",
+    destination: "南极半岛",
+    month: "1月",
+    days: "15天",
+    policy: ["最后一分钟船票", "闪促"],
+    cabins: "Deluxe Veranda / Silver Suite",
+    inventory: "月更余舱",
+    price: "顾问实时确认",
+    note: "适合关注奢华服务、舱房舒适度和灵活折扣的客人。",
+  },
+  {
+    id: "ponant-south-georgia-13d",
+    company: "庞洛",
+    ship: "庞洛北冕号",
+    logo: "/prototype/ship-logos/ponant.jpg",
+    title: "庞洛 13 天 12 晚双岛 · 南极半岛 + 南乔治亚",
+    destination: "南极双岛",
+    month: "11月",
+    days: "13天",
+    policy: ["早鸟政策", "转让"],
+    cabins: "Deluxe Stateroom / Prestige Suite",
+    inventory: "余舱待确认",
+    price: "顾问实时确认",
+    note: "重点呈现船司、天数、特色与航线，不直接承诺固定库存。",
+  },
+  {
+    id: "seaventure-greenland-13d",
+    company: "66度",
+    ship: "海神号",
+    logo: "/prototype/ship-logos/66-expeditions.png",
+    title: "西格陵兰冰川峡湾之旅",
+    destination: "西格陵兰",
+    month: "6月",
+    days: "13天",
+    policy: ["月更余舱"],
+    cabins: "标准套房 / 阳台套房 / 船东套房",
+    inventory: "官网在售",
+    price: "¥52,354 起",
+    note: "现有同事自制方案，可继续作为正式单船票产品卡展示。",
+  },
+  {
+    id: "a21-fly-cruise-8d",
+    company: "A21",
+    ship: "Magellan Explorer",
+    logo: "/prototype/ship-logos/antarctica21.webp",
+    title: "A21 飞越德雷克 · 南极半岛短线",
+    destination: "南极半岛",
+    month: "12月",
+    days: "8天",
+    policy: ["早鸟政策", "最后一分钟船票"],
+    cabins: "Porthole / Veranda / Suite",
+    inventory: "余舱待确认",
+    price: "顾问实时确认",
+    note: "作为合作船司入口示例，正式航线等船票同事给库存后填入。",
+  },
+];
+
+const companies = ["全部", ...cruisePartners.map((item) => item.name)];
+const months = ["全部", "6月", "9月", "11月", "12月", "1月", "2月"];
+const destinations = ["全部", ...Array.from(new Set(cruises.map((item) => item.destination)))];
+const days = ["全部", "7天", "13天", "15天", "17天"];
+const policies = ["全部", "免单房差", "早鸟政策", "最后一分钟船票", "闪促", "转让", "月更余舱"];
+---
+
+<BaseLayout
+  title="单船票页面原型 · 船客"
+  description="单船票页面原型，用于讨论筛选、船司、舱位与余舱信息呈现。"
+  path="/prototype/single-tickets"
+>
+  <article class="ticket-prototype">
+    <section class="proto-hero">
+      <div class="proto-copy">
+        <p class="proto-label">PROTOTYPE · 单船票信息架构</p>
+        <h1>按船司、档期、天数和政策找单船票</h1>
+        <p>
+          这是基于“单船票小程序展现形式”文档做的原型。正式页面不应只列自制方案，
+          而应把船司库存、特殊政策、舱位和余舱状态作为核心入口。
+        </p>
+      </div>
+      <div class="proto-summary" aria-label="原型摘要">
+        <strong>9</strong>
+        <span>重点船司</span>
+        <strong>7</strong>
+        <span>筛选维度</span>
+      </div>
+    </section>
+
+    <section class="partner-stage" aria-label="紧密合作邮轮公司">
+      <div class="stage-heading">
+        <p>重点合作邮轮公司</p>
+        <h2>先让客人按熟悉的船司品牌进入</h2>
+        <span>排序按你给的业务优先级：庞洛、银海、夸克、66度、A21、SWAN、OW、信天翁、欧若拉。</span>
+      </div>
+      <div class="partner-logo-grid">
+        {
+          cruisePartners.map((partner, index) => (
+            <article class="partner-logo-card">
+              <span class="partner-index">{String(index + 1).padStart(2, "0")}</span>
+              <div class="partner-logo-box">
+                {partner.logo ? (
+                  <img src={partner.logo} alt={partner.fullName} loading="lazy" />
+                ) : (
+                  <strong>{partner.name}</strong>
+                )}
+              </div>
+              <div>
+                <h3>{partner.name}</h3>
+                <p>{partner.fullName}</p>
+                <small>{partner.routeHint}</small>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="top-route-stage" aria-label="银海精选航线">
+      <div class="top-route-copy">
+        <p>银海邮轮 · TOP 5 待填</p>
+        <h2>后续把最受欢迎的 5 条银海航线放在这里</h2>
+        <span>你给我真实航线后，我会把这些占位替换成可点开的航线卡：目的地、天数、船名、政策、起价或询价状态。</span>
+      </div>
+      <ol class="top-route-list">
+        {silverseaTopPlaceholders.map((item) => <li>{item}<span>等待船票同事确认</span></li>)}
+      </ol>
+    </section>
+
+    <nav class="variant-switch" aria-label="原型方案切换">
+      <a href="?v=filter" data-variant-link="filter">筛选货架</a>
+      <a href="?v=company" data-variant-link="company">船司优先</a>
+      <a href="?v=matrix" data-variant-link="matrix">档期矩阵</a>
+    </nav>
+
+    <section class="variant-panel" data-variant="filter">
+      <div class="find-cruise-panel">
+        <div class="find-heading">
+          <p>FIND A CRUISE</p>
+          <h2>像船司官网一样先帮客人缩小范围</h2>
+        </div>
+        <div class="filter-grid" data-filter-scope>
+          <label>
+            <span>目的地 / 航线</span>
+            <select data-filter="destination">
+              {destinations.map((item) => <option value={item}>{item}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>出发时间</span>
+            <select data-filter="month">
+              {months.map((item) => <option value={item}>{item}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>航程天数</span>
+            <select data-filter="days">
+              {days.map((item) => <option value={item}>{item}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>邮轮公司 / 船名</span>
+            <select data-filter="company">
+              {companies.map((item) => <option value={item}>{item}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>特殊政策</span>
+            <select data-filter="policy">
+              {policies.map((item) => <option value={item}>{item}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>航次编号 / 关键词</span>
+            <input data-filter="keyword" type="search" placeholder="银海、南极、海神号" />
+          </label>
+        </div>
+        <div class="quick-row">
+          <button type="button" data-reset>清空筛选</button>
+          <span><strong data-count>{cruises.length}</strong> 个示例航次</span>
+          <label class="toggle-line">
+            <input type="checkbox" checked data-available-only />
+            <span>仅看可咨询航次</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="ticket-results" data-results>
+        {
+          cruises.map((item) => (
+            <article
+              class="ticket-card"
+              data-company={item.company}
+              data-month={item.month}
+              data-days={item.days}
+              data-destination={item.destination}
+              data-policy={item.policy.join(" ")}
+              data-keyword={`${item.title} ${item.ship} ${item.company} ${item.destination}`}
+            >
+              <div class="ticket-logo">
+                <img src={item.logo} alt={item.company} loading="lazy" />
+              </div>
+              <div class="ticket-main">
+                <p>{item.company} · {item.ship}</p>
+                <h3>{item.title}</h3>
+                <div class="ticket-meta">
+                  <span>{item.destination}</span>
+                  <span>{item.month}</span>
+                  <span>{item.days}</span>
+                </div>
+                <p class="ticket-note">{item.note}</p>
+              </div>
+              <div class="ticket-side">
+                <span class="inventory">{item.inventory}</span>
+                <strong>{item.price}</strong>
+                <small>{item.cabins}</small>
+                <div class="policy-row">
+                  {item.policy.map((policy) => <span>{policy}</span>)}
+                </div>
+                <a href="/advisor">询价</a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="variant-panel" data-variant="company" hidden>
+      <div class="company-layout">
+        <aside class="company-rail">
+          <h2>按船司进入</h2>
+          <p>适合船票同事维护库存：每个船司下面挂航次、舱位、政策和船书。</p>
+          {companies.filter((item) => item !== "全部").map((item) => <button type="button">{item}</button>)}
+        </aside>
+        <div class="company-feed">
+          {
+            companies
+              .filter((item) => item !== "全部")
+              .map((company) => {
+                const list = cruises.filter((cruise) => cruise.company === company);
+                return (
+                  <section class="company-section">
+                    <div>
+                      <h3>{company}</h3>
+                      <span>{list.length} 个示例航次</span>
+                    </div>
+                    <div class="compact-list">
+                      {list.map((item) => (
+                        <a href="/advisor">
+                          <strong>{item.title}</strong>
+                          <span>{item.month} · {item.days} · {item.inventory}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </section>
+                );
+              })
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="variant-panel" data-variant="matrix" hidden>
+      <div class="matrix-intro">
+        <h2>档期矩阵</h2>
+        <p>如果单船票库存量未来很多，可以用月份 × 船司的方式快速扫货，再进入详情询价。</p>
+      </div>
+      <div class="ticket-matrix">
+        <div class="matrix-head">船司 / 月份</div>
+        {months.filter((item) => item !== "全部").map((item) => <div class="matrix-head">{item}</div>)}
+        {
+          companies
+            .filter((item) => item !== "全部")
+            .map((company) => (
+              <>
+                <div class="matrix-company">{company}</div>
+                {months.filter((item) => item !== "全部").map((month) => {
+                  const count = cruises.filter((item) => item.company === company && item.month === month).length;
+                  return <div class:list={["matrix-cell", { active: count > 0 }]}>{count > 0 ? `${count} 个` : "—"}</div>;
+                })}
+              </>
+            ))
+        }
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<script>
+  // @ts-nocheck
+  const panels = Array.from(document.querySelectorAll("[data-variant]"));
+  const links = Array.from(document.querySelectorAll("[data-variant-link]"));
+  const params = new URLSearchParams(window.location.search);
+  const initialVariant = params.get("v") || "filter";
+
+  function showVariant(name) {
+    panels.forEach((panel) => {
+      panel.hidden = panel.getAttribute("data-variant") !== name;
+    });
+    links.forEach((link) => {
+      link.classList.toggle("on", link.getAttribute("data-variant-link") === name);
+    });
+  }
+  showVariant(initialVariant);
+
+  const filters = Array.from(document.querySelectorAll("[data-filter]"));
+  const cards = Array.from(document.querySelectorAll(".ticket-card"));
+  const count = document.querySelector("[data-count]");
+  const reset = document.querySelector("[data-reset]");
+
+  function pass(card, key, value) {
+    if (!value || value === "全部") return true;
+    return (card.getAttribute(`data-${key}`) || "").toLowerCase().includes(value.toLowerCase());
+  }
+
+  function applyFilters() {
+    const values = Object.fromEntries(filters.map((item) => [item.getAttribute("data-filter"), item.value.trim()]));
+    let visible = 0;
+    cards.forEach((card) => {
+      const ok =
+        pass(card, "destination", values.destination) &&
+        pass(card, "month", values.month) &&
+        pass(card, "days", values.days) &&
+        pass(card, "company", values.company) &&
+        pass(card, "policy", values.policy) &&
+        pass(card, "keyword", values.keyword);
+      card.hidden = !ok;
+      if (ok) visible += 1;
+    });
+    if (count) count.textContent = String(visible);
+  }
+
+  filters.forEach((item) => item.addEventListener("input", applyFilters));
+  reset?.addEventListener("click", () => {
+    filters.forEach((item) => {
+      item.value = item.tagName === "SELECT" ? "全部" : "";
+    });
+    applyFilters();
+  });
+</script>
+
+<style>
+  .ticket-prototype {
+    background: #f5f5f7;
+    color: #1d1d1f;
+    padding-bottom: 96px;
+  }
+  .proto-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 32px;
+    align-items: end;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 72px var(--page-pad) 36px;
+  }
+  .proto-label {
+    color: #0066cc;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .proto-copy h1 {
+    max-width: 900px;
+    margin: 12px 0 18px;
+    font-size: clamp(40px, 5vw, 76px);
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
+  .proto-copy p:last-child {
+    max-width: 760px;
+    color: #6e6e73;
+    font-size: 20px;
+    line-height: 1.7;
+  }
+  .proto-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 14px;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 22px;
+  }
+  .proto-summary strong {
+    font-size: 44px;
+    color: #003b71;
+  }
+  .proto-summary span {
+    align-self: center;
+    color: #6e6e73;
+  }
+  .partner-stage,
+  .top-route-stage {
+    max-width: var(--max-width);
+    margin: 0 auto 28px;
+    padding: 0 var(--page-pad);
+  }
+  .stage-heading,
+  .top-route-stage {
+    display: grid;
+    gap: 10px;
+  }
+  .stage-heading {
+    margin-bottom: 18px;
+  }
+  .stage-heading p,
+  .top-route-copy p {
+    color: #0066cc;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+  .stage-heading h2,
+  .top-route-copy h2 {
+    max-width: 780px;
+    font-size: clamp(30px, 3.5vw, 54px);
+    line-height: 1.08;
+  }
+  .stage-heading span,
+  .top-route-copy span {
+    max-width: 840px;
+    color: #6e6e73;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+  .partner-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .partner-logo-card {
+    position: relative;
+    display: grid;
+    grid-template-rows: 96px auto;
+    gap: 18px;
+    min-height: 260px;
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 24px;
+  }
+  .partner-index {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    color: #b8b8bd;
+    font-weight: 800;
+  }
+  .partner-logo-box {
+    display: grid;
+    place-items: center;
+    padding: 16px 44px 16px 16px;
+    background: #f5f5f7;
+    border-radius: 18px;
+  }
+  .partner-logo-box img {
+    max-width: 100%;
+    max-height: 58px;
+    object-fit: contain;
+  }
+  .partner-logo-box strong {
+    color: #003b71;
+    font-size: 28px;
+  }
+  .partner-logo-card h3 {
+    font-size: 24px;
+    color: #003b71;
+  }
+  .partner-logo-card p {
+    margin: 6px 0 10px;
+    color: #1d1d1f;
+  }
+  .partner-logo-card small {
+    color: #6e6e73;
+    line-height: 1.55;
+  }
+  .top-route-stage {
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+    gap: 24px;
+    align-items: stretch;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .top-route-copy,
+  .top-route-list {
+    padding: 28px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 24px;
+  }
+  .top-route-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    list-style: none;
+    counter-reset: route;
+  }
+  .top-route-list li {
+    counter-increment: route;
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 15px 16px;
+    background: #f5f5f7;
+    border-radius: 16px;
+    font-weight: 700;
+  }
+  .top-route-list li::before {
+    content: counter(route);
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    color: #fff;
+    background: #003b71;
+    border-radius: 50%;
+    font-size: 14px;
+  }
+  .top-route-list span {
+    color: #86868b;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .variant-switch {
+    position: sticky;
+    top: 72px;
+    z-index: 5;
+    display: flex;
+    gap: 10px;
+    max-width: var(--max-width);
+    margin: 0 auto 24px;
+    padding: 10px var(--page-pad);
+    background: rgba(245, 245, 247, 0.86);
+    backdrop-filter: blur(18px);
+  }
+  .variant-switch a {
+    padding: 10px 18px;
+    color: #1d1d1f;
+    text-decoration: none;
+    border: 1px solid #d2d2d7;
+    border-radius: 999px;
+    background: #fff;
+  }
+  .variant-switch a.on {
+    color: #fff;
+    background: #003b71;
+    border-color: #003b71;
+  }
+  .variant-panel {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--page-pad);
+  }
+  .find-cruise-panel {
+    padding: 34px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 28px;
+  }
+  .find-heading {
+    margin-bottom: 26px;
+  }
+  .find-heading p {
+    color: #003b71;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+  .find-heading h2 {
+    margin-top: 8px;
+    font-size: clamp(28px, 3vw, 48px);
+    line-height: 1.1;
+  }
+  .filter-grid {
+    display: grid;
+    grid-template-columns: 1.3fr repeat(2, 0.8fr);
+    gap: 16px;
+  }
+  .filter-grid label {
+    display: grid;
+    gap: 8px;
+  }
+  .filter-grid span {
+    color: #6e6e73;
+    font-size: 14px;
+  }
+  .filter-grid select,
+  .filter-grid input {
+    width: 100%;
+    min-height: 58px;
+    padding: 0 16px;
+    color: #1d1d1f;
+    background: #f5f5f7;
+    border: 1px solid #d2d2d7;
+    border-radius: 14px;
+    font: inherit;
+  }
+  .quick-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 22px;
+    color: #6e6e73;
+  }
+  .quick-row button {
+    color: #0066cc;
+    background: transparent;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+  .toggle-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ticket-results {
+    display: grid;
+    gap: 18px;
+    margin-top: 24px;
+  }
+  .ticket-card {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr) 280px;
+    gap: 24px;
+    align-items: center;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 24px;
+  }
+  .ticket-logo {
+    display: grid;
+    place-items: center;
+    min-height: 104px;
+    padding: 18px;
+    background: #fafafa;
+    border-radius: 18px;
+  }
+  .ticket-logo img {
+    max-width: 116px;
+    max-height: 62px;
+    object-fit: contain;
+  }
+  .ticket-main p:first-child {
+    color: #6e6e73;
+    margin-bottom: 6px;
+  }
+  .ticket-main h3 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+  .ticket-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0;
+  }
+  .ticket-meta span,
+  .policy-row span,
+  .inventory {
+    padding: 7px 11px;
+    color: #424245;
+    background: #f5f5f7;
+    border-radius: 999px;
+    font-size: 14px;
+  }
+  .ticket-note {
+    color: #6e6e73;
+    line-height: 1.65;
+  }
+  .ticket-side {
+    display: grid;
+    gap: 10px;
+    justify-items: start;
+  }
+  .ticket-side strong {
+    font-size: 26px;
+    color: #003b71;
+  }
+  .ticket-side small {
+    color: #6e6e73;
+    line-height: 1.5;
+  }
+  .policy-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .ticket-side a {
+    display: inline-flex;
+    justify-content: center;
+    min-width: 120px;
+    padding: 12px 18px;
+    color: #fff;
+    background: #003b71;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .company-layout {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 24px;
+  }
+  .company-rail,
+  .company-section,
+  .matrix-intro,
+  .ticket-matrix {
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 24px;
+  }
+  .company-rail {
+    align-self: start;
+    display: grid;
+    gap: 12px;
+    padding: 26px;
+  }
+  .company-rail h2,
+  .matrix-intro h2 {
+    font-size: 34px;
+  }
+  .company-rail p,
+  .matrix-intro p {
+    color: #6e6e73;
+    line-height: 1.65;
+  }
+  .company-rail button {
+    min-height: 48px;
+    text-align: left;
+    padding: 0 14px;
+    color: #003b71;
+    background: #f5f5f7;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+    font: inherit;
+  }
+  .company-feed {
+    display: grid;
+    gap: 18px;
+  }
+  .company-section {
+    padding: 24px;
+  }
+  .company-section > div:first-child {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .company-section h3 {
+    font-size: 26px;
+  }
+  .company-section span {
+    color: #6e6e73;
+  }
+  .compact-list {
+    display: grid;
+    gap: 10px;
+  }
+  .compact-list a {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+    color: inherit;
+    background: #f5f5f7;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+  .matrix-intro {
+    padding: 28px;
+    margin-bottom: 18px;
+  }
+  .ticket-matrix {
+    display: grid;
+    grid-template-columns: 1.2fr repeat(6, 1fr);
+    overflow: auto;
+  }
+  .matrix-head,
+  .matrix-company,
+  .matrix-cell {
+    min-width: 112px;
+    padding: 18px 16px;
+    border-bottom: 1px solid #e5e5ea;
+    border-right: 1px solid #e5e5ea;
+  }
+  .matrix-head {
+    color: #6e6e73;
+    font-weight: 700;
+    background: #fafafa;
+  }
+  .matrix-company {
+    color: #003b71;
+    font-weight: 800;
+  }
+  .matrix-cell {
+    color: #86868b;
+    text-align: center;
+  }
+  .matrix-cell.active {
+    color: #003b71;
+    background: #edf5ff;
+    font-weight: 800;
+  }
+  @media (max-width: 900px) {
+    .proto-hero,
+    .ticket-card,
+    .company-layout,
+    .top-route-stage {
+      grid-template-columns: 1fr;
+    }
+    .partner-logo-grid {
+      grid-template-columns: 1fr;
+    }
+    .filter-grid {
+      grid-template-columns: 1fr;
+    }
+    .variant-switch {
+      overflow: auto;
+      top: 60px;
+    }
+    .quick-row {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

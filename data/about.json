@@ -1,0 +1,297 @@
+{
+  "eyebrow": "北京船客国际旅行社有限公司",
+  "title": "船客：为顾客的生命旅程增添光彩",
+  "lead": "航行，不只是抵达。是去见识世界的辽阔，也是去遇见内心更丰盛的自己。船客成立于 2002 年，二十五年来深耕以邮轮为核心的高端旅行领域，从地球两极到人迹罕至的小众秘境，为追求品质生活的探索者提供一站式深度旅行解决方案。",
+  "banner": {
+    "image": "/about/group-photos/antarctic-peninsula-ship-group.jpg",
+    "alt": "船客南极半岛全船客人合影",
+    "position": "center 58%",
+    "fallback": "linear-gradient(145deg, #0c1929 0%, #1b4965 45%, #2d6a8f 85%)"
+  },
+  "highlights": [
+    {
+      "title": "始于 2002 年",
+      "desc": "总部北京，在上海、广州设有办公室，服务覆盖全国。"
+    },
+    {
+      "title": "极地先行者",
+      "desc": "自 2009 年扎根南北极邮轮旅行，拥有长期极地运营与实访经验。"
+    },
+    {
+      "title": "邮轮与轻探险",
+      "desc": "连接全球奢华邮轮公司与小型探险船，覆盖极地、秘境与经典暖水航线。"
+    }
+  ],
+  "stats": [
+    {
+      "value": "70+",
+      "label": "南北极航行组织"
+    },
+    {
+      "value": "30+",
+      "label": "整船中文包船"
+    },
+    {
+      "value": "近 10,000",
+      "label": "极地旅行者圆梦"
+    },
+    {
+      "value": "20+",
+      "label": "全球奢华邮轮公司合作"
+    },
+    {
+      "value": "3000+",
+      "label": "标准化高端邮轮航线"
+    }
+  ],
+  "credentials": [
+    "南极旅游组织协会 IAATO 与北极探险邮轮协会 AECO 双认证成员",
+    "参与发起成立中国首家极地探险邮轮公司 66°Expeditions",
+    "世界顶级奢华旅行组织 Virtuoso 国内首批成员",
+    "国际邮轮组织 CLIA 在中国大陆的首家会员企业",
+    "央视纪录片《北极，北极！》与南极实景电影《南极之恋》官方接待"
+  ],
+  "destinations": [
+    {
+      "title": "南极 · 北极",
+      "desc": "南北极点、北极三岛、半环南极、西北航道、中文包船等，依托多年极地运营经验保障安全与体验。",
+      "path": "/antarctic"
+    },
+    {
+      "title": "邮轮连接世界",
+      "desc": "地中海、加勒比海、南太平洋等经典暖水航线，兼顾海上慢行、岸上文化与舒适度假。",
+      "path": "/trips"
+    },
+    {
+      "title": "小众轻探险",
+      "desc": "加拉帕戈斯、金伯利、阿拉斯加、非洲草原、南美亚马逊河等，为深度探索者设计高品质主题小团。",
+      "path": "/light-expedition"
+    }
+  ],
+  "milestones": [
+    {
+      "year": "2002",
+      "text": "北京船客国际旅行社有限公司成立，开启高端国际旅行服务。"
+    },
+    {
+      "year": "2009",
+      "text": "组织首次南北极邮轮旅行，自此扎根极地，成为国内较早开展极地旅行服务的机构之一。"
+    },
+    {
+      "year": "2012",
+      "text": "全国首创「民生银行号」南北极包船，首次登陆中国南极长城站。"
+    },
+    {
+      "year": "2015",
+      "text": "接待央视纪录片《北极，北极！》及电影《南极之恋》剧组赴极地拍摄。"
+    },
+    {
+      "year": "2017–2019",
+      "text": "启用全新品牌「船客」，持续深耕邮轮与极地领域，形成更稳定的中文服务与产品运营体系。"
+    },
+    {
+      "year": "2024",
+      "text": "参与发起成立中国首家极地探险邮轮公司 66°Expeditions；协助 89 岁长者安稳登陆南极，让向往不受年龄限制。"
+    },
+    {
+      "year": "2026",
+      "text": "已成功组织 70 余次南北极航行、30 余次整船中文包船，陪伴近 10,000 名旅行者平安圆梦极地。"
+    }
+  ],
+  "advantages": [
+    "船客二十五年来深耕以邮轮为核心的高端旅行领域，从地球两极到人迹罕至的小众秘境，为追求品质生活的探索者提供一站式深度旅行解决方案。",
+    "作为国际邮轮组织 CLIA 在中国大陆的首家会员企业，船客连接 20 余家全球奢华邮轮公司，拥有超过 3000 条标准化高端邮轮航线。专业团队每年精心设计 100 余条特色线路，让贵宾在优雅慢行的海上宫殿与深入自然的小型探险船之间清晰选择。",
+    "依托多年极地运营积淀，船客汇聚地质、动物、天文、摄影等多领域专家资源，将奢华营地的舒适、私人轻型飞机的便捷与专业学者的陪伴式讲解融为一体，设计有别于常规旅行团的高品质轻探险主题小团。"
+  ],
+  "servicePromises": [
+    {
+      "title": "一价全含",
+      "desc": "围绕机票、船票、酒店、餐食、讲座及活动等核心服务边界清晰报价，减少隐形消费与信息差。"
+    },
+    {
+      "title": "中文领队",
+      "desc": "经验丰富的领队全程陪同，降低语言障碍，让应急处理和行程衔接更顺畅。"
+    },
+    {
+      "title": "合同保障",
+      "desc": "签订国家旅游局认可的正规出境合同，费用、权益与服务内容均有据可依。"
+    },
+    {
+      "title": "灵活退改",
+      "desc": "提供更安心的售后支持与退改安排，具体政策以产品说明、船司规则和签约合同为准。"
+    }
+  ],
+  "groupPhotos": [
+    {
+      "title": "极地甲板大合影",
+      "desc": "船客团队与客人在极地海域共同完成航行纪念。",
+      "image": "/about/group-photos/polar-deck-group.jpg",
+      "alt": "船客极地甲板出团大合影"
+    },
+    {
+      "title": "探险邮轮出团合照",
+      "desc": "从码头到登船，真实记录每一次出发。",
+      "image": "/about/group-photos/expedition-ship-group.jpg",
+      "alt": "船客探险邮轮出团合照"
+    },
+    {
+      "title": "阿拉斯加小队合影",
+      "desc": "轻探险小队在阿拉斯加行程中的出团瞬间。",
+      "image": "/about/group-photos/alaska-expedition-group.jpg",
+      "alt": "船客阿拉斯加出团合照"
+    },
+    {
+      "title": "南极半岛全船合影",
+      "desc": "整船客人在南极半岛航程中的纪念合照。",
+      "image": "/about/group-photos/antarctic-peninsula-ship-group.jpg",
+      "alt": "船客南极半岛全船合影"
+    },
+    {
+      "title": "南极摄影主题团",
+      "desc": "以探险与摄影为主题的南极半岛出行记录。",
+      "image": "/about/group-photos/antarctic-photography-group.jpg",
+      "alt": "船客南极摄影主题团合照"
+    },
+    {
+      "title": "南极三岛雪地合影",
+      "desc": "抵达冰雪现场，与目的地共同留下真实记忆。",
+      "image": "/about/group-photos/antarctic-three-islands-group.jpg",
+      "alt": "船客南极三岛雪地合影"
+    },
+    {
+      "title": "南极甲板庆祝时刻",
+      "desc": "冰山环绕的甲板上，记录航行途中的重要时刻。",
+      "image": "/about/group-photos/antarctic-deck-celebration.jpg",
+      "alt": "船客南极甲板庆祝合影"
+    },
+    {
+      "title": "邮轮码头出团合照",
+      "desc": "登船前后的团队合影，让服务现场可被看见。",
+      "image": "/about/group-photos/expedition-ship-port-group.jpg",
+      "alt": "船客邮轮码头出团合照"
+    }
+  ],
+  "officeGallery": [
+    {
+      "title": "北京总部",
+      "desc": "北京总部办公空间，承接全国客户咨询、产品运营与出行服务统筹。",
+      "image": "/about/offices/beijing-office.jpg",
+      "alt": "船客北京总部办公空间"
+    },
+    {
+      "title": "上海办公室",
+      "desc": "上海团队办公空间，以稳定响应承接华东区域客户咨询与服务。",
+      "image": "/about/offices/shanghai-office.jpg",
+      "alt": "船客上海办公室入口"
+    },
+    {
+      "title": "广州办公室",
+      "desc": "广州团队办公空间，承接华南区域客户咨询与高端旅行服务。",
+      "image": "/about/offices/guangzhou-office.jpg",
+      "alt": "船客广州办公室办公空间"
+    }
+  ],
+  "partnerLogos": [
+    {
+      "name": "Ponant Explorations",
+      "image": "/about/partners/ponant-original.jpg"
+    },
+    {
+      "name": "Silversea Cruises",
+      "image": "/about/partners/silversea.png"
+    },
+    {
+      "name": "Quark Expeditions",
+      "image": "/about/partners/quark-expeditions.svg"
+    },
+    {
+      "name": "66° Expeditions",
+      "image": "/about/partners/66-expeditions.png"
+    },
+    {
+      "name": "Antarctica21",
+      "image": "/about/partners/antarctica21.webp"
+    },
+    {
+      "name": "Swan Hellenic",
+      "image": "/about/partners/swan-hellenic.png"
+    },
+    {
+      "name": "Oceanwide Expeditions",
+      "image": "/about/partners/oceanwide-expeditions.png"
+    },
+    {
+      "name": "Albatros Expeditions",
+      "image": "/about/partners/albatros.png"
+    },
+    {
+      "name": "Aurora Expeditions",
+      "image": "/about/partners/aurora.svg"
+    },
+    {
+      "name": "Atlas Ocean Voyages",
+      "image": "/about/partners/atlas-ocean-voyages.png"
+    },
+    {
+      "name": "Hapag-Lloyd Cruises",
+      "image": "/about/partners/hapag-lloyd-cruises.png"
+    },
+    {
+      "name": "HX Expeditions",
+      "image": "/about/partners/hx.png"
+    },
+    {
+      "name": "Lindblad Expeditions",
+      "image": "/about/partners/lindblad.svg"
+    },
+    {
+      "name": "Polar Latitudes",
+      "image": "/about/partners/polar-latitudes.png"
+    },
+    {
+      "name": "Poseidon Expeditions",
+      "image": "/about/partners/poseidon.png"
+    },
+    {
+      "name": "Secret Atlas",
+      "image": "/about/partners/secret-atlas.svg"
+    },
+    {
+      "name": "Regent Seven Seas Cruises",
+      "image": "/about/partners/regent-seven-seas.png"
+    },
+    {
+      "name": "Explora Journeys",
+      "image": "/about/partners/explora-journeys.png"
+    },
+    {
+      "name": "Virtuoso",
+      "image": "/about/partners/virtuoso.png"
+    },
+    {
+      "name": "Disney Cruise Line",
+      "image": "/about/partners/disney-cruise-line.svg"
+    },
+    {
+      "name": "Seabourn",
+      "image": "/about/partners/seabourn.svg"
+    }
+  ],
+  "responsible": "船客始终秉持可持续发展原则，主动守护极地与目的地的生态环境、野生动物，尊重当地原住民生活。我们注重行程设计中的环保细节，为贵宾搭建一座绿色、透明、安全的桥梁，通往世界每一个值得珍重的角落。",
+  "offices": [
+    {
+      "name": "北京总部",
+      "address": "北京市朝阳区东四环四惠桥南甲一号伊莎文化广场 A 座三层 D11",
+      "phone": "010-85864460"
+    },
+    {
+      "name": "上海办公室",
+      "address": "上海市长宁区虹桥路 996 弄 71 号甘雅商务中心 2 楼 203"
+    },
+    {
+      "name": "广州办公室",
+      "address": "广州市越秀区侨光路 8 号华厦大酒店 C 座 8 楼"
+    }
+  ],
+  "homeBlurb": "北京船客国际旅行社，成立于 2002 年。二十五年来深耕以邮轮为核心的高端旅行领域；IAATO / AECO 双认证成员，已组织 70 余次南北极航行、30 余次整船中文包船，陪伴近 10,000 名旅行者圆梦极地。"
+}

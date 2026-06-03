@@ -1,0 +1,71 @@
+{
+  "brandId": "atlas",
+  "vesselName": "World Navigator 环球领航者号",
+  "vesselNameEn": "Atlas Ocean Voyages",
+  "tagline": "Atlas 旗下极地探险新船 · 2021 年下水",
+  "heroImage": "/ships/profiles/atlas-navigator/slide36-01.jpg",
+  "highlights": [
+    "Atlas Ocean Voyages 北美极地探险品牌",
+    "2021 年首航，五星级探险邮轮",
+    "船客 182 人包船，中文探险队与讲座",
+    "无限免费 WiFi、欧舒丹洗漱用品",
+    "阳台房、法式阳台与多档套房可选"
+  ],
+  "sections": [
+    {
+      "title": "为什么选择 Atlas",
+      "content": "乘坐邮轮是游览北极最好的方式，既安全又舒适，还能深入海域近距离接触野生动物。Atlas 总部位于佛罗里达州劳德代尔堡，是 Mystic Invest Holding 的北美品牌，也是第一家悬挂葡萄牙国旗的远洋邮轮公司。"
+    },
+    {
+      "title": "环球领航者号",
+      "content": "我们此次出行乘坐的是 Atlas 旗下、以卓越航海性能和豪华设施著称的环球领航者号 World Navigator。2021 年下水，先进技术保障探索安全；豪华客房、丰盛美食与多种娱乐设施。"
+    },
+    {
+      "title": "舱房礼遇",
+      "content": "海景房、阳台房、法式阳台房及旅行家/探索家/航海家套房配备免费迷你吧、24 小时客房服务、欧舒丹洗漱用品；套房另享管家服务、欢迎香槟与果盘及免费洗衣。"
+    }
+  ],
+  "specs": [
+    ["首航", "2021"],
+    ["载客", "182 人（包船）"],
+    ["船员", "120 人"],
+    ["抗冰", "1B"],
+    ["船长", "129 m"],
+    ["船宽", "18.9 m"],
+    ["吨位", "9934"],
+    ["航速", "16 节"],
+    ["餐厅", "2 个"]
+  ],
+  "facilities": [
+    "主餐厅：早午自助，晚点餐",
+    "烧烤餐厅（视天气可转室内）",
+    "Zephyr 露天酒廊",
+    "健身房、免税店",
+    "阿特拉斯休息室、全景酒廊",
+    "桑拿房、礼堂、观景泳池",
+    "SPA 与美容沙龙"
+  ],
+  "cabins": [
+    { "name": "海景房", "spec": "17㎡ · 3 层" },
+    { "name": "阳台房", "spec": "22+3㎡ · 5/6 层 · 可步出阳台" },
+    { "name": "法式阳台房", "spec": "25㎡ · 5/6 层 · 升降窗" },
+    { "name": "豪华阳台房", "spec": "25+3㎡ · 6 层 · 可住 3 人" },
+    { "name": "旅行家套房", "spec": "30+6㎡ · 5/6 层" },
+    { "name": "探索家套房", "spec": "35+6㎡ · 5 层" },
+    { "name": "航海家套房", "spec": "37+6㎡ · 5/6 层" }
+  ],
+  "gallery": [
+    { "src": "/ships/profiles/atlas-navigator/slide38-00.jpg", "alt": "主餐厅" },
+    { "src": "/ships/profiles/atlas-navigator/slide38-01.jpg", "alt": "烧烤餐厅" },
+    { "src": "/ships/profiles/atlas-navigator/slide38-02.jpg", "alt": "露天酒廊" },
+    { "src": "/ships/profiles/atlas-navigator/slide39-00.jpg", "alt": "健身房" },
+    { "src": "/ships/profiles/atlas-navigator/slide39-01.jpg", "alt": "全景酒廊" },
+    { "src": "/ships/profiles/atlas-navigator/slide40-00.jpg", "alt": "观景泳池" },
+    { "src": "/ships/profiles/atlas-navigator/slide41-00.jpg", "alt": "海景房" },
+    { "src": "/ships/profiles/atlas-navigator/slide41-01.jpg", "alt": "阳台房" },
+    { "src": "/ships/profiles/atlas-navigator/slide42-00.jpg", "alt": "豪华阳台房" },
+    { "src": "/ships/profiles/atlas-navigator/slide43-00.jpg", "alt": "旅行家套房" },
+    { "src": "/ships/profiles/atlas-navigator/slide44-00.jpg", "alt": "航海家套房" }
+  ],
+  "relatedSlugs": ["2026-arctic-eclipse-three-islands"]
+}

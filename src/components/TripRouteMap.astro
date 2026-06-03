@@ -1,0 +1,75 @@
+---
+import type { ProductDetail } from "../lib/product-details";
+
+interface Props {
+  routeMap: NonNullable<ProductDetail["routeMap"]>;
+  /** 放在 Tab 面板内时使用，去掉通栏背景 */
+  embedded?: boolean;
+}
+
+const { routeMap, embedded = false } = Astro.props;
+const Tag = embedded ? "div" : "section";
+---
+
+<Tag
+  class:list={["trip-route-map", { "trip-route-map--embedded": embedded }]}
+  aria-labelledby="route-map-title"
+>
+  <div class="trip-route-map-inner">
+    <h2 id="route-map-title">航线图</h2>
+    {routeMap.caption && <p class="route-map-note">{routeMap.caption}</p>}
+    <figure>
+      <img src={routeMap.src} alt={routeMap.alt ?? "航程航线图"} loading="lazy" decoding="async" />
+    </figure>
+  </div>
+</Tag>
+
+<style>
+  .trip-route-map {
+    background: var(--bg);
+    padding: clamp(32px, 5vw, 48px) var(--page-pad);
+    border-bottom: 1px solid var(--line);
+  }
+  .trip-route-map--embedded {
+    background: transparent;
+    padding: 0 0 28px;
+    border-bottom: none;
+  }
+  .trip-route-map--embedded h2 {
+    text-align: left;
+    font-size: 22px;
+  }
+  .trip-route-map--embedded .route-map-note {
+    text-align: left;
+  }
+  .trip-route-map-inner {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .trip-route-map h2 {
+    font-size: clamp(24px, 3vw, 28px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .route-map-note {
+    text-align: center;
+    font-size: 15px;
+    color: var(--sub);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .trip-route-map figure {
+    margin: 0;
+    background: var(--surface);
+    border-radius: 16px;
+    padding: clamp(12px, 2.5vw, 24px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  }
+  .trip-route-map img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

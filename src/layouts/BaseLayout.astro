@@ -1,0 +1,91 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import JsonLd from "../components/JsonLd.astro";
+import { organizationJsonLd } from "../lib/geo";
+import { SITE } from "../lib/site";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  jsonLd?: object | object[];
+  /** 详情页等已有底部咨询栏时隐藏全局 mobile-bar */
+  hideMobileBar?: boolean;
+  pageHome?: boolean;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  path = Astro.url.pathname,
+  jsonLd,
+  hideMobileBar = false,
+  pageHome = path === "/",
+} = Astro.props;
+
+const canonical = new URL(path, SITE.url).href;
+const ldGraph = [organizationJsonLd(), ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="zh_CN" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {ldGraph.map((item) => (
+      <JsonLd data={item} />
+    ))}
+  </head>
+  <body class:list={{ "page-home": pageHome }}>
+    <Header currentPath={path} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    {!hideMobileBar && (
+      <div class="mobile-bar">
+        <a href="/advisor" class="btn btn-primary">联系顾问</a>
+      </div>
+    )}
+  </body>
+</html>
+
+<style>
+  main {
+    min-height: 60vh;
+  }
+  .mobile-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px var(--space-sm);
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid var(--color-border);
+    z-index: 99;
+  }
+  .mobile-bar .btn {
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    .mobile-bar {
+      display: block;
+    }
+    body {
+      padding-bottom: 80px;
+    }
+  }
+</style>

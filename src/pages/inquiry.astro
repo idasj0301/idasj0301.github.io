@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LeadForm from "../components/LeadForm.astro";
+import { SITE } from "../lib/site";
+
+const tripSlug = Astro.url.searchParams.get("trip") ?? undefined;
+const tripTitle = Astro.url.searchParams.get("title") ?? undefined;
+---
+
+<BaseLayout
+  title={`预约留咨 · ${SITE.name}`}
+  description="留下称呼与联系方式，船客旅行顾问将在一个工作日内与您联系，推荐南极北极等航程。"
+  path="/inquiry"
+  hideMobileBar
+>
+  <div class="inquiry-page">
+    <header class="inquiry-hero">
+      <p class="inquiry-eyebrow">船客 · 预约咨询</p>
+      <h1>留下联系方式</h1>
+      <p class="inquiry-tagline">顾问一对一回复，无需在线支付</p>
+    </header>
+
+    <div class="inquiry-card">
+      <LeadForm tripSlug={tripSlug} tripTitle={tripTitle} source="inquiry" />
+    </div>
+
+    <p class="inquiry-alt">
+      已添加顾问微信？<a href="/advisor">直接联系顾问</a>
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .inquiry-page {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 32px var(--page-pad) 80px;
+  }
+  .inquiry-hero {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .inquiry-eyebrow {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--sub);
+    margin-bottom: 10px;
+  }
+  .inquiry-hero h1 {
+    font-size: clamp(30px, 5vw, 38px);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .inquiry-tagline {
+    font-size: 17px;
+    color: var(--sub);
+    margin: 0;
+  }
+  .inquiry-card {
+    background: var(--surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 28px 24px 32px;
+    box-shadow: 0 8px 32px rgba(27, 73, 101, 0.08);
+  }
+  .inquiry-alt {
+    text-align: center;
+    font-size: 15px;
+    color: var(--sub);
+    margin-top: 24px;
+    line-height: 1.8;
+  }
+</style>

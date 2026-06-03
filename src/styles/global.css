@@ -1,0 +1,298 @@
+:root {
+  --ink: #1d1d1f;
+  --sub: #6e6e73;
+  --bg: #fbfbfd;
+  --surface: #ffffff;
+  --line: rgba(0, 0, 0, 0.08);
+  --brand: #003066;
+  --brand-hover: #002347;
+  --primary: var(--brand);
+  --accent: #1b4965;
+  --color-primary: #003066;
+  --color-muted: #6e6e73;
+  --color-surface: #ffffff;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --font-size-sm: 17px;
+  --font-size-lg: 21px;
+  --line-height: 1.55;
+  --apple-link: #0066cc;
+  --radius: 18px;
+  --nav-h: 64px;
+  --nav-link-size: 17px;
+  --nav-cta-size: 17px;
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC",
+    "Helvetica Neue", sans-serif;
+  --font-size-base: 17px;
+  --max-width: 1200px;
+  --page-pad: clamp(20px, 4vw, 48px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.47059;
+  color: var(--ink);
+  background: var(--bg);
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+}
+
+a {
+  color: var(--apple-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 首页：导航贴 Banner、KV 全宽通栏（参考 Apple 商店首页） */
+body.page-home .nav {
+  background: rgba(251, 251, 253, 0.8);
+  border-bottom: none;
+}
+
+body.page-home .home-top {
+  background: var(--bg);
+}
+
+body.page-home .home-banner {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+}
+
+body.page-home .home-banner .banner {
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  max-width: none;
+  height: min(52vw, 520px);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-pad);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 22px;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 980px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: filter 0.2s var(--ease);
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--brand-hover);
+  text-decoration: none !important;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--apple-link);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+/* 航程详情 · 底部咨询栏 */
+.trip-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  padding: 0 var(--page-pad) calc(16px + env(safe-area-inset-bottom));
+  background: rgba(251, 251, 253, 0.94);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.06);
+}
+.trip-cta-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 68px;
+  padding: 12px 0;
+}
+.trip-cta-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.trip-cta-price {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.trip-cta-sub {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--sub);
+}
+.trip-cta-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 32px;
+  font-size: 17px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #fff;
+  background: var(--brand);
+  border: none;
+  border-radius: 980px;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(0, 48, 102, 0.28);
+  transition: background 0.2s var(--ease), transform 0.15s var(--ease);
+}
+.trip-cta-btn:hover {
+  background: var(--brand-hover);
+  text-decoration: none !important;
+}
+body:has(.trip-cta) {
+  padding-bottom: calc(84px + env(safe-area-inset-bottom));
+}
+@media (max-width: 480px) {
+  body:has(.trip-cta) {
+    padding-bottom: calc(128px + env(safe-area-inset-bottom));
+  }
+}
+
+.section {
+  padding: 48px 0 64px;
+}
+
+.section-title {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* 首页品类区 · Apple 式「了解更多」链接 */
+.section-more-wrap {
+  text-align: center;
+  margin: 36px 0 4px;
+  padding-bottom: 8px;
+}
+
+.apple-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  line-height: 1.23536;
+  color: var(--apple-link);
+  text-decoration: none !important;
+  transition: color 0.2s var(--ease), gap 0.2s var(--ease);
+}
+
+.apple-more-link::after {
+  content: "";
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  margin-top: 1px;
+  border-right: 1.5px solid currentColor;
+  border-top: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s var(--ease);
+}
+
+.apple-more-link:hover {
+  color: #0077ed;
+  text-decoration: none !important;
+}
+
+.apple-more-link:hover::after {
+  transform: rotate(45deg) translate(2px, -2px);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 20px;
+  width: 100%;
+  isolation: isolate;
+}
+
+.product-grid > * {
+  min-width: 0;
+}
+
+@media (max-width: 734px) {
+  .container {
+    padding: 0 16px;
+  }
+}

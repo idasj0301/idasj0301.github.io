@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.chuanke.com/schemas/product.json",
+  "title": "船客航程 SKU",
+  "description": "与官网详情页 6 Tab 对齐：overview / highlight / schedule / ship / fee / notice",
+  "type": "object",
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "category",
+    "departureDate",
+    "durationDays",
+    "priceFrom",
+    "priceLabel",
+    "shipName",
+    "summary",
+    "highlights",
+    "published"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z]{3}-[0-9]{3}$" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string", "minLength": 4 },
+    "category": {
+      "type": "string",
+      "enum": ["antarctic", "arctic", "galapagos", "light-expedition", "ticket", "ship"]
+    },
+    "subcategory": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "departureDate": { "type": "string", "format": "date" },
+    "endDate": { "type": "string", "format": "date" },
+    "durationDays": { "type": "integer", "minimum": 1 },
+    "priceFrom": { "type": "integer", "minimum": 0 },
+    "priceLabel": { "type": "string" },
+    "shipName": { "type": "string" },
+    "summary": { "type": "string", "minLength": 80, "description": "GEO 核心摘要，150–300 字" },
+    "overview": { "type": "string" },
+    "highlights": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "itinerary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["day", "title", "content"],
+        "properties": {
+          "day": { "type": "integer" },
+          "title": { "type": "string" },
+          "content": { "type": "string" }
+        }
+      }
+    },
+    "ship": { "type": "string" },
+    "feeNote": { "type": "string" },
+    "notice": { "type": "string" },
+    "published": { "type": "boolean" },
+    "featured": { "type": "boolean" },
+    "imageAlt": { "type": "string" },
+    "wecomFrom": { "type": "string", "description": "企微获客链接 ?from= 参数" }
+  },
+  "additionalProperties": false
+}

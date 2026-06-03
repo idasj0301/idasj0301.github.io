@@ -1,0 +1,174 @@
+---
+import type { Product } from "../types/product";
+import ProductCard from "./ProductCard.astro";
+import { getDepartureYears } from "../lib/product-card";
+
+interface Props {
+  products: Product[];
+  /** 至少几条才显示年份筛选，品类页建议 2 */
+  minForFilter?: number;
+  gridId?: string;
+}
+
+const { products, minForFilter = 3, gridId = "product-grid" } = Astro.props;
+const years = getDepartureYears(products);
+const showYearFilter = years.length > 1 && products.length >= minForFilter;
+---
+
+{showYearFilter && (
+  <div class="year-filters" role="tablist" aria-label="按出发年份筛选">
+    <button type="button" class="year-filter on" data-year="all" aria-pressed="true">
+      全部
+    </button>
+    {years.map((y) => (
+      <button type="button" class="year-filter" data-year={String(y)} aria-pressed="false">
+        {y}
+      </button>
+    ))}
+  </div>
+)}
+
+<div
+  class="product-grid"
+  id={gridId}
+  data-product-filter="1"
+  data-year-filter={showYearFilter ? "1" : undefined}
+>
+  {
+    products.length > 0 ? (
+      products.map((p) => <ProductCard product={p} />)
+    ) : (
+      <slot name="empty" />
+    )
+  }
+</div>
+
+<script>
+  function initYearFilters() {
+    document.querySelectorAll('[data-product-filter="1"]').forEach((root) => {
+      if (!(root instanceof HTMLElement)) return;
+      if (root.dataset.filterBound === "1") return;
+      root.dataset.filterBound = "1";
+      const bar = root.previousElementSibling;
+      const scope = root.closest(".page") ?? document;
+      const tagBar = scope.querySelector(`[data-tag-filter-for="${root.id}"]`);
+      if (!bar?.classList.contains("year-filters") && !tagBar) return;
+
+      const cards = root.querySelectorAll<HTMLElement>(".product-card[data-year]");
+      const yearButtons = bar?.classList.contains("year-filters")
+        ? bar.querySelectorAll<HTMLButtonElement>(".year-filter")
+        : [];
+      const tagButtons = tagBar
+        ? tagBar.querySelectorAll<HTMLButtonElement>(".filter[data-tag], .ticket-filter[data-tag]")
+        : [];
+      let selectedYear = "all";
+      let selectedTag = "all";
+
+      function matchesTag(card: HTMLElement, tag: string) {
+        if (tag === "all") return true;
+        const values = (card.dataset.filterValues ?? "").split("|");
+        const title = card.dataset.title ?? "";
+        return values.includes(tag) || title.includes(tag);
+      }
+
+      function apply() {
+        cards.forEach((card) => {
+          const show =
+            (selectedYear === "all" || card.dataset.year === selectedYear) &&
+            matchesTag(card, selectedTag);
+          card.hidden = !show;
+        });
+        const visible = [...cards].filter((c) => !c.hidden).length;
+        let empty = root.querySelector(".year-filter-empty");
+        if (visible === 0) {
+          if (!empty) {
+            empty = document.createElement("p");
+            empty.className = "year-filter-empty empty";
+            empty.textContent =
+              "当前筛选暂无在售航程，可切换标签或年份，或联系顾问了解尾盘。";
+            root.appendChild(empty);
+          }
+        } else if (empty) {
+          empty.remove();
+        }
+
+        const params = new URLSearchParams(location.search);
+        if (selectedTag === "all") params.delete("tag");
+        else params.set("tag", selectedTag);
+        if (selectedYear === "all") params.delete("year");
+        else params.set("year", selectedYear);
+        const next = `${location.pathname}${params.toString() ? `?${params}` : ""}`;
+        history.replaceState(null, "", next);
+      }
+
+      yearButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          selectedYear = btn.dataset.year ?? "all";
+          yearButtons.forEach((b) => {
+            const on = b === btn;
+            b.classList.toggle("on", on);
+            b.setAttribute("aria-pressed", on ? "true" : "false");
+          });
+          apply();
+        });
+      });
+
+      tagButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          selectedTag = btn.dataset.tag ?? "all";
+          tagButtons.forEach((b) => {
+            const on = b === btn;
+            b.classList.toggle("on", on);
+            b.setAttribute("aria-pressed", on ? "true" : "false");
+          });
+          apply();
+        });
+      });
+
+      const params = new URLSearchParams(location.search);
+      const qYear = params.get("year");
+      const qTag = params.get("tag");
+      if (qTag && [...tagButtons].some((b) => b.dataset.tag === qTag)) {
+        [...tagButtons].find((b) => b.dataset.tag === qTag)?.click();
+      }
+      if (qYear && [...yearButtons].some((b) => b.dataset.year === qYear)) {
+        [...yearButtons].find((b) => b.dataset.year === qYear)?.click();
+      }
+    });
+  }
+  initYearFilters();
+  document.addEventListener("astro:page-load", initYearFilters);
+</script>
+
+<style>
+  .year-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: var(--space-md);
+  }
+  .year-filter {
+    padding: 10px 20px;
+    border-radius: 980px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    background: #f3f4f6;
+    color: var(--color-muted, var(--sub));
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+  .year-filter:hover {
+    background: #e8eaed;
+    color: var(--ink);
+  }
+  .year-filter.on {
+    background: var(--color-primary, var(--brand));
+    color: #fff;
+  }
+  .year-filter-empty {
+    grid-column: 1 / -1;
+  }
+</style>
