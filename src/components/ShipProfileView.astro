@@ -21,7 +21,7 @@ const heroIsLogo = heroImage === brand.logo;
 <article class="ship-profile">
   <header class="ship-hero">
     <nav class="ship-crumb" aria-label="面包屑">
-      <a href="/ships">船司甄选</a>
+      <a href="/ships/">船司甄选</a>
       <span aria-hidden="true">›</span>
       <span>{title}</span>
     </nav>
@@ -37,7 +37,7 @@ const heroIsLogo = heroImage === brand.logo;
           ))}
         </div>
         <div class="ship-hero-cta">
-          <a class="btn btn-primary" href="/advisor">咨询该船航次</a>
+          <a class="btn btn-primary" href="/advisor/">咨询该船航次</a>
           {related[0] && (
             <a class="btn btn-ghost" href="#trips">
               查看 {related.length} 个在售航程
@@ -146,7 +146,7 @@ const heroIsLogo = heroImage === brand.logo;
           <h2>品牌简介</h2>
           <p>{brand.blurb}</p>
           <p class="ship-muted">
-            该船型详细图文资料整理中，欢迎<a href="/advisor">联系顾问</a>索取最新船册与航次报价。
+            该船型详细图文资料整理中，欢迎<a href="/advisor/">联系顾问</a>索取最新船册与航次报价。
           </p>
         </section>
       )
@@ -212,7 +212,7 @@ const heroIsLogo = heroImage === brand.logo;
           </div>
         ) : (
           <p class="ship-muted">
-            该船司档期整理中，请<a href="/advisor">联系顾问</a>获取航次与舱位报价。
+            该船司档期整理中，请<a href="/advisor/">联系顾问</a>获取航次与舱位报价。
           </p>
         )
       }

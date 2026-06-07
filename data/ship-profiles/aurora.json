@@ -1,0 +1,74 @@
+{
+  "brandId": "aurora",
+  "vesselName": "欧若拉探险 · 单船票船队",
+  "vesselNameEn": "Aurora Expeditions",
+  "tagline": "澳洲探险船司，覆盖经典南极半岛、南极圈、南极飞航、双岛与三岛航线。",
+  "heroImage": "/ships/aurora.svg",
+  "highlights": [
+    "官网单船票 SKU 已按蘑菇表格补充航线、日期、邮轮、起价和官方链接",
+    "适合已自行安排国际段、签证和前后住宿，只需预订单船票航段的客人",
+    "最终舱位、价格、税费、活动和取消条款以船司实时确认为准",
+    "南极登陆与飞航安排受天气、冰况、港口、机场和环保规范影响"
+  ],
+  "sections": [
+    {
+      "title": "船司定位",
+      "content": "欧若拉探险（Aurora Expeditions）是船客单船票可咨询船司之一。本页汇总其在售或可咨询的南极航次，方便客人按船司、船名、日期和预算进行筛选。"
+    },
+    {
+      "title": "咨询建议",
+      "content": "单船票适合明确出行月份、可自行安排国际段和前后住宿的客人。建议提交预算、舱型偏好、可出发日期和是否接受飞航/德雷克海峡航行，由顾问实时核对余舱。"
+    }
+  ],
+  "specs": [
+    [
+      "船司",
+      "欧若拉探险 / Aurora Expeditions"
+    ],
+    [
+      "区域",
+      "南极"
+    ],
+    [
+      "产品类型",
+      "单船票"
+    ],
+    [
+      "库存",
+      "以船司实时确认为准"
+    ]
+  ],
+  "facilities": [
+    "船上住宿与餐饮",
+    "探险队讲座与登陆说明",
+    "Zodiac 冲锋艇巡游/登陆活动（以航次开放为准）",
+    "观景甲板和公共休息空间"
+  ],
+  "vessels": [
+    {
+      "name": "Douglas Mawson 摩森号",
+      "role": "南极单船票航次",
+      "intro": "Douglas Mawson 摩森号 出现在蘑菇表格的 欧若拉探险 单船票 SKU 中，具体船舶参数、舱型和设施以船司官方资料为准。"
+    },
+    {
+      "name": "Greg Mortimer 阁默号",
+      "role": "南极单船票航次",
+      "intro": "Greg Mortimer 阁默号 出现在蘑菇表格的 欧若拉探险 单船票 SKU 中，具体船舶参数、舱型和设施以船司官方资料为准。"
+    },
+    {
+      "name": "Sylvia Earle 曦珥号",
+      "role": "南极单船票航次",
+      "intro": "Sylvia Earle 曦珥号 出现在蘑菇表格的 欧若拉探险 单船票 SKU 中，具体船舶参数、舱型和设施以船司官方资料为准。"
+    }
+  ],
+  "relatedSlugs": [
+    "aurora-2026-12-07-douglas-mawson-spirit-of-antarctica",
+    "aurora-2026-12-29-sylvia-earle-spirit-of-antarctica",
+    "aurora-2027-02-17-douglas-mawson-spirit-of-antarctica",
+    "aurora-2027-02-27-douglas-mawson-spirit-of-antarctica",
+    "aurora-2026-11-14-sylvia-earle-antarctica-active",
+    "aurora-2026-12-06-sylvia-earle-antarctica-active",
+    "aurora-2026-11-13-sylvia-earle-across-the-antarctic-circle",
+    "aurora-2026-12-18-sylvia-earle-across-the-antarctic-circle"
+  ]
+}

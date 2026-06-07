@@ -14,9 +14,16 @@ import aboutData from "../../data/about.json";
 const featured = getFeaturedProducts(6);
 const antarctic = getHomeCategoryProducts("antarctic", 3);
 const arctic = getHomeCategoryProducts("arctic", 3);
-const galapagos = getProductsByCategory("galapagos");
-const lightExpedition = getProductsByCategory("light-expedition");
+const galapagos = getProductsByCategory("galapagos").slice(0, 3);
+const lightExpedition = getProductsByCategory("light-expedition").slice(0, 3);
 const inspire = articles.filter((a) => a.published).slice(0, 2);
+const homeStats = aboutData.stats.slice(0, 3);
+const officePhotoByTitle = new Map(aboutData.officeGallery.map((item) => [item.title, item]));
+const homeOffices = aboutData.offices.map((office) => ({
+  ...office,
+  photo: officePhotoByTitle.get(office.name),
+}));
+const firstOffice = homeOffices[0];
 ---
 
 <BaseLayout title={SITE.title} description={SITE.description} path="/">
@@ -24,8 +31,8 @@ const inspire = articles.filter((a) => a.published).slice(0, 2);
     <h1 class="sr-only">船客极地邮轮与探险旅行</h1>
     <HomeBanner />
     <section class="dual-entry">
-      <a href="/calendar" class="entry primary">旅行日历</a>
-      <a href="/trips" class="entry">全部航程</a>
+      <a href="/calendar/" class="entry primary">旅行日历</a>
+      <a href="/trips/" class="entry">全部航程</a>
     </section>
   </div>
 
@@ -35,7 +42,7 @@ const inspire = articles.filter((a) => a.published).slice(0, 2);
       {antarctic.map((p) => <ProductCard product={p} />)}
     </div>
     <p class="section-more-wrap">
-      <a href="/antarctic" class="apple-more-link">查看更多</a>
+      <a href="/antarctic/" class="apple-more-link">查看更多</a>
     </p>
   </section>
 
@@ -45,7 +52,7 @@ const inspire = articles.filter((a) => a.published).slice(0, 2);
       {arctic.map((p) => <ProductCard product={p} />)}
     </div>
     <p class="section-more-wrap">
-      <a href="/arctic" class="apple-more-link">查看更多</a>
+      <a href="/arctic/" class="apple-more-link">查看更多</a>
     </p>
   </section>
 
@@ -56,7 +63,7 @@ const inspire = articles.filter((a) => a.published).slice(0, 2);
     </div>
     {galapagos.length > 0 && (
       <p class="section-more-wrap">
-        <a href="/galapagos" class="apple-more-link">查看更多</a>
+        <a href="/galapagos/" class="apple-more-link">查看更多</a>
       </p>
     )}
   </section>
@@ -68,7 +75,7 @@ const inspire = articles.filter((a) => a.published).slice(0, 2);
     </div>
     {lightExpedition.length > 0 && (
       <p class="section-more-wrap">
-        <a href="/light-expedition" class="apple-more-link">查看更多</a>
+        <a href="/light-expedition/" class="apple-more-link">查看更多</a>
       </p>
     )}
   </section>
@@ -76,7 +83,7 @@ const inspire = articles.filter((a) => a.published).slice(0, 2);
   <section class="section container">
     <h2 class="section-title">
       推荐航程
-      <a href="/trips">全部航程 ›</a>
+      <a href="/trips/">全部航程 ›</a>
     </h2>
     <div class="product-grid">
       {featured.map((p) => <ProductCard product={p} />)}
@@ -86,11 +93,11 @@ const inspire = articles.filter((a) => a.published).slice(0, 2);
   <section class="section container">
     <h2 class="section-title">
       船说 · 精选
-      <a href="/articles">更多文章 ›</a>
+      <a href="/articles/">更多文章 ›</a>
     </h2>
     <div class="article-list">
       {inspire.map((a) => (
-        <a href={`/articles/${a.slug}`} class="article-card">
+        <a href={`/articles/${a.slug}/`} class="article-card">
           {a.tag && <span class="pill pill-gold">{a.tag}</span>}
           <h3>{a.title}</h3>
           <p>{a.author} · {a.excerpt.slice(0, 48)}…</p>
@@ -99,12 +106,101 @@ const inspire = articles.filter((a) => a.published).slice(0, 2);
     </div>
   </section>
 
-  <section class="section about-band">
-    <div class="container">
-      <h2>关于船客</h2>
-      <p>{aboutData.homeBlurb}</p>
-      <a href="/about" class="btn btn-outline">了解品牌 ›</a>
+  <section class="home-about" data-office-section>
+    <div class="home-about-inner">
+      <div class="home-about-copy">
+        <p class="home-about-kicker">关于船客</p>
+        <h2>为您的生命旅程增添光彩</h2>
+        <p class="home-about-lead">三地团队协同，从咨询到出发稳定响应。</p>
+        <div class="home-about-actions">
+          <a href="/about/" class="btn btn-primary">了解品牌</a>
+          <a href="/advisor/" class="btn btn-outline">联系顾问</a>
+        </div>
+      </div>
+
+      <div class="home-about-panel" aria-label="船客服务与办公室">
+        <div class="home-about-stats">
+          {homeStats.map((item) => (
+            <div class="home-about-stat">
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="office-showcase">
+          <div class="office-showcase-head">
+            <h3>三地办公室</h3>
+            <p>点击办公室查看地址</p>
+          </div>
+
+          <div class="office-list">
+            {homeOffices.map((office, index) => (
+              <button
+                type="button"
+                class={`office-card ${index === 0 ? "is-active" : ""}`}
+                data-office-card
+                data-office-name={office.name}
+                data-office-address={office.address}
+                data-office-phone={office.phone ?? ""}
+                aria-pressed={index === 0 ? "true" : "false"}
+              >
+                {office.photo && (
+                  <img src={office.photo.image} alt={office.photo.alt} loading="lazy" decoding="async" />
+                )}
+                <span>{office.name}</span>
+              </button>
+            ))}
+          </div>
+
+          <div class="office-active" aria-live="polite">
+            <p class="office-active-name" data-office-active-name>{firstOffice.name}</p>
+            <p class="office-active-address" data-office-active-address>{firstOffice.address}</p>
+            {firstOffice.phone && (
+              <a href={`tel:${firstOffice.phone}`} class="office-phone" data-office-active-phone>
+                {firstOffice.phone}
+              </a>
+            )}
+            {!firstOffice.phone && <span class="office-phone muted" data-office-active-phone></span>}
+          </div>
+        </div>
+      </div>
     </div>
+
+    <script is:inline>
+      (() => {
+        const section = document.querySelector("[data-office-section]");
+        if (!section) return;
+        const cards = Array.from(section.querySelectorAll("[data-office-card]"));
+        const name = section.querySelector("[data-office-active-name]");
+        const address = section.querySelector("[data-office-active-address]");
+        const phone = section.querySelector("[data-office-active-phone]");
+
+        function activate(card) {
+          cards.forEach((item) => {
+            const active = item === card;
+            item.classList.toggle("is-active", active);
+            item.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          if (name) name.textContent = card.dataset.officeName || "";
+          if (address) address.textContent = card.dataset.officeAddress || "";
+          if (phone) {
+            const value = card.dataset.officePhone || "";
+            phone.textContent = value;
+            if (value) {
+              phone.setAttribute("href", `tel:${value}`);
+              phone.hidden = false;
+            } else {
+              phone.hidden = true;
+            }
+          }
+        }
+
+        cards.forEach((card) => {
+          card.addEventListener("click", () => activate(card));
+        });
+      })();
+    </script>
   </section>
 </BaseLayout>
 
@@ -232,18 +328,250 @@ const inspire = articles.filter((a) => a.published).slice(0, 2);
     font-size: 16px;
     color: var(--color-muted);
   }
-  .about-band {
-    background: #f0f7fa;
-    padding: var(--space-lg) 0;
+  .home-about {
+    width: 100%;
+    padding: clamp(58px, 8vw, 104px) var(--page-pad);
+    background: #f5f5f7;
+    color: var(--ink);
+    overflow: hidden;
   }
-  .about-band h2 {
-    font-size: var(--font-size-lg);
-    margin-bottom: 12px;
+  .home-about-inner {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    gap: clamp(26px, 4vw, 46px);
   }
-  .about-band p {
-    max-width: 720px;
-    margin-bottom: var(--space-md);
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height);
+  .home-about-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+  }
+  .home-about-kicker {
+    margin: 0 0 12px;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--apple-link);
+  }
+  .home-about h2 {
+    max-width: 920px;
+    margin: 0;
+    font-size: clamp(40px, 5.2vw, 72px);
+    line-height: 1.04;
+    font-weight: 750;
+    white-space: nowrap;
+  }
+  .home-about-lead {
+    max-width: 580px;
+    margin: 18px 0 0;
+    color: var(--color-muted);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.5;
+  }
+  .home-about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .home-about .btn-primary {
+    background: var(--brand);
+    color: #fff;
+  }
+  .home-about .btn-outline {
+    color: var(--apple-link);
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+  .home-about-panel {
+    display: grid;
+    gap: 18px;
+  }
+  .home-about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .home-about-stat {
+    min-height: 98px;
+    padding: 20px 18px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    background: #fff;
+    text-align: center;
+  }
+  .home-about-stat strong {
+    display: block;
+    margin-bottom: 7px;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1;
+    font-weight: 760;
+    color: var(--ink);
+  }
+  .home-about-stat span {
+    display: block;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .office-showcase {
+    display: grid;
+    gap: 14px;
+  }
+  .office-showcase-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 4px 2px 0;
+  }
+  .office-showcase-head h3 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.2;
+  }
+  .office-showcase-head p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 15px;
+  }
+  .office-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .office-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition:
+      transform 0.2s var(--ease),
+      box-shadow 0.2s var(--ease),
+      border-color 0.2s var(--ease);
+  }
+  .office-card:hover,
+  .office-card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+  .office-card.is-active {
+    border-color: rgba(0, 48, 102, 0.42);
+    box-shadow: 0 18px 36px rgba(0, 48, 102, 0.12);
+  }
+  .office-card img {
+    width: 100%;
+    height: clamp(180px, 19vw, 250px);
+    object-fit: cover;
+  }
+  .office-card span {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 700;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .office-card.is-active span {
+    background: var(--brand);
+    color: #fff;
+  }
+  .office-active {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    min-height: 72px;
+    padding: 16px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .office-active-name {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .office-active-address {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .office-phone {
+    color: var(--apple-link);
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none !important;
+  }
+  .office-phone[hidden] {
+    display: none;
+  }
+  .office-phone:hover {
+    text-decoration: underline !important;
+  }
+  @media (max-width: 900px) {
+    .office-list {
+      grid-template-columns: 1fr;
+    }
+    .office-card img {
+      height: 220px;
+    }
+    .office-active {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+  }
+  @media (max-width: 640px) {
+    .home-about {
+      padding: 48px var(--page-pad);
+    }
+    .home-about h2 {
+      font-size: 36px;
+      white-space: normal;
+    }
+    .home-about-lead {
+      font-size: 16px;
+    }
+    .home-about-stats {
+      grid-template-columns: 1fr;
+    }
+    .home-about-stat {
+      min-height: 96px;
+    }
+    .office-showcase-head {
+      display: block;
+    }
+    .office-showcase-head p {
+      margin-top: 6px;
+    }
+    .office-card img {
+      height: 210px;
+    }
   }
 </style>

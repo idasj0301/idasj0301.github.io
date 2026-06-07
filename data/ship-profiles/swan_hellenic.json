@@ -1,0 +1,74 @@
+{
+  "brandId": "swan_hellenic",
+  "vesselName": "天鹅海伦 · 单船票船队",
+  "vesselNameEn": "Swan Hellenic",
+  "tagline": "精品探险船队，以 SH Diana、SH Vega、SH Minerva 运营南极半岛与威德尔海航线。",
+  "heroImage": "/ships/swan_hellenic.png",
+  "highlights": [
+    "官网单船票 SKU 已按蘑菇表格补充航线、日期、邮轮、起价和官方链接",
+    "适合已自行安排国际段、签证和前后住宿，只需预订单船票航段的客人",
+    "最终舱位、价格、税费、活动和取消条款以船司实时确认为准",
+    "南极登陆与飞航安排受天气、冰况、港口、机场和环保规范影响"
+  ],
+  "sections": [
+    {
+      "title": "船司定位",
+      "content": "天鹅海伦（Swan Hellenic）是船客单船票可咨询船司之一。本页汇总其在售或可咨询的南极航次，方便客人按船司、船名、日期和预算进行筛选。"
+    },
+    {
+      "title": "咨询建议",
+      "content": "单船票适合明确出行月份、可自行安排国际段和前后住宿的客人。建议提交预算、舱型偏好、可出发日期和是否接受飞航/德雷克海峡航行，由顾问实时核对余舱。"
+    }
+  ],
+  "specs": [
+    [
+      "船司",
+      "天鹅海伦 / Swan Hellenic"
+    ],
+    [
+      "区域",
+      "南极"
+    ],
+    [
+      "产品类型",
+      "单船票"
+    ],
+    [
+      "库存",
+      "以船司实时确认为准"
+    ]
+  ],
+  "facilities": [
+    "船上住宿与餐饮",
+    "探险队讲座与登陆说明",
+    "Zodiac 冲锋艇巡游/登陆活动（以航次开放为准）",
+    "观景甲板和公共休息空间"
+  ],
+  "vessels": [
+    {
+      "name": "SH Diana 月亮女神号",
+      "role": "南极单船票航次",
+      "intro": "SH Diana 月亮女神号 出现在蘑菇表格的 天鹅海伦 单船票 SKU 中，具体船舶参数、舱型和设施以船司官方资料为准。"
+    },
+    {
+      "name": "SH Minerva 智慧女神号",
+      "role": "南极单船票航次",
+      "intro": "SH Minerva 智慧女神号 出现在蘑菇表格的 天鹅海伦 单船票 SKU 中，具体船舶参数、舱型和设施以船司官方资料为准。"
+    },
+    {
+      "name": "SH Vega 织女星号",
+      "role": "南极单船票航次",
+      "intro": "SH Vega 织女星号 出现在蘑菇表格的 天鹅海伦 单船票 SKU 中，具体船舶参数、舱型和设施以船司官方资料为准。"
+    }
+  ],
+  "relatedSlugs": [
+    "swan-2026-11-11-sh-minerva-antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-11-11",
+    "swan-2026-11-12-sh-diana-antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-11-12",
+    "swan-2026-11-21-sh-diana-antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-11-21",
+    "swan-2026-11-30-sh-diana-antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-11-30",
+    "swan-2026-12-04-sh-vega-antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-12-04",
+    "swan-2027-01-04-sh-vega-antarctic-wonders-roundtrip-cruise-from-ushuaia-2027-01-04",
+    "swan-2027-01-08-sh-diana-antarctic-wonders-roundtrip-cruise-from-ushuaia-2027-01-08",
+    "swan-2027-01-13-sh-vega-antarctic-wonders-roundtrip-cruise-from-ushuaia-2027-01-13"
+  ]
+}

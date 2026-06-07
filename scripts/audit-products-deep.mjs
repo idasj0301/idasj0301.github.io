@@ -68,6 +68,8 @@ function publicPathFromUrl(url) {
 function categoryInterest(product) {
   if (expectedByCategory[product.category]) return expectedByCategory[product.category];
   const text = `${product.title} ${product.summary} ${product.tags?.join(" ") ?? ""}`;
+  if (/南极|南乔治亚|银海.*(乔治王岛|威廉斯港|福克兰)/.test(text)) return "南极";
+  if (/北极|斯瓦尔巴|格陵兰|冰岛|北极点/.test(text)) return "北极";
   if (/南部非洲/.test(text)) return "南部非洲";
   if (/东非|香草四岛|肯尼亚|坦桑尼亚|塞舌尔|马达加斯加/.test(text)) return "东非";
   if (/南美|安第斯|智利|秘鲁|玻利维亚|哥伦比亚|伊瓜苏/.test(text)) return "南美";
@@ -82,10 +84,11 @@ function auditProductFields(product) {
   }
 
   const priceText = cleanText(product.priceLabel);
-  if (!priceText.includes(String(product.priceFrom).replace(/\B(?=(\d{3})+(?!\d))/g, ","))) {
+  const allowsConsultPrice = /价格咨询|实时确认|待询|详询/.test(priceText);
+  if (!allowsConsultPrice && !priceText.includes(String(product.priceFrom).replace(/\B(?=(\d{3})+(?!\d))/g, ","))) {
     add("warn", "price-label-mismatch", file, `priceFrom=${product.priceFrom}, priceLabel=${product.priceLabel}`);
   }
-  if (product.priceFrom <= 0) add("error", "invalid-price", file, `priceFrom=${product.priceFrom}`);
+  if (product.priceFrom <= 0 && !allowsConsultPrice) add("error", "invalid-price", file, `priceFrom=${product.priceFrom}`);
   if (product.durationDays <= 0 || product.durationDays > 60) {
     add("warn", "duration-suspicious", file, `durationDays=${product.durationDays}`);
   }
@@ -169,7 +172,7 @@ function auditDetailCopy(product, detail) {
     if (!cleanText(cabin.spec)) add("warn", "cabin-spec-empty", file, `cabins[${index}] ${cabin.name ?? ""}`);
     const price = cleanText(cabin.price);
     if (!price) add("warn", "cabin-price-empty", file, `cabins[${index}] ${cabin.name ?? ""}`);
-    if (price && !/[¥￥$€£]|欧元|售罄|候补|待询|详询|起/.test(price)) {
+    if (price && !/[¥￥$€£]|欧元|售罄|候补|待询|详询|价格咨询|实时确认|起/.test(price)) {
       add("warn", "cabin-price-suspicious", file, `cabins[${index}] price=${price}`);
     }
   }

@@ -2,6 +2,7 @@
 import type { Product } from "../types/product";
 import { getProductDetail } from "../lib/product-details";
 import { getCardSubtitle, getCardTitle, formatCardDateLine } from "../lib/product-card";
+import { getOptimizedImageSrc } from "../lib/optimized-image";
 
 interface Props {
   products: Product[];
@@ -40,9 +41,9 @@ const faqItems = [
 
 function productCompany(product: Product) {
   if (product.company) return product.company;
-  if (product.shipName.includes("银海") || product.shipName.includes("Silver")) return "银海";
-  if (product.shipName.includes("海神")) return "66度";
-  if (product.shipName.includes("指挥官夏古")) return "庞洛";
+  if (product.shipName.includes("银海") || product.shipName.includes("Silver")) return "银海 Silversea Cruises";
+  if (product.shipName.includes("指挥官夏古")) return "庞洛邮轮 PONANT";
+  if (product.shipName.includes("海神")) return "66度探险 66° Expeditions";
   return "船客合作船司";
 }
 
@@ -62,11 +63,18 @@ function uniqueValues(values: string[]) {
   return [...new Set(values)].filter(Boolean);
 }
 
-const companyPriority = new Map([
-  ["银海", 0],
-  ["庞洛", 1],
-  ["66度", 2],
-]);
+function companyRank(company: string) {
+  if (company.includes("银海") || company.includes("Silversea")) return 0;
+  if (company.includes("庞洛") || company.includes("PONANT")) return 1;
+  if (company.includes("66度") || company.includes("66°")) return 2;
+  if (company.includes("夸克") || company.includes("Quark")) return 3;
+  if (company.includes("ATLAS") || company.includes("Atlas")) return 4;
+  if (company.includes("南极21") || company.includes("Antarctica21")) return 5;
+  if (company.includes("世邦") || company.includes("Seabourn")) return 6;
+  if (company.includes("天鹅海伦") || company.includes("Swan")) return 7;
+  if (company.includes("欧若拉") || company.includes("Aurora")) return 8;
+  return 20;
+}
 
 function toCardProduct(product: Product) {
   const detail = getProductDetail(product.slug);
@@ -79,7 +87,7 @@ function toCardProduct(product: Product) {
   const dateLine = formatCardDateLine(product);
   const voyageCode = product.slug.startsWith("silversea-")
     ? product.slug.replace("silversea-", "").toUpperCase()
-    : "";
+    : product.tags?.find((tag) => /^\d{4}-\d{2}-\d{2}$/.test(tag)) ?? "";
   const displayTags = [...new Set(product.tags ?? [])]
     .filter((tag) => {
       if ([product.subcategory, product.shipName, company, "单船票"].includes(tag)) return false;
@@ -108,32 +116,26 @@ function toCardProduct(product: Product) {
       month,
       ...(product.tags ?? []),
     ].join("|"),
-    coverSrc: detail?.heroImage ?? detail?.gallery?.[0]?.src,
+    coverSrc: getOptimizedImageSrc(detail?.cardImage ?? detail?.heroImage ?? detail?.gallery?.[0]?.src, "card"),
   };
 }
 
 function sortCards(a: ReturnType<typeof toCardProduct>, b: ReturnType<typeof toCardProduct>) {
-  const rankA = companyPriority.get(a.company) ?? 9;
-  const rankB = companyPriority.get(b.company) ?? 9;
+  const rankA = companyRank(a.company);
+  const rankB = companyRank(b.company);
   if (rankA !== rankB) return rankA - rankB;
   return a.product.departureDate.localeCompare(b.product.departureDate);
 }
 
-const silverseaProducts = activeProducts
-  .filter((product) => product.slug.startsWith("silversea-"))
-  .map(toCardProduct)
-  .sort(sortCards);
-
-const otherTicketProducts = activeProducts
-  .filter((product) => !product.slug.startsWith("silversea-"))
+const officialTicketProducts = activeProducts
   .map(toCardProduct)
   .sort(sortCards);
 
 const officialFilterGroups = [
-  { key: "month", label: "出发月份", options: uniqueValues(silverseaProducts.map((item) => item.month)) },
-  { key: "days", label: "天数", options: uniqueValues(silverseaProducts.map((item) => item.days)) },
-  { key: "company", label: "船司", options: uniqueValues(silverseaProducts.map((item) => item.company)) },
-  { key: "ship", label: "船名", options: uniqueValues(silverseaProducts.map((item) => item.product.shipName.replace("银海", "").trim())) },
+  { key: "month", label: "出发月份", options: uniqueValues(officialTicketProducts.map((item) => item.month)) },
+  { key: "days", label: "天数", options: uniqueValues(officialTicketProducts.map((item) => item.days)) },
+  { key: "company", label: "船司", options: uniqueValues(officialTicketProducts.map((item) => item.company)) },
+  { key: "ship", label: "船名", options: uniqueValues(officialTicketProducts.map((item) => item.product.shipName)) },
 ];
 ---
 
@@ -148,7 +150,7 @@ const officialFilterGroups = [
 
   <section class="ticket-section live-section" id="official-tickets" aria-label="单船票筛选">
     {
-      silverseaProducts.length > 0 ? (
+      officialTicketProducts.length > 0 ? (
         <div data-product-filters>
           <div class="ticket-filter-panel product-filter-panel">
             <div class="filter-grid product-filter-grid">
@@ -165,7 +167,7 @@ const officialFilterGroups = [
               }
               <label class="keyword-filter">
                 <span>航次号 / 关键词</span>
-                <input type="search" data-product-filter-key="keyword" placeholder="EV261020006" />
+                <input type="search" data-product-filter-key="keyword" placeholder="船司 / 船名 / 航线" />
               </label>
             </div>
             <div class="filter-actions">
@@ -176,20 +178,20 @@ const officialFilterGroups = [
 
           <div class="official-ticket-grid">
             {
-              silverseaProducts.map(({ product, company, title, subtitle, dateLine, displayTags, coverSrc, destination, month, days, voyageCode, keywords }, index) => (
+              officialTicketProducts.map(({ product, company, title, subtitle, dateLine, displayTags, coverSrc, destination, month, days, voyageCode, keywords }, index) => (
                 <article
                   class="official-ticket-card"
                   data-company={company}
                   data-destination={destination}
                   data-month={month}
                   data-days={days}
-                  data-ship={product.shipName.replace("银海", "").trim()}
+                  data-ship={product.shipName}
                   data-code={voyageCode}
                   data-keywords={keywords}
                 >
                   <a
                     class="official-ticket-media"
-                    href={`/trips/${product.slug}`}
+                    href={`/trips/${product.slug}/`}
                     aria-label={`查看${title}`}
                   >
                     {
@@ -213,7 +215,7 @@ const officialFilterGroups = [
                       <span>{company}</span>
                       <small>{voyageCode || product.shipName}</small>
                     </div>
-                    <h3><a href={`/trips/${product.slug}`}>{title}</a></h3>
+                    <h3><a href={`/trips/${product.slug}/`}>{title}</a></h3>
                     <p class="official-ticket-date">{dateLine}</p>
                     {subtitle && <p class="official-ticket-subtitle">{subtitle}</p>}
                     {
@@ -239,44 +241,6 @@ const officialFilterGroups = [
       )
     }
   </section>
-
-  {otherTicketProducts.length > 0 && (
-    <section class="ticket-section other-ticket-section" aria-label="其他单船票">
-      <div class="compact-heading">
-        <p>其他单船票</p>
-        <h2>格陵兰与夏古号</h2>
-      </div>
-      <div class="official-ticket-grid compact-grid">
-        {
-          otherTicketProducts.map(({ product, company, title, subtitle, dateLine, displayTags, coverSrc, voyageCode }, index) => (
-            <article class="official-ticket-card">
-              <a class="official-ticket-media" href={`/trips/${product.slug}/`} aria-label={`查看${title}`}>
-                {coverSrc && (
-                  <img src={coverSrc} alt={product.imageAlt ?? title} loading={index < 2 ? "eager" : "lazy"} decoding="async" />
-                )}
-                <span class="company-pill">{company}</span>
-                <span class="duration-pill">{product.durationDays}天</span>
-              </a>
-              <div class="official-ticket-body">
-                <div class="official-ticket-meta">
-                  <span>{company}</span>
-                  <small>{voyageCode || product.shipName}</small>
-                </div>
-                <h3><a href={`/trips/${product.slug}/`}>{title}</a></h3>
-                <p class="official-ticket-date">{dateLine}</p>
-                {subtitle && <p class="official-ticket-subtitle">{subtitle}</p>}
-                {displayTags.length > 0 && <div class="official-ticket-tags">{displayTags.map((tag) => <span>{tag}</span>)}</div>}
-                <div class="official-ticket-footer">
-                  <strong data-has-price={product.priceFrom > 0 ? "1" : "0"}>{product.priceLabel}</strong>
-                  <a href={`/trips/${product.slug}/`}>查看详情</a>
-                </div>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-  )}
 
   <section class="ticket-section faq-section" aria-label="单船票常见问题">
     <div class="section-heading">

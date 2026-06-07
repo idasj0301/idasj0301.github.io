@@ -1,0 +1,69 @@
+{
+  "brandId": "seabourn",
+  "vesselName": "世邦邮轮 · 单船票船队",
+  "vesselNameEn": "Seabourn",
+  "tagline": "超奢华探险船队，世邦探险号与世邦追寻号覆盖南极半岛、双岛和三岛。",
+  "heroImage": "/ships/seabourn.png",
+  "highlights": [
+    "官网单船票 SKU 已按蘑菇表格补充航线、日期、邮轮、起价和官方链接",
+    "适合已自行安排国际段、签证和前后住宿，只需预订单船票航段的客人",
+    "最终舱位、价格、税费、活动和取消条款以船司实时确认为准",
+    "南极登陆与飞航安排受天气、冰况、港口、机场和环保规范影响"
+  ],
+  "sections": [
+    {
+      "title": "船司定位",
+      "content": "世邦邮轮（Seabourn）是船客单船票可咨询船司之一。本页汇总其在售或可咨询的南极航次，方便客人按船司、船名、日期和预算进行筛选。"
+    },
+    {
+      "title": "咨询建议",
+      "content": "单船票适合明确出行月份、可自行安排国际段和前后住宿的客人。建议提交预算、舱型偏好、可出发日期和是否接受飞航/德雷克海峡航行，由顾问实时核对余舱。"
+    }
+  ],
+  "specs": [
+    [
+      "船司",
+      "世邦邮轮 / Seabourn"
+    ],
+    [
+      "区域",
+      "南极"
+    ],
+    [
+      "产品类型",
+      "单船票"
+    ],
+    [
+      "库存",
+      "以船司实时确认为准"
+    ]
+  ],
+  "facilities": [
+    "船上住宿与餐饮",
+    "探险队讲座与登陆说明",
+    "Zodiac 冲锋艇巡游/登陆活动（以航次开放为准）",
+    "观景甲板和公共休息空间"
+  ],
+  "vessels": [
+    {
+      "name": "Seabourn Pursuit 世邦追寻号",
+      "role": "南极单船票航次",
+      "intro": "Seabourn Pursuit 世邦追寻号 出现在蘑菇表格的 世邦邮轮 单船票 SKU 中，具体船舶参数、舱型和设施以船司官方资料为准。"
+    },
+    {
+      "name": "Seabourn Venture 世邦探险号",
+      "role": "南极单船票航次",
+      "intro": "Seabourn Venture 世邦探险号 出现在蘑菇表格的 世邦邮轮 单船票 SKU 中，具体船舶参数、舱型和设施以船司官方资料为准。"
+    }
+  ],
+  "relatedSlugs": [
+    "seabourn-2026-12-08-seabourn-venture-v661",
+    "seabourn-2026-12-11-seabourn-pursuit-p665",
+    "seabourn-2026-12-18-seabourn-venture-v664",
+    "seabourn-2027-01-19-seabourn-venture-v711",
+    "seabourn-2027-01-22-seabourn-pursuit-p711",
+    "seabourn-2027-02-01-seabourn-pursuit-p714",
+    "seabourn-2027-02-11-seabourn-pursuit-p715",
+    "seabourn-2027-02-20-seabourn-venture-v719"
+  ]
+}

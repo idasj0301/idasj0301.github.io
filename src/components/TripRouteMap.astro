@@ -1,5 +1,6 @@
 ---
 import type { ProductDetail } from "../lib/product-details";
+import { getOptimizedImageSrc } from "../lib/optimized-image";
 
 interface Props {
   routeMap: NonNullable<ProductDetail["routeMap"]>;
@@ -9,6 +10,7 @@ interface Props {
 
 const { routeMap, embedded = false } = Astro.props;
 const Tag = embedded ? "div" : "section";
+const routeMapSrc = getOptimizedImageSrc(routeMap.src, "route");
 ---
 
 <Tag
@@ -19,7 +21,7 @@ const Tag = embedded ? "div" : "section";
     <h2 id="route-map-title">航线图</h2>
     {routeMap.caption && <p class="route-map-note">{routeMap.caption}</p>}
     <figure>
-      <img src={routeMap.src} alt={routeMap.alt ?? "航程航线图"} loading="lazy" decoding="async" />
+      <img src={routeMapSrc} alt={routeMap.alt ?? "航程航线图"} loading="lazy" decoding="async" />
     </figure>
   </div>
 </Tag>

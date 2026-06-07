@@ -50,6 +50,7 @@ export function articleJsonLd(article: Article) {
     "@type": "Article",
     headline: article.title,
     description: article.excerpt,
+    image: article.image ? `${SITE.url}${article.image}` : undefined,
     author: { "@type": "Person", name: article.author },
     publisher: {
       "@type": "Organization",

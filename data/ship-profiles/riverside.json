@@ -1,0 +1,108 @@
+{
+  "brandId": "riverside",
+  "vesselName": "Riverside Luxury Cruises · 德彪西号",
+  "vesselNameEn": "Riverside Debussy",
+  "tagline": "欧洲顶奢内河河轮 · 全套房私域与管家级服务",
+  "heroImage": "/ships/riverside-logo.svg",
+  "highlights": [
+    "欧洲顶奢内河旅行品牌，主打全套房私域、管家级服务与深度文化体验",
+    "2024 年获评《福布斯》全球第一豪华河轮，并荣获 Travel + Leisure 全球最佳河轮",
+    "德彪西号以宽敞套房、法式露台、落地窗和私密服务承接多瑙河慢旅行",
+    "小型奢华河轮可停靠老城区小码头，更贴近沿岸城市生活与文化体验",
+    "船上提供多样餐饮选择，强调精致餐饮、观景休憩与舒适公共空间"
+  ],
+  "sections": [
+    {
+      "title": "品牌定位",
+      "content": "Riverside Luxury Cruises 是欧洲顶奢内河旅行品牌，以“流动的六星宫殿”式体验见长。品牌承袭原水晶邮轮的奢华基因，以小型奢华河轮进入莱茵河、多瑙河等黄金航线。"
+    },
+    {
+      "title": "德彪西号体验",
+      "content": "Riverside Debussy 德彪西号用于本次多瑙河巴尔干北线航程。船上以全套房住宿、24 小时管家服务、精致餐饮和沿岸文化探索为核心，让客人在航行与目的地之间保持舒适、私密和从容。"
+    },
+    {
+      "title": "适合人群",
+      "content": "适合希望以舒适方式深度游览欧洲河流城市、重视舱房空间、餐饮品质、中文陪同和岸上文化体验的客人。"
+    }
+  ],
+  "specs": [
+    ["品牌", "Riverside Luxury Cruises"],
+    ["船名", "Riverside Debussy 德彪西号"],
+    ["定位", "欧洲顶奢内河河轮"],
+    ["舱房", "55 间全套房"],
+    ["服务", "24 小时管家服务"],
+    ["常见航线", "莱茵河 / 多瑙河"]
+  ],
+  "vessels": [
+    {
+      "name": "Riverside Debussy 德彪西号",
+      "nameEn": "Riverside Debussy",
+      "role": "多瑙河巴尔干北线河轮",
+      "intro": "德彪西号以德国作曲家 Claude Debussy 命名，是航行于欧洲内河的奢华度假宅邸。它提供宽敞舒适的套房、精致餐饮和私密尊崇的服务，适合多瑙河沿岸深度旅行。",
+      "specs": [
+        ["套房", "55 间全套房"],
+        ["服务", "专属私人管家"],
+        ["餐饮", "多餐厅精致餐饮"],
+        ["舱型", "旋律套房至主人套房"]
+      ],
+      "cabins": [
+        "旋律套房 Melody Suite（2 层甲板，17㎡）",
+        "和韵套房 Symphony Suite（3 层甲板，18㎡）",
+        "海马套房 Seahorse Suite（2 层甲板，24㎡）",
+        "河畔套房 Riverside Suite（3 层甲板，24㎡）",
+        "德彪西套房 Debussy Suite（3 层甲板，47㎡）",
+        "主人套房 Owner Suite（3 层甲板，71㎡）"
+      ]
+    }
+  ],
+  "facilities": [
+    "全套房住宿，部分舱型配法式露台与落地窗",
+    "24 小时管家服务，可协助行李、衣物与餐食偏好",
+    "多样餐厅与精致餐饮体验",
+    "观景甲板、酒吧与公共休息空间",
+    "免费高速无线网络"
+  ],
+  "cabins": [
+    {
+      "name": "旋律套房 Melody Suite",
+      "spec": "2 层甲板，17㎡，最多可住 2 人"
+    },
+    {
+      "name": "和韵套房 Symphony Suite",
+      "spec": "3 层甲板，18㎡，最多可住 2 人"
+    },
+    {
+      "name": "海马套房 Seahorse Suite",
+      "spec": "2 层甲板，24㎡，最多可住 2 人"
+    },
+    {
+      "name": "河畔套房 Riverside Suite",
+      "spec": "3 层甲板，24㎡，最多可住 2 人"
+    },
+    {
+      "name": "德彪西套房 Debussy Suite",
+      "spec": "3 层甲板，47㎡，最多可住 2 人"
+    },
+    {
+      "name": "主人套房 Owner Suite",
+      "spec": "3 层甲板，71㎡，最多可住 4 人"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/ships/profiles/riverside/cabin-suite.jpg",
+      "alt": "Riverside 德彪西号套房"
+    },
+    {
+      "src": "/ships/profiles/riverside/restaurant.jpg",
+      "alt": "Riverside 德彪西号餐厅"
+    },
+    {
+      "src": "/ships/profiles/riverside/lounge.jpg",
+      "alt": "Riverside 德彪西号公共空间"
+    }
+  ],
+  "relatedSlugs": [
+    "2026-danube-balkan-river-cruise-10d"
+  ]
+}

@@ -15,6 +15,7 @@ export interface ProductDetail {
   titleEn?: string;
   subtitle?: string;
   tags?: string[];
+  cardImage?: string;
   heroImage?: string;
   routeMap?: {
     src: string;
@@ -28,6 +29,7 @@ export interface ProductDetail {
     title: string;
     content?: string;
     bullets?: string[];
+    image?: TripGalleryImage;
   }[];
   itinerary?: {
     day: string;
@@ -40,6 +42,8 @@ export interface ProductDetail {
   shipDetail?: {
     name: string;
     intro: string;
+    image?: TripGalleryImage;
+    gallery?: TripGalleryImage[];
     specs?: [string, string][];
     facilities?: string[];
     cabins?: { name: string; spec: string; price: string; soldOut?: boolean }[];

@@ -41,7 +41,7 @@ const defaultMonth =
     >
       <nav class="year-tabs" aria-label="年份">
         {availableYears.map((y) => (
-          <a href={`/calendar?y=${y}`} class:list={["year-tab", { on: y === defaultYear }]} data-year={y}>
+          <a href={`/calendar/?y=${y}`} class:list={["year-tab", { on: y === defaultYear }]} data-year={y}>
             {y}
           </a>
         ))}
@@ -50,7 +50,7 @@ const defaultMonth =
       <div class="month-grid" aria-label={`${defaultYear} 年月份`}>
         {countsByYear[defaultYear].map((item) => (
           <a
-            href={`/calendar?y=${defaultYear}&m=${item.month}`}
+            href={`/calendar/?y=${defaultYear}&m=${item.month}`}
             class:list={["month-card", { on: item.month === defaultMonth, empty: item.count === 0 }]}
             aria-current={item.month === defaultMonth ? "true" : undefined}
             data-month={item.month}
@@ -80,7 +80,7 @@ const defaultMonth =
         );
       })}
       <p class="empty calendar-empty" hidden>
-        本月暂无在售档期，<a href="/advisor">联系顾问</a>了解尾盘。
+        本月暂无在售档期，<a href="/advisor/">联系顾问</a>了解尾盘。
       </p>
     </div>
 
@@ -89,7 +89,7 @@ const defaultMonth =
       <ul>
         {all.map((p) => (
           <li data-year={new Date(`${p.departureDate}T12:00:00`).getFullYear()}>
-            <a href={`/trips/${p.slug}`}>{p.departureDate.slice(0, 7)} · {p.title}</a>
+            <a href={`/trips/${p.slug}/`}>{p.departureDate.slice(0, 7)} · {p.title}</a>
           </li>
         ))}
       </ul>
@@ -128,14 +128,14 @@ const defaultMonth =
       yearTabs.forEach((tab) => {
         const on = Number(tab.dataset.year) === year;
         tab.classList.toggle("on", on);
-        tab.href = `/calendar?y=${tab.dataset.year}`;
+        tab.href = `/calendar/?y=${tab.dataset.year}`;
       });
 
       monthCards.forEach((card) => {
         const cardMonth = Number(card.dataset.month);
         const info = list.find((item) => item.month === cardMonth);
         const count = info?.count ?? 0;
-        card.href = `/calendar?y=${year}&m=${cardMonth}`;
+        card.href = `/calendar/?y=${year}&m=${cardMonth}`;
         card.classList.toggle("on", cardMonth === month);
         card.classList.toggle("empty", count === 0);
         card.setAttribute("aria-current", cardMonth === month ? "true" : "false");
@@ -160,7 +160,7 @@ const defaultMonth =
       document.title = `旅行日历 ${year}年${month}月 · 船客`;
 
       if (replaceUrl) {
-        history.replaceState(null, "", `/calendar?y=${year}&m=${month}`);
+        history.replaceState(null, "", `/calendar/?y=${year}&m=${month}`);
       }
     }
 

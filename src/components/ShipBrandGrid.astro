@@ -19,7 +19,7 @@ const { activeBrandId } = Astro.props;
         return (
           <li>
             <a
-              href={`/ships/${b.id}`}
+              href={`/ships/${b.id}/`}
               class:list={["ship-tile", { "has-profile": hasDetail, on: activeBrandId === b.id }]}
             >
               <span class="ship-tile-logo">

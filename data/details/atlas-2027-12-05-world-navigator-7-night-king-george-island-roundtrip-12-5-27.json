@@ -1,0 +1,191 @@
+{
+  "titleEn": "7 Night King George Island Roundtrip 12 5 27",
+  "subtitle": "7晚双飞南极半岛 Drake Express",
+  "tags": [
+    "ATLAS 海洋邮轮 Atlas Ocean Voyages",
+    "单船票",
+    "南极",
+    "World Navigator 世界航海家号",
+    "2027-12-05"
+  ],
+  "cardImage": "/ticket-official-images/b2b936c8a3e56659c3.jpg",
+  "heroImage": "/ticket-official-images/b2b936c8a3e56659c3.jpg",
+  "routeMap": {
+    "src": "/trips/atlas-2027-12-05-world-navigator-7-night-king-george-island-roundtrip-12-5-27/route-map.svg",
+    "alt": "World Navigator 世界航海家号 · 7晚双飞南极半岛 Drake Express 航线图",
+    "caption": "7晚双飞南极半岛 Drake Express · 2027.12.05 — 2027.12.12"
+  },
+  "gallery": [
+    {
+      "src": "/ticket-official-images/b2b936c8a3e56659c3.jpg",
+      "alt": "World Navigator 世界航海家号 · 7晚双飞南极半岛 Drake Express 船司官网产品图",
+      "caption": "船司官网产品图"
+    },
+    {
+      "src": "/trips/atlas-2027-12-05-world-navigator-7-night-king-george-island-roundtrip-12-5-27/gallery-01.svg",
+      "alt": "7晚双飞南极半岛 Drake Express 航线说明",
+      "caption": "航线主题"
+    },
+    {
+      "src": "/trips/atlas-2027-12-05-world-navigator-7-night-king-george-island-roundtrip-12-5-27/gallery-02.svg",
+      "alt": "World Navigator 世界航海家号 邮轮说明",
+      "caption": "邮轮与船司"
+    }
+  ],
+  "metaTable": [
+    [
+      "船司",
+      "ATLAS 海洋邮轮 Atlas Ocean Voyages"
+    ],
+    [
+      "邮轮",
+      "World Navigator 世界航海家号"
+    ],
+    [
+      "航线",
+      "7晚双飞南极半岛 Drake Express"
+    ],
+    [
+      "目的地",
+      "南极半岛 / 南设得兰群岛 / 飞航衔接"
+    ],
+    [
+      "出行日期",
+      "2027.12.05 — 2027.12.12"
+    ],
+    [
+      "出行时长",
+      "8天"
+    ],
+    [
+      "参考起价",
+      "US$20,377 起"
+    ],
+    [
+      "航线来源",
+      "https://atlasoceanvoyages.com/destination/7-night-king-george-island-roundtrip-12-5-27"
+    ]
+  ],
+  "cabins": [
+    {
+      "name": "基础舱型 / 标准舱型",
+      "spec": "具体开放舱型、面积、楼层和权益以船司实时库存为准",
+      "price": "US$20,377 起"
+    },
+    {
+      "name": "阳台房 / 套房 / 高阶套房",
+      "spec": "不同船、航次和促销政策价格差异较大，请顾问实时确认",
+      "price": "实时确认"
+    }
+  ],
+  "highlightSections": [
+    {
+      "title": "航线亮点",
+      "content": "7晚双飞南极半岛 Drake Express 单船票航程，目的地覆盖 南极半岛 / 南设得兰群岛 / 飞航衔接。本页根据蘑菇表格提供的官方链接、航次日期、邮轮和起价整理；具体每日港口和登陆安排以船司官方最终文件为准。"
+    },
+    {
+      "title": "船司与邮轮",
+      "bullets": [
+        "船司：ATLAS 海洋邮轮 Atlas Ocean Voyages",
+        "邮轮：World Navigator 世界航海家号",
+        "船上住宿、餐饮、探险队、讲座、Zodiac 巡游/登陆等项目以船司该航次开放内容为准。"
+      ]
+    },
+    {
+      "title": "单船票定位",
+      "bullets": [
+        "适合已自行安排国际机票、签证、保险、前后住宿或岸上行程，只需要邮轮航段的客人。",
+        "官网展示为可咨询 SKU，不代表实时锁舱；舱位、税费、促销和取消条款需顾问向船司实时确认。",
+        "如涉及南极飞航，航班、接驳和前后缓冲时间需按船司最终安排预留。"
+      ]
+    },
+    {
+      "title": "价格与库存",
+      "content": "蘑菇表格参考起价为 US$20,377 起。不同舱型、人数、汇率、税费和船司促销会影响最终报价，请以签约前顾问确认为准。"
+    }
+  ],
+  "itinerary": [
+    {
+      "day": "1",
+      "date": "12月5日",
+      "title": "飞航衔接与登船",
+      "content": "按船司飞航或接驳安排抵达登船点，开启南极单船票航段。"
+    },
+    {
+      "day": "2",
+      "title": "南极半岛海域",
+      "content": "进入南极半岛或南设得兰群岛海域，参加船司安排的巡游、登陆或讲座。"
+    },
+    {
+      "day": "6",
+      "title": "南极探索日",
+      "content": "在南极海峡、半岛、岛屿或冰山水域探索，具体登陆点以天气、冰况和船长安排为准。"
+    },
+    {
+      "day": "8",
+      "date": "12月12日",
+      "title": "离船",
+      "content": "按船司安排离船或衔接返程飞航，结束邮轮航段。"
+    }
+  ],
+  "itineraryNote": "以上为单船票咨询版行程框架。实际港口、每日时间、登陆点、冲锋艇巡游、徒步、飞航和接驳安排以船司官方最终文件、天气、冰况和船长/探险队长安排为准。",
+  "shipDetail": {
+    "name": "World Navigator 世界航海家号",
+    "intro": "World Navigator 世界航海家号 服务于 ATLAS 海洋邮轮 Atlas Ocean Voyages 的 7晚双飞南极半岛 Drake Express 航次。船上设施、舱型和探险配置请以该船司官方页面、实时库存和签约合同为准。",
+    "specs": [
+      [
+        "船司",
+        "ATLAS 海洋邮轮 Atlas Ocean Voyages"
+      ],
+      [
+        "邮轮",
+        "World Navigator 世界航海家号"
+      ],
+      [
+        "航线类型",
+        "7晚双飞南极半岛 Drake Express"
+      ],
+      [
+        "出发日期",
+        "2027-12-05"
+      ],
+      [
+        "来源链接",
+        "https://atlasoceanvoyages.com/destination/7-night-king-george-island-roundtrip-12-5-27"
+      ]
+    ],
+    "facilities": [
+      "船上住宿与餐饮服务",
+      "探险队讲座、登陆说明与安全简报",
+      "Zodiac 冲锋艇巡游/登陆活动（以航次开放为准）",
+      "观景甲板、公共休息区及船司安排的船上活动"
+    ],
+    "cabins": [
+      {
+        "name": "开放舱型",
+        "spec": "以船司实时库存、价格表和合同为准",
+        "price": "US$20,377 起"
+      }
+    ]
+  },
+  "feeIncluded": [
+    "船上住宿、船上餐食和船司安排的船上活动（以该航次条款为准）",
+    "探险队讲座、登陆说明及船司开放的 Zodiac 巡游/登陆项目（以天气、冰况和船司安排为准）",
+    "港务税费、船上小费、饮品、Wi-Fi 等是否包含，需按对应船司和舱型政策实时确认。"
+  ],
+  "feeExcluded": [
+    "国际机票、签证、保险、出发前后酒店、接送机、岸上延伸行程及个人消费，除非船司或合同另有明确包含。",
+    "皮划艇、露营、直升机、潜水等可选活动如需额外名额、条件或费用，以船司确认为准。",
+    "因天气、冰况、航班、机场、港口或不可抗力造成的额外费用，按船司条款和合同约定执行。"
+  ],
+  "noticeSections": [
+    {
+      "title": "行程调整",
+      "content": "极地航线高度依赖天气、冰况、港口、机场和环保规范。船长与探险队长会根据安全和体验调整航线、登陆点、时间和活动顺序。"
+    },
+    {
+      "title": "单船票说明",
+      "content": "本页用于官网咨询和顾问匹配；最终舱位、价格、税费、飞航/接驳和费用包含以船客顾问向船司实时确认为准。"
+    }
+  ]
+}

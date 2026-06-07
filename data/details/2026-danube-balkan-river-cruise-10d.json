@@ -1,0 +1,272 @@
+{
+  "titleEn": "DANUBE BALKAN RIVER CRUISE",
+  "subtitle": "欧洲河轮",
+  "tags": [
+    "多瑙河",
+    "巴尔干",
+    "河轮"
+  ],
+  "metaTable": [
+    [
+      "出行日期",
+      "2026.09.22 — 2026.10.01"
+    ],
+    [
+      "目的地",
+      "罗马尼亚、保加利亚、塞尔维亚、克罗地亚、匈牙利"
+    ],
+    [
+      "出行时长",
+      "8晚10天"
+    ],
+    [
+      "线路特点",
+      "欧洲顶奢河轮、多瑙河巴尔干北线"
+    ],
+    [
+      "团队规模",
+      "精品贵宾团"
+    ],
+    [
+      "可选服务包",
+      "布拉格 3天2晚深度游览"
+    ]
+  ],
+  "cabins": [
+    {
+      "name": "旋律套房 Melody Suite",
+      "spec": "2层甲板，17㎡，最多可住2人",
+      "price": "¥59,900 / 人"
+    },
+    {
+      "name": "和韵套房 Symphony Suite",
+      "spec": "3层甲板，18㎡，最多可住2人",
+      "price": "¥70,900 / 人"
+    },
+    {
+      "name": "海马套房 Seahorse Suite",
+      "spec": "2层甲板，24㎡，最多可住2人",
+      "price": "¥82,900 / 人"
+    },
+    {
+      "name": "河畔套房 Riverside Suite",
+      "spec": "3层甲板，24㎡，最多可住2人",
+      "price": "¥87,900 / 人"
+    },
+    {
+      "name": "德彪西套房 Debussy Suite",
+      "spec": "3层甲板，47㎡，最多可住2人",
+      "price": "¥165,900 / 人"
+    },
+    {
+      "name": "主人套房 Owner Suite",
+      "spec": "3层甲板，71㎡，最多可住4人",
+      "price": "¥227,900 / 人"
+    }
+  ],
+  "highlightSections": [
+    {
+      "title": "秋色多瑙河",
+      "content": "九月底至十月初的多瑙河谷进入金黄、橙红与琥珀色交织的季节，河水、古堡与山谷秋光相映，是东欧河轮最适合慢赏的时段之一。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/highlight-01.jpg",
+        "alt": "秋色多瑙河"
+      }
+    },
+    {
+      "title": "一船串联巴尔干五国",
+      "content": "航线一船畅游罗马尼亚、保加利亚、塞尔维亚、克罗地亚与匈牙利，从古堡、要塞、老城到皇家王城，一站式读懂东欧千年更迭。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/highlight-02.jpg",
+        "alt": "多瑙河五国航线"
+      }
+    },
+    {
+      "title": "久尔久 · 友谊大桥下的多瑙河明珠",
+      "content": "久尔久坐落于多瑙河左岸，曾因连接布加勒斯特的铁路成为东方快车的重要停靠地。友谊大桥横跨多瑙河，将罗马尼亚与保加利亚紧密相连。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/gallery-01.jpg",
+        "alt": "久尔久与多瑙河"
+      }
+    },
+    {
+      "title": "鲁塞 · 多瑙河畔的小维也纳",
+      "content": "鲁塞以新巴洛克与新洛可可风格建筑、宽阔林荫大道和广场闻名，歌剧院、司法宫、自由广场与自由大桥共同构成保加利亚重要河港的城市气质。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/gallery-02.jpg",
+        "alt": "鲁塞城市风光"
+      }
+    },
+    {
+      "title": "维丁 · 千年历史与多元文化",
+      "content": "维丁拥有古罗马根基和奥斯曼时代记忆，老城区融合多种建筑风格，东正教堂、犹太会堂、清真寺与巴巴维达堡垒交织出边境城市的厚重层次。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/gallery-03.jpg",
+        "alt": "维丁与巴巴维达堡垒"
+      }
+    },
+    {
+      "title": "克拉多沃 · 图拉真大桥的故乡",
+      "content": "克拉多沃位于塞尔维亚东部，多瑙河畔的古老历史与现代休闲并存。这里曾是罗马皇帝图拉真建造传奇多瑙河大桥的地方，也保留着戴安娜堡垒等古迹。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/highlight-03.jpg",
+        "alt": "克拉多沃与多瑙河峡谷"
+      }
+    },
+    {
+      "title": "铁门峡谷 · 地质瑰宝与生态天堂",
+      "content": "多瑙河穿过喀尔巴阡山脉与巴尔干山脉之间的峡谷，峭壁高耸于河面之上，是整条航线最具震撼力的自然景观之一。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/highlight-03.jpg",
+        "alt": "铁门峡谷"
+      }
+    },
+    {
+      "title": "贝尔格莱德 · 东欧的心脏",
+      "content": "塞尔维亚首都贝尔格莱德位于多瑙河与萨瓦河交汇处，圣萨瓦大教堂、尼古拉·特斯拉博物馆和卡莱梅格丹堡垒共同呈现城市在历史中的重生。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/gallery-02.jpg",
+        "alt": "贝尔格莱德"
+      }
+    },
+    {
+      "title": "武科瓦尔与布达佩斯",
+      "content": "在克罗地亚武科瓦尔理解水塔下的不屈之城，最终抵达多瑙河明珠布达佩斯，渔人堡、国会大厦、英雄广场与温泉文化为河轮旅程收尾。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/hero.jpg",
+        "alt": "布达佩斯与多瑙河"
+      }
+    },
+    {
+      "title": "Riverside 顶奢河轮体验",
+      "content": "Riverside 以全套房私域、24 小时管家服务、精致餐饮和深度文化体验为核心。德彪西号提供 55 间全套房，船上餐饮、观景与舒适度是这条线的重要卖点。",
+      "image": {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/ship.jpg",
+        "alt": "Riverside 德彪西号"
+      }
+    }
+  ],
+  "shipDetail": {
+    "name": "Riverside Luxury Cruises 河轮",
+    "intro": "Riverside Luxury Cruises 是欧洲顶奢内河旅行品牌，以全套房私域、管家级服务、精致餐饮与深度文化体验为核心。德彪西号奢华河轮用于本次多瑙河巴尔干北线航程，主打舒适套房、私密服务与沿岸文化深度游览。",
+    "specs": [
+      [
+        "品牌",
+        "Riverside Luxury Cruises"
+      ],
+      [
+        "船名",
+        "Riverside Debussy 德彪西号"
+      ],
+      [
+        "定位",
+        "欧洲顶奢内河河轮"
+      ],
+      [
+        "舱房",
+        "55 间全套房"
+      ],
+      [
+        "服务",
+        "24 小时管家服务"
+      ],
+      [
+        "航线",
+        "多瑙河下游巴尔干北线"
+      ]
+    ],
+    "facilities": [
+      "全套房法式露台与落地窗",
+      "24 小时专属管家服务",
+      "多样餐厅与精致餐饮",
+      "观景甲板与公共休息空间",
+      "免费高速无线网络"
+    ],
+    "image": {
+      "src": "/trips/2026-danube-balkan-river-cruise-10d/ship.jpg",
+      "alt": "Riverside Luxury Cruises 河轮"
+    },
+    "gallery": [
+      {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/ship-gallery-01.jpg",
+        "alt": "Riverside Luxury Cruises 河轮"
+      },
+      {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/ship-gallery-02.jpg",
+        "alt": "Riverside Luxury Cruises 河轮"
+      },
+      {
+        "src": "/trips/2026-danube-balkan-river-cruise-10d/ship-gallery-03.jpg",
+        "alt": "Riverside Luxury Cruises 河轮"
+      }
+    ],
+    "cabins": [
+      {
+        "name": "旋律套房 Melody Suite",
+        "spec": "2层甲板，17㎡，最多可住2人",
+        "price": "¥59,900 / 人"
+      },
+      {
+        "name": "和韵套房 Symphony Suite",
+        "spec": "3层甲板，18㎡，最多可住2人",
+        "price": "¥70,900 / 人"
+      },
+      {
+        "name": "海马套房 Seahorse Suite",
+        "spec": "2层甲板，24㎡，最多可住2人",
+        "price": "¥82,900 / 人"
+      },
+      {
+        "name": "河畔套房 Riverside Suite",
+        "spec": "3层甲板，24㎡，最多可住2人",
+        "price": "¥87,900 / 人"
+      },
+      {
+        "name": "德彪西套房 Debussy Suite",
+        "spec": "3层甲板，47㎡，最多可住2人",
+        "price": "¥165,900 / 人"
+      },
+      {
+        "name": "主人套房 Owner Suite",
+        "spec": "3层甲板，71㎡，最多可住4人",
+        "price": "¥227,900 / 人"
+      }
+    ]
+  },
+  "feeIncluded": [
+    "河轮船票及船上餐食服务",
+    "行程所列岸上游览与用车服务",
+    "中文服务与团队协调"
+  ],
+  "feeExcluded": [
+    "国际机票、签证、保险及个人消费",
+    "布拉格服务包等可选延展项目",
+    "单房差及合同未列明费用"
+  ],
+  "noticeSections": [
+    {
+      "title": "服务包说明",
+      "content": "布拉格服务包需达到成团人数并以顾问确认价格为准。"
+    }
+  ],
+  "heroImage": "/trips/2026-danube-balkan-river-cruise-10d/hero.jpg",
+  "routeMap": {
+    "src": "/trips/2026-danube-balkan-river-cruise-10d/route-map.png",
+    "alt": "探秘多瑙河 · 巴尔干北线路线图",
+    "caption": "示意图仅供参考，实际顺序与停靠以出团通知为准。"
+  },
+  "gallery": [
+    {
+      "src": "/trips/2026-danube-balkan-river-cruise-10d/gallery-01.jpg",
+      "alt": "多瑙河巴尔干北线"
+    },
+    {
+      "src": "/trips/2026-danube-balkan-river-cruise-10d/gallery-02.jpg",
+      "alt": "多瑙河巴尔干北线"
+    },
+    {
+      "src": "/trips/2026-danube-balkan-river-cruise-10d/gallery-03.jpg",
+      "alt": "多瑙河巴尔干北线"
+    }
+  ]
+}

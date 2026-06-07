@@ -180,7 +180,7 @@
     {
       "day": "15",
       "date": "8 月 12 日",
-      "title": "游览冰岛第一大断层瀑布黄金瀑布，瀑布宽约 2500 米，滔滔河水奔腾咆哮，轰鸣中直泻 32 米，",
+      "title": "冰岛黄金圈与日全食",
       "content": "游览冰岛第一大断层瀑布黄金瀑布，瀑布宽约 2500 米，滔滔河水奔腾咆哮，轰鸣中直泻 32 米，又急坠于 72 米深的峡谷之中。游览盖策尔间歇喷泉，沸水冲出洞口，向高空喷射，从中间水柱变成蒸汽直冲上天空，又随即化作水滴落下。 之后前往冰岛西部观看日全食，晚餐后送机。"
     },
     {
@@ -267,6 +267,7 @@
     }
   ],
   "heroImage": "/trips/2026-arctic-eclipse-three-islands/hero.jpg",
+  "cardImage": "/trips/2026-arctic-eclipse-three-islands/gallery-03.jpg",
   "gallery": [
     {
       "src": "/trips/2026-arctic-eclipse-three-islands/gallery-01.jpg",

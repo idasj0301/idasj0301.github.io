@@ -1,24 +1,31 @@
 ---
-/** 首页 Banner — 纯视觉轮播，文案由 KV 图承载；图片放 public/banner/ */
+/** 首页 Banner — 支持视频背景；未放视频时回退到图片轮播，素材放 public/banner/ */
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 const bannerDir = join(process.cwd(), "public/banner");
+const videoCandidates = [
+  { file: "home-hero.webm", type: "video/webm" },
+  { file: "home-hero.mp4", type: "video/mp4" },
+];
+const videos = videoCandidates
+  .filter((v) => existsSync(join(bannerDir, v.file)))
+  .map((v) => ({ src: `/banner/${v.file}`, type: v.type }));
 const slideDefs = [
   {
-    href: "/trips/2026-wangguin-antarctica-22d",
+    href: "/trips/2026-wangguin-antarctica-22d/",
     file: "CLF_5650.jpg",
     alt: "南极冰川",
     fallback: "linear-gradient(135deg, #0c1929, #1b4965)",
   },
   {
-    href: "/trips/2026-wangguin-antarctica-22d",
+    href: "/trips/2026-wangguin-antarctica-22d/",
     file: "DSC_7726.jpg",
     alt: "王企鹅群落",
     fallback: "linear-gradient(135deg, #1b4965, #2a6f97)",
   },
   {
-    href: "/trips/2026-wangguin-antarctica-22d",
+    href: "/trips/2026-wangguin-antarctica-22d/",
     file: "CLF_3860.jpg",
     alt: "极地野生动物",
     fallback: "linear-gradient(135deg, #0d2818, #3d8b6e)",
@@ -30,6 +37,8 @@ const slides = slideDefs
   .map((s) => ({
     href: s.href,
     image: `/banner/${s.file}`,
+    imageDesktop: `/optimized/banner/${s.file.replace(/\.[^.]+$/, "")}-detail.webp`,
+    imageMobile: `/optimized/banner/${s.file.replace(/\.[^.]+$/, "")}-card.webp`,
     alt: s.alt,
     fallback: s.fallback,
     objectPosition: s.objectPosition ?? "center",
@@ -38,28 +47,49 @@ const slides = slideDefs
 
 <section class="home-banner" aria-label="主推活动">
   <div class="banner" data-banner>
+    {videos.length > 0 && (
+      <a href="/trips/" class="banner-video-link" aria-label="查看船客精选航程">
+        <video
+          class="banner-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster={slides[0]?.imageDesktop ?? slides[0]?.image}
+          aria-hidden="true"
+        >
+          {videos.map((video) => <source src={video.src} type={video.type} />)}
+        </video>
+      </a>
+    )}
     {slides.length === 0 && (
-      <a href="/trips" class="slide active" style="background: linear-gradient(135deg, #0c1929, #1b4965)" aria-label="船客航程" />
+      <a href="/trips/" class="slide active" style="background: linear-gradient(135deg, #0c1929, #1b4965)" aria-label="船客航程" />
     )}
     {slides.map((s, i) => (
       <a
         href={s.href}
-        class:list={["slide", { active: i === 0 }]}
+        class:list={["slide", { active: i === 0, "is-video-fallback": videos.length > 0 }]}
         data-index={i}
         style={`background: ${s.fallback}`}
         aria-label={s.alt}
       >
-        <img
-          src={s.image}
-          alt={s.alt}
-          class="slide-img"
-          style={`object-position: ${s.objectPosition}`}
-          loading={i === 0 ? "eager" : "lazy"}
-          onerror="this.style.display='none'"
-        />
+        <picture>
+          <source srcset={`${s.imageMobile} 900w, ${s.imageDesktop} 1600w`} type="image/webp" sizes="100vw" />
+          <img
+            src={s.image}
+            alt={s.alt}
+            class="slide-img"
+            style={`object-position: ${s.objectPosition}`}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            fetchpriority={i === 0 ? "high" : "low"}
+            onerror="this.style.display='none'"
+          />
+        </picture>
       </a>
     ))}
-    {slides.length > 1 && (
+    {videos.length === 0 && slides.length > 1 && (
       <div class="dots" role="tablist" aria-label="轮播指示">
         {slides.map((_, i) => (
           <button type="button" class:list={[{ on: i === 0 }]} data-dot={i} aria-label={`第 ${i + 1} 帧`} />
@@ -100,7 +130,7 @@ const slides = slideDefs
     position: relative;
     border-radius: 0;
     overflow: hidden;
-    height: min(52vw, 520px);
+    height: clamp(260px, 52vw, 520px);
     background: #0a2540;
     width: 100%;
   }
@@ -110,7 +140,29 @@ const slides = slideDefs
     display: none;
     text-decoration: none;
   }
+  .banner-video-link {
+    position: absolute;
+    inset: 0;
+    display: block;
+    text-decoration: none;
+    background: #0a2540;
+    z-index: 1;
+  }
+  .banner-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
   .slide.active {
+    display: block;
+  }
+  .slide.is-video-fallback {
+    display: none;
+    z-index: 0;
+  }
+  .slide.is-video-fallback.active {
     display: block;
   }
   .slide-img {
@@ -119,6 +171,11 @@ const slides = slideDefs
     object-fit: cover;
     object-position: center;
     display: block;
+  }
+  .slide picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
   .dots {
     position: absolute;
@@ -142,5 +199,18 @@ const slides = slideDefs
     background: #fff;
     width: 24px;
     border-radius: 4px;
+  }
+  @media (max-width: 640px) {
+    .banner {
+      height: clamp(230px, 68vw, 360px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .banner-video-link {
+      display: none;
+    }
+    .slide.is-video-fallback.active {
+      z-index: 1;
+    }
   }
 </style>

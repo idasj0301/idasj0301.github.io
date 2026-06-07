@@ -7,26 +7,26 @@ import { SITE } from "../lib/site";
   <div class="container footer-grid">
     <div>
       <p class="footer-brand">{SITE.name}</p>
-      <p class="footer-desc">25 年专注极地邮轮与全球轻探险旅行</p>
+      <p class="footer-desc">为您的生命旅程增添光彩</p>
     </div>
     <div>
       <p class="footer-col-title">选航线</p>
       {CATEGORIES.map((c) => (
-        <a href={c.path}>{c.label}</a>
+        <a href={`${c.path}/`}>{c.label}</a>
       ))}
     </div>
     <div>
       <p class="footer-col-title">探索与工具</p>
-      <a href="/calendar">旅行日历</a>
-      <a href="/trips">全部航程</a>
-      <a href="/articles">船说·文章</a>
-      <a href="/anniversary">25 周年专题</a>
+      <a href="/calendar/">旅行日历</a>
+      <a href="/trips/">全部航程</a>
+      <a href="/articles/">船说·文章</a>
+      <a href="/anniversary/">25 周年专题</a>
     </div>
     <div>
       <p class="footer-col-title">服务</p>
-      <a href="/inquiry">预约留咨</a>
-      <a href="/advisor">直连顾问</a>
-      <a href="/advisor" class="footer-qr" aria-label="查看船客旅行顾问二维码">
+      <a href="/inquiry/">预约留咨</a>
+      <a href="/advisor/">直连顾问</a>
+      <a href="/advisor/" class="footer-qr" aria-label="查看船客旅行顾问二维码">
         <img src="/advisor-qr.png" alt="" width="80" height="80" loading="lazy" />
       </a>
     </div>

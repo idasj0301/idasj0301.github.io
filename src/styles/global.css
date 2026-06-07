@@ -93,7 +93,7 @@ body.page-home .home-banner .banner {
   box-shadow: none;
   width: 100%;
   max-width: none;
-  height: min(52vw, 520px);
+  height: clamp(260px, 52vw, 520px);
 }
 
 img {
@@ -294,5 +294,15 @@ body:has(.trip-cta) {
 @media (max-width: 734px) {
   .container {
     padding: 0 16px;
+  }
+  body.page-home .home-banner .banner {
+    height: clamp(230px, 68vw, 360px);
+  }
+  .section {
+    padding: 42px 0 56px;
+  }
+  .section-title {
+    font-size: 32px;
+    margin-bottom: 24px;
   }
 }

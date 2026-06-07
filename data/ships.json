@@ -4,8 +4,14 @@
     "name": "银海邮轮",
     "nameEn": "Silversea Cruises",
     "logo": "/ships/silversea.png",
-    "tags": ["奢华", "南极", "北极"],
-    "match": ["银海"],
+    "tags": [
+      "奢华",
+      "南极",
+      "北极"
+    ],
+    "match": [
+      "银海"
+    ],
     "blurb": "全套房奢华探险邮轮，南极半环与双飞航线常见选择。"
   },
   {
@@ -13,44 +19,112 @@
     "name": "66度探险 · 海神号",
     "nameEn": "66° Expeditions · Seaventure",
     "logo": "/ships/expeditions-66.png",
-    "tags": ["包船", "飞船游", "王企鹅"],
-    "match": ["海神", "66度", "Seaventure"],
-    "blurb": "船客×66度探险包船航次，邮轮为 Seaventure 海神号。飞船游、南乔治亚与王企鹅等主力线路。"
+    "tags": [
+      "中文服务",
+      "南极",
+      "海神号"
+    ],
+    "match": [
+      "66度",
+      "66°",
+      "SEAVENTURE",
+      "Seaventure",
+      "海神号"
+    ],
+    "blurb": "以 Seaventure 海神号运营南极半岛、南极圈、南极双岛与三岛航线。"
   },
   {
     "id": "quark",
     "name": "夸克探险",
     "nameEn": "Quark Expeditions",
     "logo": "/ships/quark.svg",
-    "tags": ["探险", "南极", "摄影"],
-    "match": ["夸克"],
-    "blurb": "极地探险老牌运营商，经典半岛与福克兰联线。"
+    "tags": [
+      "探险",
+      "南极",
+      "摄影"
+    ],
+    "match": [
+      "夸克",
+      "Quark",
+      "World Voyager",
+      "Ocean Explorer",
+      "Ultramarine"
+    ],
+    "blurb": "老牌极地探险船司，覆盖南极半岛、南极飞航、雪丘岛等深度航线。"
   },
   {
     "id": "ponant",
     "name": "庞洛邮轮",
-    "nameEn": "Ponant",
+    "nameEn": "PONANT",
     "logo": "/ships/ponant.jpg",
-    "tags": ["奢华", "探险", "金伯利"],
-    "match": ["庞洛", "Ponant"],
-    "blurb": "法式奢华探险邮轮，金伯利、加帕与极地航线。"
+    "tags": [
+      "法式",
+      "奢华",
+      "南极"
+    ],
+    "match": [
+      "庞洛",
+      "PONANT",
+      "Le Boréal",
+      "L'Austral",
+      "Le Lyrial"
+    ],
+    "blurb": "法式小型奢华探险船队，提供南极半岛、南极圈、南乔治亚等航线。"
   },
   {
     "id": "atlas",
-    "name": "Atlas Ocean Voyages",
-    "nameEn": "Atlas",
+    "name": "ATLAS 海洋邮轮",
+    "nameEn": "Atlas Ocean Voyages",
     "logo": "/ships/atlas.png",
-    "tags": ["探险", "新船"],
-    "match": ["Atlas", "信天翁", "环球领航者"],
-    "blurb": "极地探险新运力，部分航次以信天翁等品牌合作呈现。"
+    "tags": [
+      "探险",
+      "南极",
+      "小型船"
+    ],
+    "match": [
+      "Atlas",
+      "World Navigator",
+      "World Traveller",
+      "世界航海家",
+      "世界旅行者"
+    ],
+    "blurb": "小型奢华探险船队，南极半岛、南极圈及南乔治亚航次选择丰富。"
+  },
+  {
+    "id": "riverside",
+    "name": "Riverside 奢华河轮",
+    "nameEn": "Riverside Luxury Cruises",
+    "logo": "/ships/riverside-logo.svg",
+    "tags": [
+      "河轮",
+      "奢华",
+      "多瑙河"
+    ],
+    "match": [
+      "Riverside",
+      "德彪西",
+      "Debussy",
+      "Riverside Luxury Cruises"
+    ],
+    "blurb": "欧洲顶奢内河旅行品牌，以全套房、管家服务、精致餐饮与深度文化体验见长。"
   },
   {
     "id": "hapag_lloyd",
     "name": "赫伯罗特",
     "nameEn": "Hapag-Lloyd Cruises",
     "logo": "/ships/hapag_lloyd.png",
-    "tags": ["德式", "奢华", "探险"],
-    "match": ["赫伯", "Hapag", "汉萨", "指挥官夏古", "夏古号"],
+    "tags": [
+      "德式",
+      "奢华",
+      "探险"
+    ],
+    "match": [
+      "赫伯",
+      "Hapag",
+      "汉萨",
+      "指挥官夏古",
+      "夏古号"
+    ],
     "blurb": "德国品质探险邮轮，北极与环球深度航线。"
   },
   {
@@ -58,8 +132,91 @@
     "name": "Scenic Eclipse",
     "nameEn": "Scenic",
     "logo": "/ships/scenic_virgin.png",
-    "tags": ["奢华", "探险", "直升机"],
-    "match": ["Scenic", "Eclipse"],
+    "tags": [
+      "奢华",
+      "探险",
+      "直升机"
+    ],
+    "match": [
+      "Scenic",
+      "Eclipse"
+    ],
     "blurb": "超奢华探险游艇，南北极高端定制与摄影团。"
+  },
+  {
+    "id": "antarctica21",
+    "name": "南极21",
+    "nameEn": "Antarctica21",
+    "logo": "/ships/antarctica21.webp",
+    "tags": [
+      "飞航",
+      "南极",
+      "小型船"
+    ],
+    "match": [
+      "Antarctica21",
+      "A21",
+      "Magellan Explorer",
+      "Magellan Discoverer",
+      "麦哲伦"
+    ],
+    "blurb": "南极飞航代表船司，以麦哲伦探索号、麦哲伦发现号服务半岛双飞和穿圈飞航。"
+  },
+  {
+    "id": "seabourn",
+    "name": "世邦邮轮",
+    "nameEn": "Seabourn",
+    "logo": "/ships/seabourn.png",
+    "tags": [
+      "奢华",
+      "探险",
+      "南极"
+    ],
+    "match": [
+      "世邦",
+      "Seabourn",
+      "Venture",
+      "Pursuit"
+    ],
+    "blurb": "超奢华探险船队，世邦探险号与世邦追寻号覆盖南极半岛、双岛和三岛。"
+  },
+  {
+    "id": "swan_hellenic",
+    "name": "天鹅海伦",
+    "nameEn": "Swan Hellenic",
+    "logo": "/ships/swan_hellenic.png",
+    "tags": [
+      "探险",
+      "精品",
+      "南极"
+    ],
+    "match": [
+      "Swan",
+      "Swan Hellenic",
+      "SH Diana",
+      "SH Vega",
+      "SH Minerva",
+      "天鹅海伦"
+    ],
+    "blurb": "精品探险船队，以 SH Diana、SH Vega、SH Minerva 运营南极半岛与威德尔海航线。"
+  },
+  {
+    "id": "aurora",
+    "name": "欧若拉探险",
+    "nameEn": "Aurora Expeditions",
+    "logo": "/ships/aurora.svg",
+    "tags": [
+      "澳洲",
+      "探险",
+      "南极"
+    ],
+    "match": [
+      "欧若拉",
+      "Aurora",
+      "Douglas Mawson",
+      "Sylvia Earle",
+      "Greg Mortimer"
+    ],
+    "blurb": "澳洲探险船司，覆盖经典南极半岛、南极圈、南极飞航、双岛与三岛航线。"
   }
 ]

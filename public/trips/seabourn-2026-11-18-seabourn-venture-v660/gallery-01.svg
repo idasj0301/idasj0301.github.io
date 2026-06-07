@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f5f7fa"/>
+  <circle cx="980" cy="165" r="120" fill="#5a6d78" opacity=".13"/>
+  <path d="M0 560 C180 500 320 610 500 545 C710 470 850 610 1200 500 L1200 800 L0 800 Z" fill="#5a6d78" opacity=".9"/>
+  <text x="78" y="120" class="kicker">航线</text>
+  <text x="78" y="215" class="title">21天南极三岛</text>
+  <text x="78" y="282" class="sub">福克兰群岛 / 南乔治亚 / 南极半岛</text>
+  <style>
+    .kicker { font: 700 30px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #5a6d78; }
+    .title { font: 760 64px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #15191f; }
+    .sub { font: 500 34px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #66717b; }
+  </style>
+</svg>

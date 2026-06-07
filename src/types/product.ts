@@ -45,6 +45,15 @@ export interface Article {
   title: string;
   author: string;
   tag?: string;
+  image?: string;
+  imageAlt?: string;
+  imageCaption?: string;
+  inlineImages?: {
+    after: string;
+    src: string;
+    alt: string;
+    caption?: string;
+  }[];
   excerpt: string;
   body: string;
   published: boolean;

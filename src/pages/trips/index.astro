@@ -17,7 +17,7 @@ const title = q ? `搜索：${q} · ${SITE.name}` : `全部航程 · ${SITE.name
   <div class="container page">
     <header class="page-head">
       <h1>全部航程</h1>
-      <form class="search" action="/trips" method="get" role="search">
+      <form class="search" action="/trips/" method="get" role="search">
         <input type="search" name="q" value={q} placeholder="目的地、船名、航线" />
         <button type="submit">搜索</button>
       </form>

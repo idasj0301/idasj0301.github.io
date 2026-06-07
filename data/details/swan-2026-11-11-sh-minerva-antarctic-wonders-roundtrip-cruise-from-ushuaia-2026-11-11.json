@@ -1,0 +1,191 @@
+{
+  "titleEn": "Antarctic Wonders Roundtrip Cruise From Ushuaia 2026 11 11",
+  "subtitle": "10天经典南极半岛",
+  "tags": [
+    "天鹅海伦 Swan Hellenic",
+    "单船票",
+    "南极",
+    "SH Minerva 智慧女神号",
+    "2026-11-11"
+  ],
+  "cardImage": "/ticket-official-images/f85df82b7080d85888.webp",
+  "heroImage": "/ticket-official-images/f85df82b7080d85888.webp",
+  "routeMap": {
+    "src": "/trips/swan-2026-11-11-sh-minerva-antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-11-11/route-map.svg",
+    "alt": "SH Minerva 智慧女神号 · 10天经典南极半岛 航线图",
+    "caption": "10天经典南极半岛 · 2026.11.11 — 2026.11.20"
+  },
+  "gallery": [
+    {
+      "src": "/ticket-official-images/f85df82b7080d85888.webp",
+      "alt": "SH Minerva 智慧女神号 · 10天经典南极半岛 船司官网产品图",
+      "caption": "船司官网产品图"
+    },
+    {
+      "src": "/trips/swan-2026-11-11-sh-minerva-antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-11-11/gallery-01.svg",
+      "alt": "10天经典南极半岛 航线说明",
+      "caption": "航线主题"
+    },
+    {
+      "src": "/trips/swan-2026-11-11-sh-minerva-antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-11-11/gallery-02.svg",
+      "alt": "SH Minerva 智慧女神号 邮轮说明",
+      "caption": "邮轮与船司"
+    }
+  ],
+  "metaTable": [
+    [
+      "船司",
+      "天鹅海伦 Swan Hellenic"
+    ],
+    [
+      "邮轮",
+      "SH Minerva 智慧女神号"
+    ],
+    [
+      "航线",
+      "10天经典南极半岛"
+    ],
+    [
+      "目的地",
+      "南极半岛"
+    ],
+    [
+      "出行日期",
+      "2026.11.11 — 2026.11.20"
+    ],
+    [
+      "出行时长",
+      "10天"
+    ],
+    [
+      "参考起价",
+      "US$9,800 起"
+    ],
+    [
+      "航线来源",
+      "https://www.swanhellenic.com/cruise/antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-11-11"
+    ]
+  ],
+  "cabins": [
+    {
+      "name": "基础舱型 / 标准舱型",
+      "spec": "具体开放舱型、面积、楼层和权益以船司实时库存为准",
+      "price": "US$9,800 起"
+    },
+    {
+      "name": "阳台房 / 套房 / 高阶套房",
+      "spec": "不同船、航次和促销政策价格差异较大，请顾问实时确认",
+      "price": "实时确认"
+    }
+  ],
+  "highlightSections": [
+    {
+      "title": "航线亮点",
+      "content": "10天经典南极半岛 单船票航程，目的地覆盖 南极半岛。本页根据蘑菇表格提供的官方链接、航次日期、邮轮和起价整理；具体每日港口和登陆安排以船司官方最终文件为准。"
+    },
+    {
+      "title": "船司与邮轮",
+      "bullets": [
+        "船司：天鹅海伦 Swan Hellenic",
+        "邮轮：SH Minerva 智慧女神号",
+        "船上住宿、餐饮、探险队、讲座、Zodiac 巡游/登陆等项目以船司该航次开放内容为准。"
+      ]
+    },
+    {
+      "title": "单船票定位",
+      "bullets": [
+        "适合已自行安排国际机票、签证、保险、前后住宿或岸上行程，只需要邮轮航段的客人。",
+        "官网展示为可咨询 SKU，不代表实时锁舱；舱位、税费、促销和取消条款需顾问向船司实时确认。",
+        "如涉及南极飞航，航班、接驳和前后缓冲时间需按船司最终安排预留。"
+      ]
+    },
+    {
+      "title": "价格与库存",
+      "content": "蘑菇表格参考起价为 US$9,800 起。不同舱型、人数、汇率、税费和船司促销会影响最终报价，请以签约前顾问确认为准。"
+    }
+  ],
+  "itinerary": [
+    {
+      "day": "1",
+      "date": "11月11日",
+      "title": "登船",
+      "content": "按船司指定港口登船，开启南极单船票航段。"
+    },
+    {
+      "day": "3",
+      "title": "德雷克海峡 / 海上航行",
+      "content": "海上航行日通常安排探险队讲座、登陆说明和观景活动。"
+    },
+    {
+      "day": "5",
+      "title": "南极半岛探索",
+      "content": "在南极半岛、岛屿、冰山水域或相关主题海域探索，活动以天气和冰况为准。"
+    },
+    {
+      "day": "10",
+      "date": "11月20日",
+      "title": "离船",
+      "content": "抵达离船港并结束邮轮航段。"
+    }
+  ],
+  "itineraryNote": "以上为单船票咨询版行程框架。实际港口、每日时间、登陆点、冲锋艇巡游、徒步、飞航和接驳安排以船司官方最终文件、天气、冰况和船长/探险队长安排为准。",
+  "shipDetail": {
+    "name": "SH Minerva 智慧女神号",
+    "intro": "SH Minerva 智慧女神号 服务于 天鹅海伦 Swan Hellenic 的 10天经典南极半岛 航次。船上设施、舱型和探险配置请以该船司官方页面、实时库存和签约合同为准。",
+    "specs": [
+      [
+        "船司",
+        "天鹅海伦 Swan Hellenic"
+      ],
+      [
+        "邮轮",
+        "SH Minerva 智慧女神号"
+      ],
+      [
+        "航线类型",
+        "10天经典南极半岛"
+      ],
+      [
+        "出发日期",
+        "2026-11-11"
+      ],
+      [
+        "来源链接",
+        "https://www.swanhellenic.com/cruise/antarctic-wonders-roundtrip-cruise-from-ushuaia-2026-11-11"
+      ]
+    ],
+    "facilities": [
+      "船上住宿与餐饮服务",
+      "探险队讲座、登陆说明与安全简报",
+      "Zodiac 冲锋艇巡游/登陆活动（以航次开放为准）",
+      "观景甲板、公共休息区及船司安排的船上活动"
+    ],
+    "cabins": [
+      {
+        "name": "开放舱型",
+        "spec": "以船司实时库存、价格表和合同为准",
+        "price": "US$9,800 起"
+      }
+    ]
+  },
+  "feeIncluded": [
+    "船上住宿、船上餐食和船司安排的船上活动（以该航次条款为准）",
+    "探险队讲座、登陆说明及船司开放的 Zodiac 巡游/登陆项目（以天气、冰况和船司安排为准）",
+    "港务税费、船上小费、饮品、Wi-Fi 等是否包含，需按对应船司和舱型政策实时确认。"
+  ],
+  "feeExcluded": [
+    "国际机票、签证、保险、出发前后酒店、接送机、岸上延伸行程及个人消费，除非船司或合同另有明确包含。",
+    "皮划艇、露营、直升机、潜水等可选活动如需额外名额、条件或费用，以船司确认为准。",
+    "因天气、冰况、航班、机场、港口或不可抗力造成的额外费用，按船司条款和合同约定执行。"
+  ],
+  "noticeSections": [
+    {
+      "title": "行程调整",
+      "content": "极地航线高度依赖天气、冰况、港口、机场和环保规范。船长与探险队长会根据安全和体验调整航线、登陆点、时间和活动顺序。"
+    },
+    {
+      "title": "单船票说明",
+      "content": "本页用于官网咨询和顾问匹配；最终舱位、价格、税费、飞航/接驳和费用包含以船客顾问向船司实时确认为准。"
+    }
+  ]
+}

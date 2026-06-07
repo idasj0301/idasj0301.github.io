@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+  <title id="title">World Traveller 世界旅行者号 · 10晚南极半岛 Exploring The Last Continent 航线图</title>
+  <desc id="desc">10晚南极半岛 Exploring The Last Continent · 2027.11.21 — 2027.12.01</desc>
+  <rect width="960" height="620" rx="28" fill="#edf6fb"/>
+  <path d="M0 465 C140 418 228 475 340 430 C470 378 548 505 670 470 C805 428 842 516 960 476 L960 620 L0 620 Z" fill="#d8e4e8"/>
+  <path d="M 755 515 L 650 430 L 560 245 L 470 380 L 630 275 L 755 515" fill="none" stroke="#315f7a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 15"/>
+  <path d="M 755 515 L 650 430 L 560 245 L 470 380 L 630 275 L 755 515" fill="none" stroke="#c8a45d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g><circle cx="755" cy="515" r="9" fill="#315f7a" stroke="#fff" stroke-width="4"/><text x="770" y="503" class="label">登船 / 离船港</text></g>
+<g><circle cx="560" cy="245" r="9" fill="#315f7a" stroke="#fff" stroke-width="4"/><text x="575" y="233" class="label">南极海峡</text></g>
+<g><circle cx="470" cy="380" r="9" fill="#315f7a" stroke="#fff" stroke-width="4"/><text x="485" y="368" class="label">南极半岛</text></g>
+<g><circle cx="630" cy="275" r="9" fill="#315f7a" stroke="#fff" stroke-width="4"/><text x="645" y="263" class="label">南设得兰群岛</text></g>
+<g><circle cx="590" cy="365" r="9" fill="#315f7a" stroke="#fff" stroke-width="4"/><text x="605" y="353" class="label">南乔治亚</text></g>
+<g><circle cx="385" cy="440" r="9" fill="#315f7a" stroke="#fff" stroke-width="4"/><text x="400" y="428" class="label">南极圈方向</text></g>
+<g><circle cx="520" cy="190" r="9" fill="#315f7a" stroke="#fff" stroke-width="4"/><text x="535" y="178" class="label">雪丘岛 / 威德尔海方向</text></g>
+  <g transform="translate(54 58)">
+    <rect width="560" height="122" rx="18" fill="#ffffff" opacity=".94"/>
+    <text x="24" y="36" class="kicker">ATLAS 海洋邮轮 Atlas Ocean Voyages</text>
+    <text x="24" y="70" class="title">10晚南极半岛 Exploring The Last Continent</text>
+    <text x="24" y="98" class="small">World Traveller 世界旅行者号 · 2027.11.21 — 2027.12.01</text>
+  </g>
+  <text x="54" y="572" class="small">航线为单船票咨询示意；实际港口、登陆点、飞航/接驳以船司最终确认为准。</text>
+  <style>
+    .title { font: 700 23px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #102233; }
+    .kicker { font: 700 13px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; letter-spacing: .08em; fill: #315f7a; }
+    .label { font: 600 16px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #0f2638; paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
+    .small { font: 15px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; fill: #415668; }
+  </style>
+</svg>

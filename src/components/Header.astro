@@ -10,22 +10,22 @@ import { CATEGORIES, ABOUT_PATH } from "../lib/categories";
 
     <nav class="nav-menu" aria-label="主导航">
       {CATEGORIES.map((c) => (
-        <a href={c.path} class:list={[{ active: Astro.url.pathname.startsWith(c.path) }]}>
+        <a href={`${c.path}/`} class:list={[{ active: Astro.url.pathname.startsWith(c.path) }]}>
           {c.label}
         </a>
       ))}
-      <a href={ABOUT_PATH} class:list={[{ active: Astro.url.pathname === ABOUT_PATH }]}>
+      <a href={`${ABOUT_PATH}/`} class:list={[{ active: Astro.url.pathname.startsWith(ABOUT_PATH) }]}>
         关于我们
       </a>
     </nav>
 
     <div class="nav-end">
-      <form class="nav-search" action="/trips" method="get" role="search">
+      <form class="nav-search" action="/trips/" method="get" role="search">
         <label for="nav-q" class="sr-only">搜索航程</label>
         <input id="nav-q" type="search" name="q" placeholder="搜索" autocomplete="off" />
       </form>
-      <a href="/inquiry" class="nav-cta">预约留咨</a>
-      <a href="/advisor" class="nav-cta nav-cta-primary">直连顾问</a>
+      <a href="/inquiry/" class="nav-cta">预约留咨</a>
+      <a href="/advisor/" class="nav-cta nav-cta-primary">直连顾问</a>
       <button
         type="button"
         class="nav-menu-btn"
@@ -39,16 +39,16 @@ import { CATEGORIES, ABOUT_PATH } from "../lib/categories";
   </div>
 
   <nav id="nav-drawer" class="nav-drawer" aria-label="移动端导航" hidden>
-    <form class="nav-drawer-search" action="/trips" method="get" role="search">
+    <form class="nav-drawer-search" action="/trips/" method="get" role="search">
       <input type="search" name="q" placeholder="搜索航程" aria-label="搜索航程" />
     </form>
     {CATEGORIES.map((c) => (
-      <a href={c.path}>{c.label}</a>
+      <a href={`${c.path}/`}>{c.label}</a>
     ))}
-    <a href={ABOUT_PATH}>关于我们</a>
+    <a href={`${ABOUT_PATH}/`}>关于我们</a>
     <div class="nav-drawer-actions">
-      <a href="/inquiry">预约留咨</a>
-      <a href="/advisor">直连顾问</a>
+      <a href="/inquiry/">预约留咨</a>
+      <a href="/advisor/">直连顾问</a>
     </div>
   </nav>
 </header>

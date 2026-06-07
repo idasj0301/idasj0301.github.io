@@ -25,7 +25,7 @@ const ld = [
   productJsonLd(product),
   breadcrumbJsonLd([
     { name: "首页", url: SITE.url },
-    { name: cat?.label ?? "航程", url: `${SITE.url}${cat?.path ?? "/trips"}` },
+    { name: cat?.label ?? "航程", url: `${SITE.url}${cat?.path ?? "/trips"}/` },
     { name: product.title, url: `${SITE.url}/trips/${product.slug}` },
   ]),
 ];
@@ -40,7 +40,7 @@ const ld = [
 >
   <nav class="breadcrumb container">
     <a href="/">首页</a> ›
-    <a href={cat?.path}>{cat?.label}</a> ›
+    <a href={cat ? `${cat.path}/` : "/trips/"}>{cat?.label}</a> ›
     <span>{product.title}</span>
   </nav>
   <TripDetailRich product={product} detail={detail} />

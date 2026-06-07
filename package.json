@@ -29,6 +29,7 @@
     "normalize:detail-copy": "node scripts/normalize-detail-copy.mjs",
     "seed:galapagos": "node scripts/seed-galapagos-catalog.mjs",
     "import:product-images": "node scripts/import-product-images-from-ppt.mjs",
+    "optimize:images": "node scripts/optimize-public-images.mjs",
     "audit:site": "node scripts/audit-site.mjs",
     "audit:content": "node scripts/audit-content.mjs",
     "audit:products": "node scripts/audit-products-deep.mjs",

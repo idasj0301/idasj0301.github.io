@@ -12,51 +12,298 @@ export function getStaticPaths() {
 }
 
 const article = getArticleBySlug(Astro.params.slug!);
-if (!article) return Astro.redirect("/articles");
+if (!article) return Astro.redirect("/articles/");
+
+const bodyBlocks = article.body
+  .split("\n")
+  .map((line) => line.trim())
+  .filter(Boolean)
+  .map((text) => {
+    const isMajorEmoji = text.startsWith("✨") || text.startsWith("💎") || text.startsWith("💰 时间");
+    const isSubheadEmoji =
+      text.startsWith("💰") || text.startsWith("⛅") || text.startsWith("🐧");
+    if (
+      /^\d+\.\s/.test(text) ||
+      /^[一二三四五六七八九十]+、/.test(text) ||
+      /^(11月|12月|1月|2月|3月)：/.test(text) ||
+      isMajorEmoji
+    ) {
+      return { kind: "heading", text };
+    }
+    if (isSubheadEmoji || (text.endsWith("：") && text.length <= 18)) {
+      return { kind: "subhead", text };
+    }
+    if (
+      /^(能够|严重|孕妇：|预算优先：|体验优先：|观鲸爱好者：|摄影爱好者：|深度探险家：|南极半岛经典线：|南极三岛深度线|南极圈探险线：|帝企鹅专线：)/.test(
+        text,
+      )
+    ) {
+      return { kind: "bullet", text };
+    }
+    return { kind: "paragraph", text };
+  });
+
+const inlineImages = article.inlineImages ?? [];
+const contentBlocks = bodyBlocks.flatMap((block) => [
+  block,
+  ...inlineImages
+    .filter((image) => image.after === block.text)
+    .map((image) => ({ kind: "image", image })),
+]);
+
+const keyPoints = article.excerpt
+  .split("。")
+  .map((item) => item.trim())
+  .filter(Boolean)
+  .slice(0, 3);
 ---
 
 <BaseLayout
   title={`${article.title} · ${SITE.name}`}
   description={article.excerpt}
-  path={`/articles/${article.slug}`}
+  path={`/articles/${article.slug}/`}
   jsonLd={articleJsonLd(article)}
 >
-  <article class="container page">
-    <nav class="breadcrumb"><a href="/articles">船说</a> › <span>{article.title}</span></nav>
-    {article.tag && <span class="pill pill-gold">{article.tag}</span>}
-    <h1>{article.title}</h1>
-    <p class="meta">{article.author}</p>
-    <div class="body">
-      {article.body.split("\n").map((p) => (
-        <p>{p}</p>
-      ))}
+  <article class="article-page">
+    <header class="article-hero">
+      <div class="container hero-inner">
+        <nav class="breadcrumb"><a href="/articles/">船说</a> › <span>{article.title}</span></nav>
+        <div class="hero-copy">
+          {article.tag && <span class="pill pill-gold">{article.tag}</span>}
+          <h1>{article.title}</h1>
+          <p class="dek">{article.excerpt}</p>
+          <p class="meta">{article.author}</p>
+        </div>
+      </div>
+    </header>
+
+    {article.image && (
+      <figure class="container article-figure">
+        <img src={article.image} alt={article.imageAlt ?? article.title} width="1600" height="900" loading="eager" decoding="async" />
+        {article.imageCaption && <figcaption>{article.imageCaption}</figcaption>}
+      </figure>
+    )}
+
+    <div class="container article-shell">
+      <div class="article-main">
+        {keyPoints.length > 0 && (
+          <aside class="takeaways" aria-label="文章要点">
+            <p>先看重点</p>
+            <ul>
+              {keyPoints.map((point) => <li>{point}</li>)}
+            </ul>
+          </aside>
+        )}
+
+        <div class="body">
+          {contentBlocks.map((block) => {
+            if (block.kind === "image") {
+              return (
+                <figure class="inline-figure">
+                  <img src={block.image.src} alt={block.image.alt} width="1100" height="825" loading="lazy" decoding="async" />
+                  {block.image.caption && <figcaption>{block.image.caption}</figcaption>}
+                </figure>
+              );
+            }
+            if (block.kind === "heading") return <h2>{block.text}</h2>;
+            if (block.kind === "subhead") return <h3>{block.text}</h3>;
+            if (block.kind === "bullet") return <p class="bullet">{block.text}</p>;
+            return <p>{block.text}</p>;
+          })}
+        </div>
+      </div>
+      <aside class="article-side">
+        <AdvisorCTA from={`article-${article.slug}`} />
+      </aside>
     </div>
-    <AdvisorCTA from={`article-${article.slug}`} compact />
   </article>
 </BaseLayout>
 
 <style>
-  .page {
-    padding: var(--space-md) 0 var(--space-xl);
-    max-width: 720px;
+  .article-page {
+    padding-bottom: var(--space-xl);
+  }
+  .article-hero {
+    background: linear-gradient(180deg, #f7fbff 0%, #fff 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hero-inner {
+    padding: 24px var(--page-pad) 34px;
   }
   .breadcrumb {
     font-size: 16px;
     color: var(--color-muted);
-    margin-bottom: 12px;
+    margin-bottom: 22px;
+  }
+  .hero-copy {
+    max-width: 860px;
   }
   h1 {
-    font-size: 30px;
-    margin: 12px 0;
+    font-size: clamp(34px, 4vw, 54px);
+    line-height: 1.12;
+    margin: 14px 0 16px;
+    letter-spacing: 0;
+  }
+  .dek {
+    font-size: clamp(18px, 1.8vw, 22px);
+    color: var(--color-muted);
+    line-height: 1.75;
+    max-width: 780px;
   }
   .meta {
     color: var(--color-muted);
-    margin-bottom: var(--space-md);
+    margin-top: 18px;
     font-size: 16px;
   }
+  .article-figure {
+    margin-top: 28px;
+  }
+  .article-figure img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+  }
+  .article-figure figcaption {
+    font-size: 14px;
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin-top: 10px;
+  }
+  .article-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 760px) 280px;
+    gap: 48px;
+    align-items: start;
+    margin-top: 34px;
+  }
+  .article-main {
+    min-width: 0;
+  }
+  .takeaways {
+    border-left: 4px solid var(--color-accent);
+    background: #fff8ea;
+    padding: 18px 22px;
+    margin-bottom: 32px;
+  }
+  .takeaways p {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+  .takeaways ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .takeaways li {
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.75;
+    margin: 6px 0;
+  }
+  .body {
+    color: var(--ink);
+  }
   .body p {
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height);
-    margin-bottom: 1em;
+    font-size: 18px;
+    line-height: 1.95;
+    margin-bottom: 1.05em;
+  }
+  .body h2 {
+    font-size: clamp(24px, 2.3vw, 31px);
+    line-height: 1.35;
+    margin: 2em 0 0.75em;
+    letter-spacing: 0;
+    color: var(--color-primary);
+  }
+  .body h2:first-child {
+    margin-top: 0;
+  }
+  .body h3 {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 1.6em 0 0.45em;
+    color: var(--color-primary);
+  }
+  .body .bullet {
+    position: relative;
+    padding-left: 22px;
+  }
+  .body .bullet::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.9em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+  .inline-figure {
+    margin: 30px 0 36px;
+  }
+  .inline-figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #e8eef3;
+    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.1);
+  }
+  .inline-figure figcaption {
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-top: 10px;
+  }
+  .article-side {
+    position: sticky;
+    top: calc(var(--header-h) + 22px);
+  }
+  @media (max-width: 900px) {
+    .article-shell {
+      display: block;
+    }
+    .article-side {
+      position: static;
+      margin-top: 36px;
+    }
+  }
+  @media (max-width: 640px) {
+    .hero-inner {
+      padding-top: 18px;
+      padding-bottom: 26px;
+    }
+    h1 {
+      font-size: 32px;
+    }
+    .article-figure {
+      margin-top: 0;
+      padding: 0;
+    }
+    .article-figure img {
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .article-figure figcaption {
+      padding: 0 var(--page-pad);
+    }
+    .article-shell {
+      margin-top: 28px;
+    }
+    .body p {
+      font-size: 17px;
+    }
+    .inline-figure {
+      margin: 24px 0 30px;
+    }
+    .inline-figure img {
+      border-radius: 6px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.1);
+    }
   }
 </style>

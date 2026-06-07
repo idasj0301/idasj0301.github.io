@@ -1,0 +1,299 @@
+{
+  "titleEn": "WILD EAST AFRICA",
+  "subtitle": "陆地轻探险",
+  "tags": [
+    "东非",
+    "动物大迁徙",
+    "Safari"
+  ],
+  "metaTable": [
+    [
+      "出行日期",
+      "2026.08.02 — 2026.08.11"
+    ],
+    [
+      "目的地",
+      "肯尼亚、坦桑尼亚"
+    ],
+    [
+      "出行时长",
+      "10天9晚"
+    ],
+    [
+      "线路特点",
+      "动物大迁徙、Safari 游猎、草原生态观察"
+    ],
+    [
+      "团队规模",
+      "精品小团"
+    ],
+    [
+      "交通方式",
+      "陆地安排 / 内陆轻型飞机 / Safari 越野车"
+    ],
+    [
+      "参考住宿",
+      "JW Marriott Nairobi、Lake Naivasha Simba Lodge、Paradise Plains Masai Mara、Nyuki Migration Camp、Serengeti Explorer by Elewana、Ngorongoro Lodge 或同级"
+    ]
+  ],
+  "cabins": [
+    {
+      "name": "陆地轻探险席位",
+      "spec": "10天9晚，肯尼亚 + 坦桑尼亚",
+      "price": "¥99,800 / 人"
+    }
+  ],
+  "highlightSections": [
+    {
+      "title": "东非动物大迁徙",
+      "content": "角马、斑马、羚羊等食草动物每年在塞伦盖蒂与马赛马拉之间循环迁徙，全年跋涉超过 3200 公里，是地球上最大规模的陆地哺乳动物迁徙之一。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/highlight-01.jpg",
+        "alt": "生命的礼赞 · 狂野东非"
+      }
+    },
+    {
+      "title": "马拉河 · 天河之渡",
+      "content": "每年 7-10 月，迁徙大军抵达马拉河，渡河成为全程最震撼也最不可预测的片段。行程以迁徙季为核心设计，但具体场景需尊重自然节奏。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/highlight-02.jpg",
+        "alt": "生命的礼赞 · 狂野东非"
+      }
+    },
+    {
+      "title": "自然的较量",
+      "content": "草原上狮子、豹子、猎豹、鳄鱼等捕食者与迁徙队伍共同构成真实而紧张的生态现场，适合自然观察与摄影。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/highlight-03.jpg",
+        "alt": "生命的礼赞 · 狂野东非"
+      }
+    },
+    {
+      "title": "Safari 追踪非洲五霸",
+      "content": "多次游猎寻找狮子、豹子、非洲水牛、大象与犀牛，也关注长颈鹿、斑马、羚羊、鸟类等东非草原代表物种。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/highlight-04.jpg",
+        "alt": "生命的礼赞 · 狂野东非"
+      }
+    },
+    {
+      "title": "野奢营地与草原生活",
+      "content": "用舒适营地和景观住宿承接高强度自然观察，在清晨、傍晚和夜色中感受东非荒野的辽阔与生命力。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/highlight-05.jpg",
+        "alt": "生命的礼赞 · 狂野东非"
+      }
+    },
+    {
+      "title": "住宿不是过夜，是荒野体验的一部分",
+      "content": "本线为陆地安排，无邮轮。PPT 中精选内罗毕五星酒店、纳瓦沙湖畔 lodge、马赛马拉野奢营地、塞伦盖蒂迁徙营地和恩戈罗恩戈罗火山口高端 lodge，让客人在不同生态区连住、观察和休整。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/gallery-03.jpg",
+        "alt": "东非野奢营地"
+      }
+    },
+    {
+      "title": "Lake Naivasha Simba Lodge · 纳瓦沙湖畔",
+      "content": "静卧于纳瓦沙湖畔，推窗可见湖面与合欢林，园区常有斑马、羚羊等动物活动。适合作为进入东非大裂谷和纳库鲁国家公园前后的自然休整点。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/gallery-02.jpg",
+        "alt": "Lake Naivasha Simba Lodge"
+      }
+    },
+    {
+      "title": "Paradise Plains Masai Mara · 马赛马拉",
+      "content": "马赛马拉段参考入住 Paradise Plains Masai Mara 或同级营地。营地以小体量野奢套房、独立休息区与景观空间承接高频 Safari，也方便围绕马拉河追踪迁徙动态。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/highlight-05.jpg",
+        "alt": "Paradise Plains Masai Mara"
+      }
+    },
+    {
+      "title": "Nyuki Migration Camp · 塞伦盖蒂迁徙营地",
+      "content": "Jupe Collection - Nyuki Migration Camp 会随季节迁移，6-11 月北迁至科加滕德区域，贴近兽群栖息地，同时保持远离人群的私密感，是迁徙季塞伦盖蒂北部的重要住宿亮点。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/gallery-03.jpg",
+        "alt": "Nyuki Migration Camp"
+      }
+    },
+    {
+      "title": "Serengeti Explorer 与 Ngorongoro Lodge",
+      "content": "塞伦盖蒂中部参考 Serengeti Explorer by Elewana，拥有营地内观景隐蔽处；恩戈罗恩戈罗段参考 Ngorongoro Lodge，位于火山口边缘，适合俯瞰非洲伊甸园地貌。",
+      "image": {
+        "src": "/trips/2026-east-africa-migration-10d/highlight-04.jpg",
+        "alt": "塞伦盖蒂与恩戈罗恩戈罗住宿"
+      }
+    }
+  ],
+  "itineraryNote": "迁徙路线、动物聚集点和渡河发生时间无法保证，每日安排以向导和保护区现场判断为准。",
+  "feeIncluded": [
+    "行程所列住宿、当地用车与司导服务",
+    "国家公园及保护区门票",
+    "行程所列餐食与 Safari 游猎安排"
+  ],
+  "feeExcluded": [
+    "国际及内陆段机票差额、签证、保险及个人消费",
+    "单房差、自费项目、不可抗力导致的额外费用"
+  ],
+  "noticeSections": [
+    {
+      "title": "自然观察",
+      "content": "野生动物活动具有不确定性，迁徙和渡河场景无法保证，请以自然发生为准。"
+    },
+    {
+      "title": "出行准备",
+      "content": "东非草原昼夜温差、日晒和道路颠簸明显，建议准备防晒、防尘、轻便保暖衣物及合适镜头。"
+    }
+  ],
+  "heroImage": "/trips/2026-east-africa-migration-10d/hero.jpg",
+  "routeMap": {
+    "src": "/trips/2026-east-africa-migration-10d/route-map.png",
+    "alt": "生命的礼赞 · 狂野东非路线图",
+    "caption": "示意图仅供参考，实际顺序与停靠以出团通知为准。"
+  },
+  "gallery": [
+    {
+      "src": "/trips/2026-east-africa-migration-10d/gallery-01.jpg",
+      "alt": "东非动物大迁徙角马渡河"
+    },
+    {
+      "src": "/trips/2026-east-africa-migration-10d/gallery-02.jpg",
+      "alt": "东非动物大迁徙角马渡河"
+    },
+    {
+      "src": "/trips/2026-east-africa-migration-10d/gallery-03.jpg",
+      "alt": "东非动物大迁徙角马渡河"
+    }
+  ],
+  "itinerary": [
+    {
+      "day": "1",
+      "date": "08月02日",
+      "title": "抵达内罗毕",
+      "meta": "参考住宿：JW Marriott Nairobi 或同级 5 星级 · 参考餐食：晚餐 Carnivore 餐厅",
+      "content": "抵达肯尼亚首都内罗毕，接机后入住酒店休整，晚餐安排当地特色百兽宴餐厅。"
+    },
+    {
+      "day": "2",
+      "date": "08月03日",
+      "title": "内罗毕 - 纳瓦沙",
+      "meta": "参考住宿：Lake Naivasha Simba Lodge 或同级 5 星级 · 参考餐食：早餐酒店内；午餐酒店内；晚餐酒店内",
+      "content": "前往长颈鹿公园近距离互动，随后抵达纳瓦沙湖，乘船游湖并登新月岛徒步。酒店草坪常有食草动物活动。"
+    },
+    {
+      "day": "3",
+      "date": "08月04日",
+      "title": "纳瓦沙 - 纳库鲁 - 纳瓦沙",
+      "meta": "参考住宿：Lake Naivasha Simba Lodge 或同级 5 星级 · 参考餐食：早餐酒店内；午餐保护区酒店内；晚餐酒店内",
+      "content": "进入纳库鲁国家公园游猎，这里以鸟类资源和湖区生态闻名，有超过 400 种鸟类。"
+    },
+    {
+      "day": "4",
+      "date": "08月05日",
+      "title": "纳瓦沙 - 马赛马拉",
+      "meta": "参考住宿：Paradise Plains Masai Mara 或同级 5 星级 · 参考航班：轻型飞机 · 参考餐食：早餐酒店内；午餐营地内；晚餐营地内",
+      "content": "搭乘内陆飞机前往马赛马拉，下午开始 Safari 游猎，追踪非洲五霸和动物大迁徙踪迹。"
+    },
+    {
+      "day": "5",
+      "date": "08月06日",
+      "title": "马赛马拉全天游猎",
+      "meta": "参考住宿：Paradise Plains Masai Mara 或同级 5 星级 · 参考餐食：早餐营地内；午餐打包餐盒；晚餐营地内",
+      "content": "全天深入马赛马拉大草原，寻找狮子、豹子、鬣狗、角马、斑马、河马、羚羊、大象、长颈鹿等野生动物，并继续守候马拉河迁徙动态。"
+    },
+    {
+      "day": "6",
+      "date": "08月07日",
+      "title": "马赛马拉 - 塞伦盖蒂北部",
+      "meta": "参考住宿：Jupe Collection - Nyuki Migration Camp 或同级 5 星级 · 参考航班：轻型飞机 · 参考餐食：早餐营地内；午餐打包餐盒；晚餐营地内",
+      "content": "经边境接驳进入坦桑尼亚，飞往塞伦盖蒂北部，继续追寻大迁徙与天河之渡。"
+    },
+    {
+      "day": "7",
+      "date": "08月08日",
+      "title": "塞伦盖蒂北部",
+      "meta": "参考住宿：Jupe Collection - Nyuki Migration Camp 或同级 5 星级 · 参考餐食：早餐营地内；午餐打包餐盒；晚餐营地内",
+      "content": "在塞伦盖蒂北部野生动物保护区内追逐动物，关注迁徙队伍与捕食者活动。"
+    },
+    {
+      "day": "8",
+      "date": "08月09日",
+      "title": "塞伦盖蒂北部 - 塞伦盖蒂中部",
+      "meta": "参考住宿：Serengeti Explorer by Elewana 或同级 5 星级 · 参考餐食：早餐营地内；午餐打包午餐；晚餐酒店内",
+      "content": "前往塞伦盖蒂中部区域，这里是大猫天堂和全年野生动物观测点，也是大迁徙的重要十字路口。"
+    },
+    {
+      "day": "9",
+      "date": "08月10日",
+      "title": "塞伦盖蒂 - 恩戈罗恩戈罗",
+      "meta": "参考住宿：Ngorongoro Lodge member of Melia Collection The Leading Hotels of the World 或同级 5 星级 · 参考餐食：早餐酒店内；午餐打包餐盒；晚餐酒店内",
+      "content": "前往恩戈罗恩戈罗自然保护区，下火山口底部参观游览，观察草原、森林、湖泊与沼泽共同形成的独立生态系统。"
+    },
+    {
+      "day": "10",
+      "date": "08月11日",
+      "title": "恩戈罗恩戈罗 - 阿鲁沙 - 乞力马扎罗返程",
+      "meta": "参考餐食：早餐酒店内；午餐餐厅内；晚餐飞机上",
+      "content": "早餐后前往乞力马扎罗机场，途中在阿鲁沙享用午餐，随后送机返程。"
+    }
+  ],
+  "shipDetail": {
+    "name": "陆地安排 · 东非酒店与营地",
+    "intro": "本产品没有邮轮，核心体验由内陆轻型飞机、Safari 越野车和高端酒店/营地组成。住宿安排覆盖城市酒店、湖畔 lodge、马赛马拉营地、塞伦盖蒂迁徙营地与火山口 lodge。",
+    "image": {
+      "src": "/trips/2026-east-africa-migration-10d/gallery-03.jpg",
+      "alt": "东非野奢营地"
+    },
+    "gallery": [
+      {
+        "src": "/trips/2026-east-africa-migration-10d/gallery-02.jpg",
+        "alt": "纳瓦沙湖与草原游猎"
+      },
+      {
+        "src": "/trips/2026-east-africa-migration-10d/gallery-01.jpg",
+        "alt": "马拉河动物迁徙场景"
+      },
+      {
+        "src": "/trips/2026-east-africa-migration-10d/highlight-04.jpg",
+        "alt": "塞伦盖蒂与恩戈罗恩戈罗草原景观"
+      }
+    ],
+    "specs": [
+      [
+        "交通",
+        "内陆轻型飞机 + Safari 越野车"
+      ],
+      [
+        "内罗毕",
+        "JW Marriott Nairobi 或同级"
+      ],
+      [
+        "纳瓦沙",
+        "Lake Naivasha Simba Lodge 或同级"
+      ],
+      [
+        "马赛马拉",
+        "Paradise Plains Masai Mara 或同级"
+      ],
+      [
+        "塞伦盖蒂北部",
+        "Nyuki Migration Camp 或同级"
+      ],
+      [
+        "塞伦盖蒂中部",
+        "Serengeti Explorer by Elewana 或同级"
+      ],
+      [
+        "恩戈罗恩戈罗",
+        "Ngorongoro Lodge 或同级"
+      ]
+    ],
+    "facilities": [
+      "城市五星酒店休整",
+      "湖畔 lodge 自然观察",
+      "马赛马拉野奢营地",
+      "塞伦盖蒂迁徙营地",
+      "火山口边缘高端 lodge"
+    ]
+  }
+}

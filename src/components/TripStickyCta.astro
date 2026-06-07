@@ -6,11 +6,11 @@ interface Props {
   tripTitle?: string;
 }
 
-const { priceLabel, advisorHref = "/advisor", tripSlug, tripTitle } = Astro.props;
+const { priceLabel, advisorHref = "/advisor/", tripSlug, tripTitle } = Astro.props;
 const inquiryQs = new URLSearchParams();
 if (tripSlug) inquiryQs.set("trip", tripSlug);
 if (tripTitle) inquiryQs.set("title", tripTitle);
-const inquiryHref = `/inquiry${inquiryQs.toString() ? `?${inquiryQs}` : ""}`;
+const inquiryHref = `/inquiry/${inquiryQs.toString() ? `?${inquiryQs}` : ""}`;
 ---
 
 <aside class="trip-cta" aria-label="预约咨询">
