@@ -57,7 +57,7 @@ const slides = slideDefs
           muted
           loop
           playsinline
-          preload="metadata"
+          preload="auto"
           poster={slides[0]?.imageDesktop ?? slides[0]?.image}
           aria-hidden="true"
         >
@@ -83,9 +83,9 @@ const slides = slideDefs
             alt={s.alt}
             class="slide-img"
             style={`object-position: ${s.objectPosition}`}
-            loading={i === 0 ? "eager" : "lazy"}
+            loading={videos.length === 0 && i === 0 ? "eager" : "lazy"}
             decoding="async"
-            fetchpriority={i === 0 ? "high" : "low"}
+            fetchpriority={videos.length === 0 && i === 0 ? "high" : "low"}
             onerror="this.style.display='none'"
           />
         </picture>
