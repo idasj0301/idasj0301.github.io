@@ -110,7 +110,14 @@ const slides = slideDefs
       video.defaultMuted = true;
       video.playsInline = true;
 
+      const revealVideo = () => {
+        if (video.readyState >= 3 || video.currentTime > 0) {
+          root.classList.add("has-video-ready");
+        }
+      };
+
       const tryPlay = () => {
+        revealVideo();
         if (!video.paused) return;
         void video.play().catch(() => {
           // Some browsers delay autoplay until the first page interaction.
@@ -120,8 +127,11 @@ const slides = slideDefs
       if (video.readyState >= 2) tryPlay();
       video.addEventListener("loadeddata", tryPlay, { once: true });
       video.addEventListener("canplay", tryPlay, { once: true });
+      video.addEventListener("playing", revealVideo, { once: true });
+      video.addEventListener("timeupdate", revealVideo, { once: true });
       requestAnimationFrame(tryPlay);
       window.setTimeout(tryPlay, 400);
+      window.setTimeout(revealVideo, 1400);
       window.addEventListener("pointerdown", tryPlay, { once: true, passive: true });
       window.addEventListener("touchstart", tryPlay, { once: true, passive: true });
       document.addEventListener("visibilitychange", () => {
@@ -174,6 +184,14 @@ const slides = slideDefs
     text-decoration: none;
     background: #0a2540;
     z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 360ms ease;
+    will-change: opacity;
+  }
+  .banner.has-video-ready .banner-video-link {
+    opacity: 1;
+    pointer-events: auto;
   }
   .banner-video {
     width: 100%;
