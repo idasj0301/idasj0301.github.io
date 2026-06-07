@@ -103,6 +103,31 @@ const slides = slideDefs
 <script>
   const root = document.querySelector("[data-banner]");
   if (root) {
+    const video = root.querySelector(".banner-video") as HTMLVideoElement | null;
+    if (video) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+
+      const tryPlay = () => {
+        if (!video.paused) return;
+        void video.play().catch(() => {
+          // Some browsers delay autoplay until the first page interaction.
+        });
+      };
+
+      if (video.readyState >= 2) tryPlay();
+      video.addEventListener("loadeddata", tryPlay, { once: true });
+      video.addEventListener("canplay", tryPlay, { once: true });
+      requestAnimationFrame(tryPlay);
+      window.setTimeout(tryPlay, 400);
+      window.addEventListener("pointerdown", tryPlay, { once: true, passive: true });
+      window.addEventListener("touchstart", tryPlay, { once: true, passive: true });
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) tryPlay();
+      });
+    }
+
     const slides = root.querySelectorAll(".slide");
     const dots = root.querySelectorAll("[data-dot]");
     if (slides.length >= 2) {
